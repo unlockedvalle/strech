@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STRECH — Gaming Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #0a0812;
+  --bg2:      #0e0b1a;
+  --surface:  #160f2a;
+  --surface2: #1d1438;
+  --border:   #2a1f4a;
+  --accent:   #7c3aed;
+  --accent2:  #a855f7;
+  --accent3:  #c084fc;
+  --green:    #22c55e;
+  --text:     #e2e8f0;
+  --text2:    #94a3b8;
+  --text3:    #64748b;
+  --radius:   10px;
+  --radius-lg:16px;
+  --trans:    0.2s cubic-bezier(0.4,0,0.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:15px;line-height:1.7;min-height:100vh;}
+a{text-decoration:none;color:inherit;}
+button{font-family:inherit;border:none;background:none;cursor:pointer;}
+
+::-webkit-scrollbar{width:6px;height:6px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:#2a1f4a;border-radius:10px;}
+::-webkit-scrollbar-thumb:hover{background:#3a2a6a;}
+*{scrollbar-width:thin;scrollbar-color:#2a1f4a var(--bg);}
+
+/* LOADER */
+#loader{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity 0.5s ease,visibility 0.5s;}
+#loader.gone{opacity:0;visibility:hidden;pointer-events:none;}
+.ld-inner{text-align:center;}
+.ld-logo{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;letter-spacing:0.1em;color:#fff;margin-bottom:10px;}
+.ld-logo span{color:var(--accent2);}
+.ld-sub{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.25em;color:var(--text3);text-transform:uppercase;margin-bottom:32px;}
+.ld-bar-wrap{width:260px;height:2px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;margin:0 auto 14px;}
+.ld-bar{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent3));transition:width 0.1s linear;box-shadow:0 0 8px rgba(168,85,247,0.6);}
+.ld-msg{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.25em;color:var(--text3);text-transform:uppercase;}
+
+/* SIDEBAR */
+#sidebar{position:fixed;top:0;left:0;width:260px;height:100vh;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;z-index:200;overflow-y:auto;transition:transform var(--trans);}
+#sidebar::-webkit-scrollbar{width:4px;}
+#sidebar::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px;}
+
+.sb-logo{padding:26px 22px 20px;border-bottom:1px solid var(--border);cursor:pointer;transition:background var(--trans);flex-shrink:0;}
+.sb-logo:hover{background:var(--surface);}
+.sb-logo-main{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.5px;color:#fff;line-height:1;}
+.sb-logo-main span{color:var(--accent2);}
+.sb-logo-sub{font-size:10.5px;font-family:'JetBrains Mono',monospace;color:var(--text3);letter-spacing:2px;margin-top:6px;text-transform:uppercase;}
+
+.sb-nav-btn{display:flex;align-items:center;gap:10px;padding:11px 22px;font-size:13px;font-weight:500;color:var(--text2);cursor:pointer;border-left:2px solid transparent;transition:all var(--trans);}
+.sb-nav-btn:hover{color:var(--text);background:var(--surface);}
+.sb-nav-btn.active{color:#fff;border-left-color:var(--accent2);background:rgba(124,58,237,0.1);}
+.sb-nav-btn.active svg{opacity:1;}
+.sb-nav-btn svg{width:14px;height:14px;opacity:0.6;flex-shrink:0;}
+.sb-nav-btn.border-b{border-bottom:1px solid var(--border);}
+
+.sb-section-title{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text3);padding:18px 22px 8px;flex-shrink:0;}
+.sb-section-title.purple{color:var(--accent3);}
+
+.sb-link{display:flex;align-items:center;gap:10px;padding:8px 22px;font-size:13px;color:var(--text2);border-left:2px solid transparent;transition:all var(--trans);cursor:pointer;flex-shrink:0;}
+.sb-link:hover{color:var(--text);background:var(--surface);}
+.sb-link.hl{color:var(--accent3);border-left-color:var(--accent2);background:rgba(124,58,237,0.08);}
+.sb-link svg{width:13px;height:13px;opacity:0.45;flex-shrink:0;}
+
+.sb-divider{height:1px;background:var(--border);margin:8px 0;flex-shrink:0;}
+
+/* SIDEBAR SEARCH */
+.sb-search{padding:10px 14px;border-bottom:1px solid var(--border);flex-shrink:0;}
+.sb-search-inner{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:7px 12px;transition:border-color var(--trans);}
+.sb-search-inner:focus-within{border-color:var(--accent2);}
+.sb-search-inner svg{width:13px;height:13px;color:var(--text3);flex-shrink:0;}
+#sb-search-input{background:none;border:none;outline:none;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text);width:100%;caret-color:var(--accent2);}
+#sb-search-input::placeholder{color:var(--text3);}
+
+/* TODOS GRID */
+.todos-grid{display:flex;flex-direction:column;gap:12px;}
+.todos-game-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px 22px;display:flex;align-items:center;gap:18px;cursor:pointer;transition:all var(--trans);position:relative;overflow:hidden;}
+.todos-game-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0;transition:opacity var(--trans);}
+.todos-game-card:hover{border-color:rgba(124,58,237,0.4);transform:translateX(4px);background:var(--surface);}
+.todos-game-card:hover::before{opacity:1;}
+.todos-game-card.hidden-search{display:none;}
+.todos-card-icon{width:52px;height:52px;border-radius:12px;background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.25);display:flex;align-items:center;justify-content:center;color:var(--accent2);flex-shrink:0;}
+.todos-card-icon svg{width:22px;height:22px;}
+.todos-card-content{flex:1;min-width:0;}
+.todos-card-title{font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:#fff;margin-bottom:3px;}
+.todos-card-sub{font-size:12px;color:var(--text3);font-family:'JetBrains Mono',monospace;margin-bottom:10px;}
+.todos-card-tags{display:flex;gap:6px;flex-wrap:wrap;}
+.todos-card-arrow{color:var(--text3);flex-shrink:0;transition:transform var(--trans),color var(--trans);}
+.todos-card-arrow svg{width:16px;height:16px;}
+.todos-game-card:hover .todos-card-arrow{transform:translateX(4px);color:var(--accent2);}
+
+/* TODOS CATEGORY (sidebar old - unused now) */
+.todos-category{display:none;}
+.sb-bottom{margin-top:auto;padding:16px 22px;border-top:1px solid var(--border);flex-shrink:0;}
+.sb-version{font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--text3);letter-spacing:0.1em;}
+.sb-back-btn{display:flex;align-items:center;gap:8px;padding:10px 14px;border-radius:var(--radius);background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.2);color:var(--accent3);font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:0.05em;text-decoration:none;transition:all var(--trans);cursor:pointer;}
+.sb-back-btn:hover{background:rgba(124,58,237,0.18);border-color:rgba(124,58,237,0.45);color:#fff;transform:translateX(-2px);}
+
+/* MAIN */
+#main{margin-left:260px;min-height:100vh;}
+#topbar{position:sticky;top:0;z-index:100;background:rgba(10,8,18,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 40px;height:54px;display:flex;align-items:center;justify-content:space-between;}
+.tb-bc{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text3);}
+.tb-bc .tb-sep{color:var(--text3);margin:0 6px;}
+.tb-bc .tb-page{color:var(--accent2);}
+#hamburger{display:none;color:var(--text);padding:6px;}
+
+/* PAGES */
+.page{display:none;animation:fadeIn 0.22s ease;}
+.page.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+#content{padding:48px 54px;max-width:940px;}
+
+/* HOME HERO */
+.home-hero{padding:48px 0 52px;border-bottom:1px solid var(--border);margin-bottom:40px;position:relative;}
+.home-hero::before{content:'';position:absolute;top:0;left:-54px;right:-54px;bottom:0;background:radial-gradient(ellipse 60% 50% at 80% 50%,rgba(124,58,237,0.06) 0%,transparent 70%);pointer-events:none;}
+.home-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--accent2);margin-bottom:20px;display:flex;align-items:center;gap:8px;}
+.home-eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 8px rgba(34,197,94,0.8);animation:blink 1.6s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.home-hero h1{font-family:'Syne',sans-serif;font-size:clamp(44px,6vw,68px);font-weight:800;letter-spacing:-2px;line-height:0.95;color:#fff;margin-bottom:6px;}
+.home-hero h1 em{color:var(--accent2);font-style:normal;}
+.home-subtitle{font-size:15px;color:var(--text2);font-weight:300;margin-top:20px;max-width:540px;line-height:1.65;margin-bottom:28px;}
+.home-actions{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:var(--radius);background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;letter-spacing:0.1em;cursor:pointer;transition:all var(--trans);box-shadow:0 4px 20px rgba(124,58,237,0.35);}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 30px rgba(124,58,237,0.55);}
+.btn-primary svg{width:14px;height:14px;}
+
+/* ABOUT SECTION (dentro de home) */
+.about-section{margin-top:52px;padding-top:40px;}
+.about-section-title{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;color:#fff;margin-bottom:6px;letter-spacing:-0.5px;}
+.about-section-title em{color:var(--accent2);font-style:normal;}
+.about-section-sub{font-size:13.5px;color:var(--text2);margin-bottom:26px;}
+.about-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:22px;}
+.about-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px;transition:all var(--trans);}
+.about-card:hover{border-color:rgba(124,58,237,0.35);transform:translateY(-2px);}
+.about-card-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;}
+.about-card-icon.purple{background:rgba(124,58,237,0.15);color:var(--accent2);}
+.about-card-icon.pink{background:rgba(236,72,153,0.15);color:#f472b6;}
+.about-card-icon.green{background:rgba(34,197,94,0.15);color:var(--green);}
+.about-card-icon.blue{background:rgba(59,130,246,0.15);color:#60a5fa;}
+.about-card-icon svg{width:18px;height:18px;}
+.about-card h3{font-family:'Syne',sans-serif;font-size:15px;font-weight:800;color:#fff;margin-bottom:6px;}
+.about-card p{font-size:12.5px;color:var(--text2);line-height:1.65;}
+.about-note{background:rgba(124,58,237,0.06);border:1px solid rgba(124,58,237,0.2);border-radius:var(--radius-lg);padding:18px 22px;font-size:13px;color:var(--text2);line-height:1.75;display:flex;gap:12px;align-items:flex-start;}
+.about-note-icon{flex-shrink:0;margin-top:2px;color:var(--accent2);}
+.about-note-icon svg{width:15px;height:15px;}
+
+/* SECTION HERO */
+.section-hero{margin-bottom:36px;padding-bottom:30px;border-bottom:1px solid var(--border);}
+.badge{display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:4px 10px;border-radius:4px;margin-bottom:14px;}
+.badge.purple{background:rgba(124,58,237,0.12);color:var(--accent2);border:1px solid rgba(124,58,237,0.3);}
+.badge svg{width:11px;height:11px;}
+.section-hero h1{font-family:'Syne',sans-serif;font-size:38px;font-weight:800;letter-spacing:-1px;line-height:1.1;color:#fff;margin-bottom:10px;}
+.section-hero h1 em{color:var(--accent2);font-style:normal;}
+.section-hero p{font-size:14px;color:var(--text2);max-width:600px;font-weight:300;}
+
+/* SEARCH BAR */
+.search-section{margin-bottom:36px;}
+.search-label{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text3);margin-bottom:10px;}
+.search-wrap{position:relative;}
+.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--text3);pointer-events:none;}
+.search-icon svg{width:15px;height:15px;}
+.search-input{width:100%;padding:12px 16px 12px 44px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-family:'JetBrains Mono',monospace;font-size:13px;outline:none;transition:all var(--trans);}
+.search-input:focus{border-color:var(--accent2);box-shadow:0 0 0 3px rgba(124,58,237,0.12);}
+.search-input::placeholder{color:var(--text3);}
+.search-results-count{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text3);margin-top:9px;min-height:18px;}
+.search-results-count span{color:var(--accent2);}
+
+/* GAME BLOCKS */
+.game-block{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);margin-bottom:14px;overflow:hidden;transition:border-color var(--trans);}
+.game-block:hover{border-color:var(--surface2);}
+.game-block.hidden-search{display:none;}
+
+.game-block-header{display:flex;align-items:center;gap:14px;padding:18px 22px;cursor:pointer;user-select:none;border-bottom:1px solid transparent;transition:background var(--trans);}
+.game-block-header:hover{background:var(--surface);}
+.game-block.open .game-block-header{border-bottom-color:var(--border);background:var(--surface);}
+
+.game-block-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text3);min-width:22px;}
+.game-block-logo{width:54px;height:54px;border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--bg);flex-shrink:0;border:1px solid var(--border);}
+.game-block-logo img{width:100%;height:100%;object-fit:contain;padding:4px;}
+.game-block-info{flex:1;min-width:0;}
+.game-block-title{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--text);}
+.game-block-meta{font-size:11.5px;color:var(--text3);margin-top:3px;font-family:'JetBrains Mono',monospace;}
+.game-block-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:7px;}
+.gtag{font-size:10px;font-family:'JetBrains Mono',monospace;padding:2px 8px;border-radius:4px;background:rgba(124,58,237,0.1);color:var(--accent3);border:1px solid rgba(124,58,237,0.2);}
+.gtag.pink{background:rgba(236,72,153,0.1);color:#f9a8d4;border-color:rgba(236,72,153,0.2);}
+.gtag.green{background:rgba(34,197,94,0.1);color:#86efac;border-color:rgba(34,197,94,0.2);}
+
+.game-block-right{display:flex;align-items:center;gap:12px;flex-shrink:0;margin-left:auto;}
+.compat-badge{font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:700;padding:3px 8px;border-radius:4px;background:rgba(34,197,94,0.1);color:var(--green);border:1px solid rgba(34,197,94,0.25);letter-spacing:0.05em;white-space:nowrap;}
+.game-block-chevron{color:var(--text3);transition:transform var(--trans);}
+.game-block-chevron svg{width:16px;height:16px;}
+.game-block.open .game-block-chevron{transform:rotate(90deg);}
+
+.game-block-body{display:none;padding:28px 24px;animation:bodyIn 0.2s ease;}
+@keyframes bodyIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.game-block.open .game-block-body{display:block;}
+
+/* GAME DETAIL */
+.game-detail-grid{display:grid;grid-template-columns:1fr 268px;gap:28px;}
+.game-logo-big{width:100%;border-radius:12px;overflow:hidden;background:var(--bg);border:1px solid var(--border);margin-bottom:20px;display:flex;align-items:center;justify-content:center;padding:20px 24px;min-height:150px;}
+.game-logo-big img{max-width:100%;max-height:150px;object-fit:contain;}
+.game-desc{font-size:13.5px;color:var(--text2);line-height:1.75;margin-bottom:22px;font-weight:300;}
+.game-features-title{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text3);margin-bottom:12px;}
+.game-feature-list{display:flex;flex-direction:column;gap:8px;}
+.game-feature{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--text2);}
+.game-feature-dot{width:6px;height:6px;border-radius:50%;background:var(--accent2);flex-shrink:0;margin-top:6px;box-shadow:0 0 6px rgba(168,85,247,0.5);}
+
+/* DL BOX */
+.dl-box{background:var(--bg);border:1px solid rgba(124,58,237,0.35);border-radius:var(--radius-lg);padding:22px;margin-bottom:14px;position:relative;overflow:hidden;}
+.dl-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
+.dl-size{font-family:'JetBrains Mono',monospace;font-size:26px;font-weight:700;color:var(--accent2);text-shadow:0 0 20px rgba(168,85,247,0.4);margin-bottom:4px;}
+.dl-size-label{font-size:11px;color:var(--text3);margin-bottom:16px;}
+.dl-compat-row{display:flex;align-items:center;gap:7px;font-size:11.5px;color:var(--green);margin-bottom:5px;}
+.dl-compat-dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 6px rgba(34,197,94,0.6);}
+.btn-dl{width:100%;padding:12px 16px;margin-top:14px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:var(--radius);color:#fff;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:0.15em;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;transition:all var(--trans);text-decoration:none;box-shadow:0 4px 20px rgba(124,58,237,0.35);}
+.btn-dl:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(124,58,237,0.55);}
+.btn-dl svg{width:14px;height:14px;}
+
+.info-box{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px;}
+.info-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid rgba(42,31,74,0.5);font-size:12px;}
+.info-row:last-child{border-bottom:none;}
+.info-key{color:var(--text3);}
+.info-val{color:var(--text);font-weight:500;}
+.info-val.purple{color:var(--accent2);}
+.info-val.green{color:var(--green);}
+
+.no-results{display:none;text-align:center;padding:48px 24px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text3);letter-spacing:0.1em;}
+.no-results.show{display:block;}
+.no-results svg{width:32px;height:32px;margin:0 auto 14px;display:block;opacity:0.25;}
+
+/* TOAST */
+#toast-wrap{position:fixed;bottom:24px;right:24px;display:flex;flex-direction:column;gap:8px;z-index:9000;}
+.toast{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:11px 16px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text);animation:toastIn 0.3s ease;display:flex;align-items:center;gap:10px;box-shadow:0 8px 32px rgba(0,0,0,0.4);min-width:220px;}
+.toast.purple{border-left:3px solid var(--accent2);}
+.toast svg{width:13px;height:13px;flex-shrink:0;}
+@keyframes toastIn{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:none}}
+@keyframes toastOut{to{opacity:0;transform:translateX(20px)}}
+
+/* MOBILE OVERLAY */
+#sb-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:190;backdrop-filter:blur(2px);}
+#sb-overlay.open{display:block;}
+
+@media(max-width:860px){.game-detail-grid{grid-template-columns:1fr;}.about-cards{grid-template-columns:1fr;}}
+@media(max-width:768px){
+  #sidebar{transform:translateX(-100%);}
+  #sidebar.open{transform:translateX(0);}
+  #main{margin-left:0;}
+  #content{padding:28px 20px;}
+  #hamburger{display:flex;}
+  .home-hero h1{font-size:38px;}
+  .section-hero h1{font-size:26px;}
+  .game-block-right{flex-direction:column;align-items:flex-end;gap:6px;}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="ld-inner">
+    <div class="ld-logo">STRECH <span>HUB</span></div>
+    <div class="ld-sub">Abalar 11 &amp; 12 — Gaming</div>
+    <div class="ld-bar-wrap"><div class="ld-bar" id="ldBar"></div></div>
+    <div class="ld-msg" id="ldMsg">INICIALIZANDO...</div>
+  </div>
+</div>
+
+<!-- SIDEBAR -->
+<nav id="sidebar">
+  <div class="sb-logo" onclick="nav('home')">
+    <div class="sb-logo-main">STRECH <span>HUB</span></div>
+    <div class="sb-logo-sub">Gaming — Abalar 11 &amp; 12</div>
+  </div>
+
+  <!-- SEARCH BAR -->
+  <div class="sb-search">
+    <div class="sb-search-inner">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input id="sb-search-input" type="text" placeholder="Buscar juegos..." oninput="searchSidebar(this.value)">
+    </div>
+  </div>
+
+  <div class="sb-nav-btn active border-b" id="sb-btn-home" onclick="nav('home')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+      <polyline points="9 22 9 12 15 12 15 22"/>
+    </svg>
+    Inicio
+  </div>
+
+  <div class="sb-nav-btn border-b" id="sb-btn-todos" onclick="nav('todos')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="2" y="3" width="20" height="14" rx="2"/>
+      <line x1="8" y1="21" x2="16" y2="21"/>
+      <line x1="12" y1="17" x2="12" y2="21"/>
+    </svg>
+    Todos los juegos
+  </div>
+
+  <div class="sb-section-title purple">Juegos</div>
+
+  <div class="sb-nav-btn" id="sb-btn-gta" onclick="nav('gta')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <rect x="1" y="3" width="15" height="13" rx="2"/>
+      <path d="M16 8h4l3 3v5h-7V8z"/>
+      <circle cx="5.5" cy="18.5" r="2.5"/>
+      <circle cx="18.5" cy="18.5" r="2.5"/>
+    </svg>
+    GTA
+    <span style="margin-left:auto;font-size:9px;padding:1px 7px;background:rgba(124,58,237,0.2);color:var(--accent3);border-radius:3px;font-family:'JetBrains Mono',monospace;">3</span>
+  </div>
+
+  <div class="sb-bottom">
+    <a href="https://unlockedvalle.github.io/abalar/pruebas" class="sb-back-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px;flex-shrink:0;">
+        <polyline points="15 18 9 12 15 6"/>
+      </svg>
+      Volver a Abalar Exploits
+    </a>
+  </div>
+</nav>
+
+<div id="sb-overlay" onclick="closeSidebar()"></div>
+
+<!-- MAIN -->
+<div id="main">
+
+  <div id="topbar">
+    <div class="tb-bc">
+      <span id="tb-root">STRECH</span><span class="tb-sep">/</span><span class="tb-page" id="tb-page">Inicio</span>
+    </div>
+    <button id="hamburger" onclick="toggleSidebar()">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- ══════════ PAGE: HOME ══════════ -->
+  <div class="page active" id="page-home">
+    <div id="content">
+
+      <div class="home-hero">
+        <div class="home-eyebrow"><span class="dot"></span> Plataforma de descargas — Abalar 11 &amp; 12</div>
+        <h1>STRECH<br/><em>HUB</em></h1>
+        <p class="home-subtitle">
+          Los mejores juegos de Windows para <strong style="color:var(--text)">Abalar 11</strong> y <strong style="color:var(--text)">Abalar 12</strong>.<br/>
+          Descarga directa · Verificados · Sin límites.
+        </p>
+        <div class="home-actions">
+          <div class="btn-primary" onclick="nav('gta')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="5 3 19 12 5 21 5 3"/>
+            </svg>
+            Ver Juegos
+          </div>
+        </div>
+      </div>
+
+      <!-- SOBRE STRECH integrado -->
+      <div class="about-section">
+        <div class="about-section-title">Sobre <em>STRECH</em></div>
+        <p class="about-section-sub">La plataforma de descargas de juegos verificados para Abalar 11 y 12.</p>
+
+        <div class="about-cards">
+          <div class="about-card">
+            <div class="about-card-icon purple">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+              </svg>
+            </div>
+            <h3>Alta Velocidad</h3>
+            <p>Archivos en Mediafire para descargas rápidas sin límite de velocidad ni registros.</p>
+          </div>
+          <div class="about-card">
+            <div class="about-card-icon green">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <h3>Archivos Verificados</h3>
+            <p>Cada archivo ha sido verificado manualmente. Descargas seguras y 100% funcionales.</p>
+          </div>
+          <div class="about-card">
+            <div class="about-card-icon pink">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
+              </svg>
+            </div>
+            <h3>Abalar 11 y 12</h3>
+            <p>Todos los juegos testados y compatibles con Abalar 11 y Abalar 12 sin configuración extra.</p>
+          </div>
+          <div class="about-card">
+            <div class="about-card-icon blue">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="2" y1="12" x2="22" y2="12"/>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+              </svg>
+            </div>
+            <h3>Descarga Directa</h3>
+            <p>Sin barreras. Enlace directo a Mediafire para cualquier usuario de Abalar.</p>
+          </div>
+        </div>
+
+        <div class="about-note">
+          <div class="about-note-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+            </svg>
+          </div>
+          <span>
+            <strong style="color:var(--text)">STRECH Hub</strong> nació para facilitar el acceso a juegos de Windows en la plataforma Abalar.
+            Si tienes algún problema con la descarga o instalación, contacta por Discord.
+            Próximamente más títulos añadidos a la colección.
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- /home -->
+
+  <!-- ══════════ PAGE: TODOS LOS JUEGOS ══════════ -->
+  <div class="page" id="page-todos">
+    <div id="content">
+
+      <div class="section-hero">
+        <div class="badge purple">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:11px;height:11px;">
+            <rect x="2" y="3" width="20" height="14" rx="2"/>
+            <line x1="8" y1="21" x2="16" y2="21"/>
+            <line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+          Colección
+        </div>
+        <h1>Todos los <em>juegos</em></h1>
+        <p>Explora toda la biblioteca de juegos disponibles para Abalar 11 y 12.</p>
+      </div>
+
+      <!-- BARRA DE BÚSQUEDA -->
+      <div class="search-section">
+        <div class="search-wrap">
+          <div class="search-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <input class="search-input" type="text" placeholder="Buscar juegos..." oninput="filterTodos(this.value)">
+        </div>
+      </div>
+
+      <!-- CATEGORÍAS -->
+      <div class="search-label" style="margin-bottom:16px;">CATEGORÍAS DISPONIBLES</div>
+
+      <div class="todos-grid">
+        <div class="todos-game-card" data-search="gta grand theft auto vice city san andreas rockstar" onclick="nav('gta')">
+          <div class="todos-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="1" y="3" width="15" height="13" rx="2"/>
+              <path d="M16 8h4l3 3v5h-7V8z"/>
+              <circle cx="5.5" cy="18.5" r="2.5"/>
+              <circle cx="18.5" cy="18.5" r="2.5"/>
+            </svg>
+          </div>
+          <div class="todos-card-content">
+            <div class="todos-card-title">GTA</div>
+            <div class="todos-card-sub">Grand Theft Auto — Rockstar Games</div>
+            <div class="todos-card-tags">
+              <span class="gtag">GTA III</span>
+              <span class="gtag">Vice City</span>
+              <span class="gtag">San Andreas</span>
+              <span class="gtag green">3 juegos</span>
+            </div>
+          </div>
+          <div class="todos-card-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- /todos -->
+
+  <!-- ══════════ PAGE: GTA ══════════ -->
+  <div class="page" id="page-gta">
+    <div id="content">
+
+      <div class="section-hero">
+        <div class="badge purple">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="1" y="3" width="15" height="13" rx="2"/>
+            <path d="M16 8h4l3 3v5h-7V8z"/>
+            <circle cx="5.5" cy="18.5" r="2.5"/>
+            <circle cx="18.5" cy="18.5" r="2.5"/>
+          </svg>
+          Rockstar Games · Colección
+        </div>
+        <h1>GTA — <em>Grand Theft Auto</em></h1>
+        <p>Clásicos verificados y disponibles para Abalar 11 y 12.</p>
+      </div>
+
+      <!-- BARRA DE BÚSQUEDA -->
+      <div class="search-section">
+        <div class="search-label">Buscar juegos...</div>
+        <div class="search-wrap">
+          <div class="search-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+          </div>
+          <input class="search-input" id="searchInput" type="text"
+                 placeholder="Escribe el nombre del juego..."
+                 oninput="filterGames(this.value)"/>
+        </div>
+        <div class="search-results-count" id="searchCount"></div>
+      </div>
+
+      <!-- BLOQUE: GTA III -->
+      <div class="game-block" id="block-gta3"
+           data-search="gta 3 iii 2001 rockstar liberty city claude speed">
+        <div class="game-block-header" onclick="toggleBlock(this)">
+          <span class="game-block-num">01</span>
+          <div class="game-block-logo">
+            <img src="https://files.catbox.moe/c7p6q7.png" alt="GTA III" onerror="this.style.display='none'">
+          </div>
+          <div class="game-block-info">
+            <div class="game-block-title">Grand Theft Auto III</div>
+            <div class="game-block-meta">// 2001 · PC Windows · Rockstar Games</div>
+            <div class="game-block-tags">
+              <span class="gtag pink">Mundo Abierto</span>
+              <span class="gtag">Acción</span>
+              <span class="gtag">Retro</span>
+              <span class="gtag">Clásico</span>
+            </div>
+          </div>
+          <div class="game-block-right">
+            <span class="compat-badge">Abalar 11 y 12</span>
+            <div class="game-block-chevron">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="game-block-body">
+          <div class="game-detail-grid">
+            <div>
+              <div class="game-logo-big">
+                <img src="https://files.catbox.moe/c7p6q7.png" alt="GTA III Logo" onerror="this.style.display='none'">
+              </div>
+              <p class="game-desc">
+                El juego que lo cambió todo. GTA III introdujo por primera vez el mundo abierto en 3D a la saga, ambientado en Liberty City. Tomas el control de Claude, un criminal silencioso que busca venganza mientras escala los bajos fondos de la ciudad. Una obra maestra que definió una generación de videojuegos.
+              </p>
+              <div class="game-features-title">// CARACTERÍSTICAS PRINCIPALES</div>
+              <div class="game-feature-list">
+                <div class="game-feature"><div class="game-feature-dot"></div>Primer GTA en 3D — revolucionó el género de mundo abierto</div>
+                <div class="game-feature"><div class="game-feature-dot"></div>Liberty City con tres islas desbloqueables progresivamente</div>
+                <div class="game-feature"><div class="game-feature-dot"></div>Misiones para múltiples facciones y bandas criminales</div>
+                <div class="game-feature"><div class="game-feature-dot"></div>Sistema de búsqueda policial con niveles de 1 a 5 estrellas</div>
+                <div class="game-feature"><div class="game-feature-dot"></div>Arsenal completo y decenas de vehículos disponibles</div>
+              </div>
+            </div>
+            <div>
+              <div class="dl-box">
+                <div class="dl-size">~600 MB</div>
+                <div class="dl-size-label">Tamaño del archivo</div>
+                <div class="dl-compat-row">
+                  <div class="dl-compat-dot"></div>
+                  Abalar 11 — Compatible
+                </div>
+                <div class="dl-compat-row">
+                  <div class="dl-compat-dot"></div>
+                  Abalar 12 — Compatible
+                </div>
+                <div class="dl-compat-row">
+                  <div class="dl-compat-dot"></div>
+                  Archivo verificado
+                </div>
+                <div class="dl-compat-row">
+                  <div class="dl-compat-dot"></div>
+                  Optimizado por OptiJuegos
+                </div>
+                <a class="btn-dl"
+                   href="https://www.mediafire.com/file/l1j15jhed10gp9s"
+                   target="_blank"
+                   onclick="showToast('Abriendo descarga de GTA III...')">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="7 10 12 15 17 10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                  </svg>
+                  DESCARGAR AHORA
+                </a>
+              </div>
+              <div class="info-box">
+                <div class="info-row"><span class="info-key">Año</span><span class="info-val">2001</span></div>
+                <div class="info-row"><span class="info-key">Desarrollador</span><span class="info-val">Rockstar Games</span></div>
+                <div class="info-row"><span class="info-key">Plataforma</span><span class="info-val">PC Windows</span></div>
+                <div class="info-row"><span class="info-key">Género</span><span class="info-val purple">Mundo Abierto</span></div>
+                <div class="info-row"><span class="info-key">Compatibilidad</span><span class="info-val green">Abalar 11 y 12</span></div>
+                <div class="info-row"><span class="info-key">Host</span><span class="info-val">Mediafire</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- /gta3 -->
+
+      <!-- BLOQUE: Vice City -->
+      <div class="game-block" id="block-vc"
+           data-search="gta vice city 1986 2002 rockstar miami tommy vercetti">
+        <div class="game-block-header" onclick="toggleBlock(this)">
+          <span class="game-block-num">02</span>
+          <div class="game-block-logo">
+            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pngplay.com%2Fwp-content%2Fuploads%2F11%2FGrand-Theft-Auto-Vice-City-Logo-PNG-HD-Images.png&f=1&nofb=1&ipt=9ca1876e8bcffe8ace845cda9bea0faa0058a158fee03aa9bd5115025adedd86"
+                 alt="GTA Vice City" onerror="this.style.display='none'">
+          </div>
+          <div class="game-block-info">
+            <div class="game-block-title">Grand Theft Auto: Vice City</div>
+            <div class="game-block-meta">// 2002 · PC Windows · Rockstar Games</div>
+            <div class="game-block-tags">
+              <span class="gtag pink">Mundo Abierto</span>
+              <span class="gtag">Historia</span>
+              <span class="gtag">Retro</span>
+              <span class="gtag">Clásico</span>
+            </div>
+          </div>
+          <div class="game-block-right">
+            <span class="compat-badge">Abalar 11 y 12</span>
+            <div class="game-block-chevron">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="game-block-body">
+          <div class="game-detail-grid">
+            <div>
+              <div class="game-logo-big">
+                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pngplay.com%2Fwp-content%2Fuploads%2F11%2FGrand-Theft-Auto-Vice-City-Logo-PNG-HD-Images.png&f=1&nofb=1&ipt=9ca1876e8bcffe8ace845cda9bea0faa0058a158fee03aa9bd5115025adedd86"
+                     alt="GTA Vice City Logo" onerror="this.style.display='none'">
+              </div>
+              <p class="game-desc">
+                Ambientado en la ficticia Vice City —basada en el Miami de los años 80—, el jugador asume el papel de Tommy Vercetti, un criminal que intenta construir su propio imperio en una ciudad brillante y peligrosa. Con una banda sonora icónica, misiones variadas y un mundo abierto enorme, Vice City redefinió los juegos de mundo abierto en su lanzamiento.
+              </p>
+              <div class="game-features-title">// CARACTERÍSTICAS PRINCIPALES</div>
+              <div class="game-feature-list">
+                <div class="game-feature"><div class="game-feature-dot"></div>Historia cinematográfica inspirada en Scarface y Miami Vice</div>
+                <div class="game-feature"><div class="game-feature-dot"></div>Banda sonora con emisoras de radio de los 80 (pop, rock, synthwave)</div>
+                <div class="game-feature"><div class="game-feature-dot"></div>Mundo abierto con dos islas desbloqueables</div>
+                <div class="game-feature"><div class="game-feature-dot"></div>Compra de propiedades y negocios para expandir el imperio</div>
+                <div class="game-feature"><div class="game-feature-dot"></div>Arsenal completo: motos, helicópteros, lanchas y decenas de vehículos</div>
+              </div>
+            </div>
+            <div>
+              <div class="dl-box">
+                <div class="dl-size">~0.8 GB</div>
+                <div class="dl-size-label">Tamaño del archivo</div>
+                <div class="dl-compat-row">
+                  <div class="dl-compat-dot"></div>
+                  Abalar 11 — Compatible
+                </div>
+                <div class="dl-compat-row">
+                  <div class="dl-compat-dot"></div>
+                  Abalar 12 — Compatible
+                </div>
+                <div class="dl-compat-row">
+                  <div class="dl-compat-dot"></div>
+                  Archivo verificado
+                </div>
+                <div class="dl-compat-row">
+                  <div class="dl-compat-dot"></div>
+                  Optimizado por OptiJuegos
+                </div>
+                <a class="btn-dl"
+                   href="https://www.mediafire.com/file/hqk4smpu51umcf7"
+                   target="_blank"
+                   onclick="showToast('Abriendo descarga de Vice City...')">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="7 10 12 15 17 10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                  </svg>
+                  DESCARGAR AHORA
+                </a>
+              </div>
+              <div class="info-box">
+                <div class="info-row"><span class="info-key">Año</span><span class="info-val">2002</span></div>
+                <div class="info-row"><span class="info-key">Desarrollador</span><span class="info-val">Rockstar Games</span></div>
+                <div class="info-row"><span class="info-key">Plataforma</span><span class="info-val">PC Windows</span></div>
+                <div class="info-row"><span class="info-key">Género</span><span class="info-val purple">Mundo Abierto</span></div>
+                <div class="info-row"><span class="info-key">Compatibilidad</span><span class="info-val green">Abalar 11 y 12</span></div>
+                <div class="info-row"><span class="info-key">Host</span><span class="info-val">Mediafire</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- /vc -->
+
+      <!-- BLOQUE: San Andreas -->
+      <div class="game-block" id="block-sa"
+           data-search="gta san andreas 2004 rockstar cj los santos san fierro las venturas">
+        <div class="game-block-header" onclick="toggleBlock(this)">
+          <span class="game-block-num">03</span>
+          <div class="game-block-logo">
+            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pngmart.com%2Ffiles%2F22%2FGrand-Theft-Auto-San-Andreas-Logo-PNG-Photo.png&f=1&nofb=1&ipt=a74dc647171e9cf032cb2baa33c578fe9c16aeed61402a8ba5c207deb23a385f"
+                 alt="GTA San Andreas" onerror="this.style.display='none'">
+          </div>
+          <div class="game-block-info">
+            <div class="game-block-title">Grand Theft Auto: San Andreas</div>
+            <div class="game-block-meta">// 2004 · PC Windows · Rockstar Games</div>
+            <div class="game-block-tags">
+              <span class="gtag pink">Mundo Abierto</span>
+              <span class="gtag">RPG</span>
+              <span class="gtag">Historia</span>
+              <span class="gtag">Icónico</span>
+            </div>
+          </div>
+          <div class="game-block-right">
+            <span class="compat-badge">Abalar 11 y 12</span>
+            <div class="game-block-chevron">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="game-block-body">
+          <div class="game-detail-grid">
+            <div>
+              <div class="game-logo-big">
+                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pngmart.com%2Ffiles%2F22%2FGrand-Theft-Auto-San-Andreas-Logo-PNG-Photo.png&f=1&nofb=1&ipt=a74dc647171e9cf032cb2baa33c578fe9c16aeed61402a8ba5c207deb23a385f"
+                     alt="GTA San Andreas Logo" onerror="this.style.display='none'">
+              </div>
+              <p class="game-desc">
+                Ambientado en el estado ficticio de San Andreas, el jugador controla a Carl "CJ" Johnson, que regresa a su barrio y se ve envuelto en traiciones y redención. San Andreas introdujo mecánicas RPG únicas —estadísticas de habilidad, peso, conducción y vuelo— y fue el mundo abierto más grande de su época, con tres ciudades, desierto, bosques y campo.
+              </p>
+              <div class="game-features-title">// CARACTERÍSTICAS PRINCIPALES</div>
+              <div class="game-feature-list">
+                <div class="game-feature"><div class="game-feature-dot"></div>Estado enorme con 3 ciudades: Los Santos, San Fierro y Las Venturas</div>
+                <div class="game-feature"><div class="game-feature-dot"></div>Mecánicas RPG: estadísticas de habilidad, peso, apariencia y hambre</div>
+                <div class="game-feature"><div class="game-feature-dot"></div>Historia épica de 100+ misiones con giros narrativos memorables</div>
+                <div class="game-feature"><div class="game-feature-dot"></div>Banda sonora con rap 90s, rock y funk en emisoras de radio</div>
+                <div class="game-feature"><div class="game-feature-dot"></div>Personalización total del personaje, vehículos y propiedades</div>
+              </div>
+            </div>
+            <div>
+              <div class="dl-box">
+                <div class="dl-size">~2.9 GB</div>
+                <div class="dl-size-label">Tamaño del archivo</div>
+                <div class="dl-compat-row">
+                  <div class="dl-compat-dot"></div>
+                  Abalar 11 — Compatible
+                </div>
+                <div class="dl-compat-row">
+                  <div class="dl-compat-dot"></div>
+                  Abalar 12 — Compatible
+                </div>
+                <div class="dl-compat-row">
+                  <div class="dl-compat-dot"></div>
+                  Archivo verificado
+                </div>
+                <div class="dl-compat-row">
+                  <div class="dl-compat-dot"></div>
+                  Optimizado por OptiJuegos
+                </div>
+                <a class="btn-dl"
+                   href="https://www.mediafire.com/file/0iddf1zy4jyyww4"
+                   target="_blank"
+                   onclick="showToast('Abriendo descarga de San Andreas...')">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="7 10 12 15 17 10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                  </svg>
+                  DESCARGAR AHORA
+                </a>
+              </div>
+              <div class="info-box">
+                <div class="info-row"><span class="info-key">Año</span><span class="info-val">2004</span></div>
+                <div class="info-row"><span class="info-key">Desarrollador</span><span class="info-val">Rockstar Games</span></div>
+                <div class="info-row"><span class="info-key">Plataforma</span><span class="info-val">PC Windows</span></div>
+                <div class="info-row"><span class="info-key">Género</span><span class="info-val purple">RPG / Mundo Abierto</span></div>
+                <div class="info-row"><span class="info-key">Compatibilidad</span><span class="info-val green">Abalar 11 y 12</span></div>
+                <div class="info-row"><span class="info-key">Host</span><span class="info-val">Mediafire</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- /sa -->
+
+      <div class="no-results" id="noResults">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        No se encontraron juegos con esa búsqueda.
+      </div>
+
+    </div>
+  </div><!-- /gta -->
+
+</div><!-- /main -->
+<div id="toast-wrap"></div>
+
+<script>
+const PAGES = {
+  home:  { el:'page-home',  sb:'sb-btn-home',  title:'Inicio',           root:'STRECH' },
+  todos: { el:'page-todos', sb:'sb-btn-todos',  title:'Todos los juegos', root:'STRECH' },
+  gta:   { el:'page-gta',   sb:'sb-btn-gta',   title:'GTA',              root:'STRECH' },
+};
+
+function nav(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.sb-nav-btn').forEach(b => b.classList.remove('active'));
+  const cfg = PAGES[id];
+  if (!cfg) return;
+  document.getElementById(cfg.el).classList.add('active');
+  if (cfg.sb) document.getElementById(cfg.sb).classList.add('active');
+  document.getElementById('tb-root').textContent = cfg.root;
+  document.getElementById('tb-page').textContent = cfg.title;
+  window.scrollTo({top:0});
+  closeSidebar();
+}
+
+function filterTodos(q) {
+  const query = q.toLowerCase().trim();
+  document.querySelectorAll('.todos-game-card').forEach(card => {
+    const text = (card.dataset.search || '') + ' ' + (card.querySelector('.todos-card-title')?.textContent || '');
+    card.classList.toggle('hidden-search', query && !text.toLowerCase().includes(query));
+  });
+}
+
+function searchSidebar(q) {
+  const query = q.toLowerCase().trim();
+  const gtaBtn = document.getElementById('sb-btn-gta');
+  const secTitle = document.querySelector('.sb-section-title.purple');
+  if (!query) {
+    if (gtaBtn) gtaBtn.style.display = '';
+    if (secTitle) secTitle.style.display = '';
+    return;
+  }
+  const gtaMatch = 'gta grand theft auto'.includes(query);
+  if (gtaBtn) gtaBtn.style.display = gtaMatch ? '' : 'none';
+  if (secTitle) secTitle.style.display = gtaMatch ? '' : 'none';
+}
+
+function toggleBlock(header) {
+  const block  = header.parentElement;
+  const page   = block.closest('.page');
+  const isOpen = block.classList.contains('open');
+  page.querySelectorAll('.game-block.open').forEach(b => b.classList.remove('open'));
+  if (!isOpen) block.classList.add('open');
+}
+
+function openBlock(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.closest('.page').querySelectorAll('.game-block.open').forEach(b => b.classList.remove('open'));
+  el.classList.add('open');
+  setTimeout(() => {
+    window.scrollTo({top: el.getBoundingClientRect().top + window.scrollY - 70, behavior:'smooth'});
+  }, 30);
+}
+
+function filterGames(q) {
+  const query   = q.toLowerCase().trim();
+  const blocks  = document.querySelectorAll('#page-gta .game-block');
+  let visible   = 0;
+  blocks.forEach(b => {
+    const text  = (b.dataset.search||'') + ' ' + (b.querySelector('.game-block-title')?.textContent||'');
+    const match = !query || text.toLowerCase().includes(query);
+    b.classList.toggle('hidden-search', !match);
+    if (match) visible++;
+  });
+  const countEl = document.getElementById('searchCount');
+  countEl.innerHTML = query
+    ? `<span>${visible}</span> resultado${visible!==1?'s':''} para "<span>${q}</span>"`
+    : '';
+  document.getElementById('noResults').classList.toggle('show', visible === 0 && !!query);
+}
+
+function showToast(msg) {
+  const wrap = document.getElementById('toast-wrap');
+  const t    = document.createElement('div');
+  t.className = 'toast purple';
+  t.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>${msg}`;
+  wrap.appendChild(t);
+  setTimeout(() => {
+    t.style.animation = 'toastOut 0.3s ease forwards';
+    t.addEventListener('animationend', () => t.remove());
+  }, 3500);
+}
+
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('sb-overlay').classList.toggle('open');
+}
+function closeSidebar() {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('sb-overlay').classList.remove('open');
+}
+
+// LOADER
+(function() {
+  const bar  = document.getElementById('ldBar');
+  const msg  = document.getElementById('ldMsg');
+  const msgs = ['INICIALIZANDO...','CARGANDO ACTIVOS...','VERIFICANDO ARCHIVOS...','SISTEMA LISTO'];
+  let p = 0, mi = 0;
+  const iv = setInterval(() => {
+    p = Math.min(p + Math.random() * 16 + 5, 100);
+    bar.style.width = p + '%';
+    const ni = Math.floor(p / 100 * (msgs.length - 1));
+    if (ni !== mi) { mi = ni; msg.textContent = msgs[mi]; }
+    if (p >= 100) {
+      clearInterval(iv);
+      setTimeout(() => document.getElementById('loader').classList.add('gone'), 400);
+    }
+  }, 65);
+})();
+</script>
+</body>
+</html>
