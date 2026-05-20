@@ -8,29 +8,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg:       #0a0812;
-  --bg2:      #0e0b1a;
-  --surface:  #160f2a;
-  --surface2: #1d1438;
-  --border:   #2a1f4a;
-  --accent:   #7c3aed;
-  --accent2:  #a855f7;
-  --accent3:  #c084fc;
-  --green:    #22c55e;
-  --text:     #e2e8f0;
-  --text2:    #94a3b8;
-  --text3:    #64748b;
-  --radius:   10px;
-  --radius-lg:16px;
-  --trans:    0.2s cubic-bezier(0.4,0,0.2,1);
-}
+:root{--bg:#0a0812;--bg2:#0e0b1a;--surface:#160f2a;--surface2:#1d1438;--border:#2a1f4a;--accent:#7c3aed;--accent2:#a855f7;--accent3:#c084fc;--green:#22c55e;--yellow:#eab308;--text:#e2e8f0;--text2:#94a3b8;--text3:#64748b;--radius:10px;--radius-lg:16px;--trans:0.2s cubic-bezier(0.4,0,0.2,1);}
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:15px;line-height:1.7;min-height:100vh;}
 a{text-decoration:none;color:inherit;}
 button{font-family:inherit;border:none;background:none;cursor:pointer;}
-
 ::-webkit-scrollbar{width:6px;height:6px;}
 ::-webkit-scrollbar-track{background:var(--bg);}
 ::-webkit-scrollbar-thumb{background:#2a1f4a;border-radius:10px;}
@@ -52,39 +35,30 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;}
 #sidebar{position:fixed;top:0;left:0;width:260px;height:100vh;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;z-index:200;overflow-y:auto;transition:transform var(--trans);}
 #sidebar::-webkit-scrollbar{width:4px;}
 #sidebar::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px;}
-
 .sb-logo{padding:26px 22px 20px;border-bottom:1px solid var(--border);cursor:pointer;transition:background var(--trans);flex-shrink:0;}
 .sb-logo:hover{background:var(--surface);}
 .sb-logo-main{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.5px;color:#fff;line-height:1;}
 .sb-logo-main span{color:var(--accent2);}
 .sb-logo-sub{font-size:10.5px;font-family:'JetBrains Mono',monospace;color:var(--text3);letter-spacing:2px;margin-top:6px;text-transform:uppercase;}
-
 .sb-nav-btn{display:flex;align-items:center;gap:10px;padding:11px 22px;font-size:13px;font-weight:500;color:var(--text2);cursor:pointer;border-left:2px solid transparent;transition:all var(--trans);}
 .sb-nav-btn:hover{color:var(--text);background:var(--surface);}
 .sb-nav-btn.active{color:#fff;border-left-color:var(--accent2);background:rgba(124,58,237,0.1);}
-.sb-nav-btn.active svg{opacity:1;}
 .sb-nav-btn svg{width:14px;height:14px;opacity:0.6;flex-shrink:0;}
 .sb-nav-btn.border-b{border-bottom:1px solid var(--border);}
-
 .sb-section-title{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text3);padding:18px 22px 8px;flex-shrink:0;}
 .sb-section-title.purple{color:var(--accent3);}
-
-.sb-link{display:flex;align-items:center;gap:10px;padding:8px 22px;font-size:13px;color:var(--text2);border-left:2px solid transparent;transition:all var(--trans);cursor:pointer;flex-shrink:0;}
-.sb-link:hover{color:var(--text);background:var(--surface);}
-.sb-link.hl{color:var(--accent3);border-left-color:var(--accent2);background:rgba(124,58,237,0.08);}
-.sb-link svg{width:13px;height:13px;opacity:0.45;flex-shrink:0;}
-
-.sb-divider{height:1px;background:var(--border);margin:8px 0;flex-shrink:0;}
-
-/* SIDEBAR SEARCH */
+.sb-section-title.yellow{color:#fbbf24;}
 .sb-search{padding:10px 14px;border-bottom:1px solid var(--border);flex-shrink:0;}
 .sb-search-inner{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:7px 12px;transition:border-color var(--trans);}
 .sb-search-inner:focus-within{border-color:var(--accent2);}
 .sb-search-inner svg{width:13px;height:13px;color:var(--text3);flex-shrink:0;}
 #sb-search-input{background:none;border:none;outline:none;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text);width:100%;caret-color:var(--accent2);}
 #sb-search-input::placeholder{color:var(--text3);}
+.sb-bottom{margin-top:auto;padding:16px 22px;border-top:1px solid var(--border);flex-shrink:0;}
+.sb-back-btn{display:flex;align-items:center;gap:8px;padding:10px 14px;border-radius:var(--radius);background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.2);color:var(--accent3);font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:0.05em;text-decoration:none;transition:all var(--trans);cursor:pointer;}
+.sb-back-btn:hover{background:rgba(124,58,237,0.18);border-color:rgba(124,58,237,0.45);color:#fff;transform:translateX(-2px);}
 
-/* TODOS GRID */
+/* TODOS */
 .todos-grid{display:flex;flex-direction:column;gap:12px;}
 .todos-game-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px 22px;display:flex;align-items:center;gap:18px;cursor:pointer;transition:all var(--trans);position:relative;overflow:hidden;}
 .todos-game-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0;transition:opacity var(--trans);}
@@ -92,6 +66,7 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;}
 .todos-game-card:hover::before{opacity:1;}
 .todos-game-card.hidden-search{display:none;}
 .todos-card-icon{width:52px;height:52px;border-radius:12px;background:rgba(124,58,237,0.12);border:1px solid rgba(124,58,237,0.25);display:flex;align-items:center;justify-content:center;color:var(--accent2);flex-shrink:0;}
+.todos-card-icon.yellow-icon{background:rgba(234,179,8,0.12);border-color:rgba(234,179,8,0.25);color:#fbbf24;}
 .todos-card-icon svg{width:22px;height:22px;}
 .todos-card-content{flex:1;min-width:0;}
 .todos-card-title{font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:#fff;margin-bottom:3px;}
@@ -101,42 +76,31 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;}
 .todos-card-arrow svg{width:16px;height:16px;}
 .todos-game-card:hover .todos-card-arrow{transform:translateX(4px);color:var(--accent2);}
 
-/* TODOS CATEGORY (sidebar old - unused now) */
-.todos-category{display:none;}
-.sb-bottom{margin-top:auto;padding:16px 22px;border-top:1px solid var(--border);flex-shrink:0;}
-.sb-version{font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--text3);letter-spacing:0.1em;}
-.sb-back-btn{display:flex;align-items:center;gap:8px;padding:10px 14px;border-radius:var(--radius);background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.2);color:var(--accent3);font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:0.05em;text-decoration:none;transition:all var(--trans);cursor:pointer;}
-.sb-back-btn:hover{background:rgba(124,58,237,0.18);border-color:rgba(124,58,237,0.45);color:#fff;transform:translateX(-2px);}
-
 /* MAIN */
 #main{margin-left:260px;min-height:100vh;}
 #topbar{position:sticky;top:0;z-index:100;background:rgba(10,8,18,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 40px;height:54px;display:flex;align-items:center;justify-content:space-between;}
 .tb-bc{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text3);}
-.tb-bc .tb-sep{color:var(--text3);margin:0 6px;}
+.tb-bc .tb-sep{margin:0 6px;}
 .tb-bc .tb-page{color:var(--accent2);}
 #hamburger{display:none;color:var(--text);padding:6px;}
-
-/* PAGES */
 .page{display:none;animation:fadeIn 0.22s ease;}
 .page.active{display:block;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-#content{padding:48px 54px;max-width:940px;}
+#content{padding:48px 54px;max-width:960px;}
 
-/* HOME HERO */
-.home-hero{padding:48px 0 52px;border-bottom:1px solid var(--border);margin-bottom:40px;position:relative;}
+/* HOME */
+.home-hero{padding:48px 0 24px;border-bottom:1px solid var(--border);margin-bottom:40px;position:relative;}
 .home-hero::before{content:'';position:absolute;top:0;left:-54px;right:-54px;bottom:0;background:radial-gradient(ellipse 60% 50% at 80% 50%,rgba(124,58,237,0.06) 0%,transparent 70%);pointer-events:none;}
 .home-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--accent2);margin-bottom:20px;display:flex;align-items:center;gap:8px;}
 .home-eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 8px rgba(34,197,94,0.8);animation:blink 1.6s ease-in-out infinite;}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
-.home-hero h1{font-family:'Syne',sans-serif;font-size:clamp(44px,6vw,68px);font-weight:800;letter-spacing:-2px;line-height:0.95;color:#fff;margin-bottom:6px;}
+.home-hero h1{font-family:'Syne',sans-serif;font-size:clamp(44px,6vw,68px);font-weight:800;letter-spacing:-2px;line-height:0.95;color:#fff;}
 .home-hero h1 em{color:var(--accent2);font-style:normal;}
-.home-subtitle{font-size:15px;color:var(--text2);font-weight:300;margin-top:20px;max-width:540px;line-height:1.65;margin-bottom:28px;}
+.home-subtitle{font-size:15px;color:var(--text2);font-weight:300;margin-top:20px;max-width:540px;line-height:1.65;margin-bottom:0;}
 .home-actions{display:flex;gap:12px;flex-wrap:wrap;}
 .btn-primary{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:var(--radius);background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;letter-spacing:0.1em;cursor:pointer;transition:all var(--trans);box-shadow:0 4px 20px rgba(124,58,237,0.35);}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 30px rgba(124,58,237,0.55);}
 .btn-primary svg{width:14px;height:14px;}
-
-/* ABOUT SECTION (dentro de home) */
 .about-section{margin-top:52px;padding-top:40px;}
 .about-section-title{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;color:#fff;margin-bottom:6px;letter-spacing:-0.5px;}
 .about-section-title em{color:var(--accent2);font-style:normal;}
@@ -160,14 +124,15 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;}
 .section-hero{margin-bottom:36px;padding-bottom:30px;border-bottom:1px solid var(--border);}
 .badge{display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:4px 10px;border-radius:4px;margin-bottom:14px;}
 .badge.purple{background:rgba(124,58,237,0.12);color:var(--accent2);border:1px solid rgba(124,58,237,0.3);}
+.badge.yellow{background:rgba(234,179,8,0.12);color:#fbbf24;border:1px solid rgba(234,179,8,0.3);}
 .badge svg{width:11px;height:11px;}
 .section-hero h1{font-family:'Syne',sans-serif;font-size:38px;font-weight:800;letter-spacing:-1px;line-height:1.1;color:#fff;margin-bottom:10px;}
 .section-hero h1 em{color:var(--accent2);font-style:normal;}
+.section-hero h1 em.yellow{color:#fbbf24;}
 .section-hero p{font-size:14px;color:var(--text2);max-width:600px;font-weight:300;}
 
-/* SEARCH BAR */
-.search-section{margin-bottom:36px;}
-.search-label{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text3);margin-bottom:10px;}
+/* SEARCH */
+.search-section{margin-bottom:28px;}
 .search-wrap{position:relative;}
 .search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--text3);pointer-events:none;}
 .search-icon svg{width:15px;height:15px;}
@@ -178,56 +143,63 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;}
 .search-results-count span{color:var(--accent2);}
 
 /* GAME BLOCKS */
-.game-block{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);margin-bottom:14px;overflow:hidden;transition:border-color var(--trans);}
-.game-block:hover{border-color:var(--surface2);}
+.game-block{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);margin-bottom:10px;overflow:hidden;transition:border-color var(--trans);}
+.game-block:hover{border-color:rgba(42,31,74,0.9);}
 .game-block.hidden-search{display:none;}
-
-.game-block-header{display:flex;align-items:center;gap:14px;padding:18px 22px;cursor:pointer;user-select:none;border-bottom:1px solid transparent;transition:background var(--trans);}
+.game-block-header{display:flex;align-items:center;gap:14px;padding:16px 20px;cursor:pointer;user-select:none;border-bottom:1px solid transparent;transition:background var(--trans);}
 .game-block-header:hover{background:var(--surface);}
 .game-block.open .game-block-header{border-bottom-color:var(--border);background:var(--surface);}
-
 .game-block-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text3);min-width:22px;}
-.game-block-logo{width:54px;height:54px;border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--bg);flex-shrink:0;border:1px solid var(--border);}
+.game-block-logo{width:52px;height:52px;border-radius:10px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--bg);flex-shrink:0;border:1px solid var(--border);}
 .game-block-logo img{width:100%;height:100%;object-fit:contain;padding:4px;}
+.game-block-logo svg{width:22px;height:22px;}
 .game-block-info{flex:1;min-width:0;}
 .game-block-title{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--text);}
-.game-block-meta{font-size:11.5px;color:var(--text3);margin-top:3px;font-family:'JetBrains Mono',monospace;}
-.game-block-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:7px;}
+.game-block-meta{font-size:11px;color:var(--text3);margin-top:2px;font-family:'JetBrains Mono',monospace;}
+.game-block-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px;}
 .gtag{font-size:10px;font-family:'JetBrains Mono',monospace;padding:2px 8px;border-radius:4px;background:rgba(124,58,237,0.1);color:var(--accent3);border:1px solid rgba(124,58,237,0.2);}
 .gtag.pink{background:rgba(236,72,153,0.1);color:#f9a8d4;border-color:rgba(236,72,153,0.2);}
 .gtag.green{background:rgba(34,197,94,0.1);color:#86efac;border-color:rgba(34,197,94,0.2);}
-
-.game-block-right{display:flex;align-items:center;gap:12px;flex-shrink:0;margin-left:auto;}
+.gtag.yellow{background:rgba(234,179,8,0.1);color:#fde68a;border-color:rgba(234,179,8,0.2);}
+.game-block-right{display:flex;align-items:center;gap:10px;flex-shrink:0;margin-left:auto;}
 .compat-badge{font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:700;padding:3px 8px;border-radius:4px;background:rgba(34,197,94,0.1);color:var(--green);border:1px solid rgba(34,197,94,0.25);letter-spacing:0.05em;white-space:nowrap;}
+.compat-badge.warn{background:rgba(234,179,8,0.1);color:#fbbf24;border-color:rgba(234,179,8,0.25);}
 .game-block-chevron{color:var(--text3);transition:transform var(--trans);}
-.game-block-chevron svg{width:16px;height:16px;}
+.game-block-chevron svg{width:15px;height:15px;}
 .game-block.open .game-block-chevron{transform:rotate(90deg);}
-
-.game-block-body{display:none;padding:28px 24px;animation:bodyIn 0.2s ease;}
+.game-block-body{display:none;padding:26px 24px;animation:bodyIn 0.2s ease;}
 @keyframes bodyIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
 .game-block.open .game-block-body{display:block;}
 
-/* GAME DETAIL */
+/* DETAIL */
 .game-detail-grid{display:grid;grid-template-columns:1fr 268px;gap:28px;}
-.game-logo-big{width:100%;border-radius:12px;overflow:hidden;background:var(--bg);border:1px solid var(--border);margin-bottom:20px;display:flex;align-items:center;justify-content:center;padding:20px 24px;min-height:150px;}
-.game-logo-big img{max-width:100%;max-height:150px;object-fit:contain;}
+.game-logo-big{width:100%;border-radius:12px;overflow:hidden;background:var(--bg);border:1px solid var(--border);margin-bottom:20px;display:flex;align-items:center;justify-content:center;padding:20px 24px;min-height:140px;}
+.game-logo-big img{max-width:100%;max-height:140px;object-fit:contain;}
+.game-logo-big svg{width:52px;height:52px;color:var(--text3);}
 .game-desc{font-size:13.5px;color:var(--text2);line-height:1.75;margin-bottom:22px;font-weight:300;}
 .game-features-title{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text3);margin-bottom:12px;}
 .game-feature-list{display:flex;flex-direction:column;gap:8px;}
 .game-feature{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--text2);}
 .game-feature-dot{width:6px;height:6px;border-radius:50%;background:var(--accent2);flex-shrink:0;margin-top:6px;box-shadow:0 0 6px rgba(168,85,247,0.5);}
+.game-feature-dot.yellow{background:#fbbf24;box-shadow:0 0 6px rgba(251,191,36,0.5);}
 
 /* DL BOX */
 .dl-box{background:var(--bg);border:1px solid rgba(124,58,237,0.35);border-radius:var(--radius-lg);padding:22px;margin-bottom:14px;position:relative;overflow:hidden;}
 .dl-box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));}
+.dl-box.yellow-box{border-color:rgba(234,179,8,0.35);}
+.dl-box.yellow-box::before{background:linear-gradient(90deg,#d97706,#fbbf24);}
 .dl-size{font-family:'JetBrains Mono',monospace;font-size:26px;font-weight:700;color:var(--accent2);text-shadow:0 0 20px rgba(168,85,247,0.4);margin-bottom:4px;}
+.dl-size.yellow-size{color:#fbbf24;text-shadow:0 0 20px rgba(251,191,36,0.4);}
 .dl-size-label{font-size:11px;color:var(--text3);margin-bottom:16px;}
 .dl-compat-row{display:flex;align-items:center;gap:7px;font-size:11.5px;color:var(--green);margin-bottom:5px;}
+.dl-compat-row.warn-row{color:#fbbf24;}
 .dl-compat-dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 6px rgba(34,197,94,0.6);}
+.dl-compat-dot.yellow-dot{background:#fbbf24;box-shadow:0 0 6px rgba(251,191,36,0.6);}
 .btn-dl{width:100%;padding:12px 16px;margin-top:14px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:var(--radius);color:#fff;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:0.15em;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;transition:all var(--trans);text-decoration:none;box-shadow:0 4px 20px rgba(124,58,237,0.35);}
 .btn-dl:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(124,58,237,0.55);}
+.btn-dl.yellow-btn{background:linear-gradient(135deg,#d97706,#fbbf24);box-shadow:0 4px 20px rgba(234,179,8,0.3);}
+.btn-dl.yellow-btn:hover{box-shadow:0 8px 32px rgba(234,179,8,0.5);}
 .btn-dl svg{width:14px;height:14px;}
-
 .info-box{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px;}
 .info-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid rgba(42,31,74,0.5);font-size:12px;}
 .info-row:last-child{border-bottom:none;}
@@ -235,10 +207,25 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;}
 .info-val{color:var(--text);font-weight:500;}
 .info-val.purple{color:var(--accent2);}
 .info-val.green{color:var(--green);}
+.info-val.yellow{color:#fbbf24;}
 
+.warn-box{background:rgba(234,179,8,0.06);border:1px solid rgba(234,179,8,0.25);border-radius:var(--radius);padding:13px 16px;font-size:12.5px;color:#fde68a;display:flex;gap:10px;align-items:flex-start;margin-bottom:16px;}
+.warn-box svg{width:14px;height:14px;flex-shrink:0;margin-top:2px;color:#fbbf24;}
 .no-results{display:none;text-align:center;padding:48px 24px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text3);letter-spacing:0.1em;}
+.how-open-box{background:rgba(34,197,94,0.05);border:1px solid rgba(34,197,94,0.22);border-radius:var(--radius);padding:14px 16px;margin-top:18px;}
+.how-open-title{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#86efac;margin-bottom:10px;display:flex;align-items:center;gap:7px;}
+.how-open-title svg{width:13px;height:13px;flex-shrink:0;}
+.how-open-step{font-size:12.5px;color:var(--text2);line-height:1.7;display:flex;gap:9px;align-items:flex-start;margin-bottom:7px;}
+.how-open-step:last-child{margin-bottom:0;}
+.how-open-num{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:#86efac;flex-shrink:0;margin-top:2px;}
+.how-open-wine{background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.2);border-radius:6px;padding:8px 12px;margin-top:8px;font-size:12px;color:var(--accent3);display:flex;gap:8px;align-items:flex-start;}
+.how-open-wine svg{width:12px;height:12px;flex-shrink:0;margin-top:2px;}
 .no-results.show{display:block;}
 .no-results svg{width:32px;height:32px;margin:0 auto 14px;display:block;opacity:0.25;}
+
+.sb-link{display:flex;align-items:center;gap:8px;padding:6px 22px 6px 28px;font-size:12px;color:var(--text2);cursor:pointer;border-left:2px solid transparent;transition:all var(--trans);white-space:nowrap;overflow:hidden;}
+.sb-link:hover{color:var(--text);background:var(--surface);border-left-color:var(--accent2);}
+.sb-link.active-game{color:#fff;border-left-color:var(--accent2);background:rgba(124,58,237,0.08);}
 
 /* TOAST */
 #toast-wrap{position:fixed;bottom:24px;right:24px;display:flex;flex-direction:column;gap:8px;z-index:9000;}
@@ -248,11 +235,57 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;}
 @keyframes toastIn{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:none}}
 @keyframes toastOut{to{opacity:0;transform:translateX(20px)}}
 
-/* MOBILE OVERLAY */
 #sb-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:190;backdrop-filter:blur(2px);}
 #sb-overlay.open{display:block;}
 
-@media(max-width:860px){.game-detail-grid{grid-template-columns:1fr;}.about-cards{grid-template-columns:1fr;}}
+/* HOME CARDS */
+.home-cards{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:36px 0 0;}
+.home-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 28px 22px;cursor:pointer;transition:all var(--trans);position:relative;overflow:hidden;}
+.home-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
+.home-card.juegos::before{background:linear-gradient(90deg,var(--accent),transparent);}
+.home-card.emuladores::before{background:linear-gradient(90deg,#d97706,transparent);}
+.home-card:hover{border-color:var(--surface2);transform:translateY(-2px);background:var(--surface);}
+.home-card-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;}
+.home-card.juegos .home-card-icon{background:rgba(124,58,237,0.15);color:var(--accent2);}
+.home-card.emuladores .home-card-icon{background:rgba(234,179,8,0.12);color:#fbbf24;}
+.home-card h2{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:#fff;margin-bottom:8px;}
+.home-card p{font-size:13.5px;color:var(--text2);font-weight:300;line-height:1.6;margin-bottom:20px;}
+.home-card-meta{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text3);}
+.home-card-arrow{position:absolute;bottom:24px;right:24px;color:var(--text3);transition:transform var(--trans),color var(--trans);}
+.home-card:hover .home-card-arrow{transform:translateX(4px);color:var(--text2);}
+/* TAB NAV */
+.tab-nav{display:flex;border-bottom:1px solid var(--border);margin-bottom:36px;position:sticky;top:54px;background:var(--bg);z-index:40;}
+.tab-btn{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;padding:13px 26px;background:none;border:none;border-bottom:2px solid transparent;color:var(--text3);cursor:pointer;transition:all var(--trans);}
+.tab-btn:hover{color:var(--text2);}
+.tab-btn.act-juegos{color:var(--accent2);border-bottom-color:var(--accent);}
+.tab-btn.act-emuladores{color:#fbbf24;border-bottom-color:#d97706;}
+
+/* WINE PAGE */
+.wine-intro{background:rgba(124,58,237,0.06);border:1px solid rgba(124,58,237,0.2);border-radius:var(--radius-lg);padding:20px 24px;margin-bottom:28px;font-size:13.5px;color:var(--text2);line-height:1.75;}
+.wine-intro strong{color:var(--text);}
+.wine-step{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px 24px;margin-bottom:14px;position:relative;overflow:hidden;}
+.wine-step::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--accent),var(--accent2));}
+.wine-step-num{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:2px;color:var(--accent2);text-transform:uppercase;margin-bottom:6px;}
+.wine-step h3{font-family:'Syne',sans-serif;font-size:15px;font-weight:800;color:#fff;margin-bottom:8px;}
+.wine-step p{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:12px;}
+.wine-step p:last-child{margin-bottom:0;}
+.wine-step a{color:var(--accent2);text-decoration:underline;text-underline-offset:3px;}
+.wine-step a:hover{color:var(--accent3);}
+/* TERMINAL CODE BLOCK */
+.cmd-block{border-radius:var(--radius);overflow:hidden;margin:12px 0;}
+.cmd-block-header{background:#0d0a1e;border:1px solid #1e1640;border-bottom:none;border-radius:var(--radius) var(--radius) 0 0;padding:9px 14px;display:flex;align-items:center;justify-content:space-between;}
+.cmd-block-title{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text3);letter-spacing:0.05em;}
+.cmd-copy-btn{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;background:rgba(124,58,237,0.18);border:1px solid rgba(124,58,237,0.35);color:var(--accent3);padding:4px 12px;border-radius:6px;cursor:pointer;transition:all var(--trans);letter-spacing:0.05em;}
+.cmd-copy-btn:hover{background:rgba(124,58,237,0.35);color:#fff;}
+.cmd-copy-btn.copied{background:rgba(34,197,94,0.18);border-color:rgba(34,197,94,0.35);color:#86efac;}
+.cmd-block-body{background:#070510;border:1px solid #1e1640;border-top:none;border-radius:0 0 var(--radius) var(--radius);padding:14px 18px;overflow-x:auto;}
+.cmd-block-body .cmd-line{display:block;font-family:'JetBrains Mono',monospace;font-size:12.5px;color:#c4b5fd;line-height:2.1;white-space:pre;}
+.wine-warn{background:rgba(234,179,8,0.06);border:1px solid rgba(234,179,8,0.25);border-radius:var(--radius);padding:13px 16px;font-size:12.5px;color:#fde68a;display:flex;gap:10px;align-items:flex-start;margin:12px 0 0;}
+.wine-warn svg{width:14px;height:14px;flex-shrink:0;margin-top:2px;color:#fbbf24;}
+.wine-note{background:rgba(34,197,94,0.06);border:1px solid rgba(34,197,94,0.2);border-radius:var(--radius);padding:13px 16px;font-size:12.5px;color:#86efac;display:flex;gap:10px;align-items:flex-start;margin-top:12px;}
+.wine-note svg{width:14px;height:14px;flex-shrink:0;margin-top:2px;color:var(--green);}
+
+@media(max-width:860px){.game-detail-grid{grid-template-columns:1fr;}.about-cards{grid-template-columns:1fr;}.home-cards{grid-template-columns:1fr;}}
 @media(max-width:768px){
   #sidebar{transform:translateX(-100%);}
   #sidebar.open{transform:translateX(0);}
@@ -261,13 +294,12 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;}
   #hamburger{display:flex;}
   .home-hero h1{font-size:38px;}
   .section-hero h1{font-size:26px;}
-  .game-block-right{flex-direction:column;align-items:flex-end;gap:6px;}
+  .game-block-right{flex-direction:column;align-items:flex-end;gap:5px;}
 }
 </style>
 </head>
 <body>
 
-<!-- LOADER -->
 <div id="loader">
   <div class="ld-inner">
     <div class="ld-logo">STRECH <span>HUB</span></div>
@@ -277,656 +309,734 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;}
   </div>
 </div>
 
-<!-- SIDEBAR -->
 <nav id="sidebar">
   <div class="sb-logo" onclick="nav('home')">
     <div class="sb-logo-main">STRECH <span>HUB</span></div>
     <div class="sb-logo-sub">Gaming — Abalar 11 &amp; 12</div>
   </div>
-
-  <!-- SEARCH BAR -->
   <div class="sb-search">
     <div class="sb-search-inner">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <input id="sb-search-input" type="text" placeholder="Buscar juegos..." oninput="searchSidebar(this.value)">
+      <input id="sb-search-input" type="text" placeholder="Buscar..." oninput="searchSidebar(this.value)">
     </div>
   </div>
-
   <div class="sb-nav-btn active border-b" id="sb-btn-home" onclick="nav('home')">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-      <polyline points="9 22 9 12 15 12 15 22"/>
-    </svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
     Inicio
   </div>
-
-  <div class="sb-nav-btn border-b" id="sb-btn-todos" onclick="nav('todos')">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <rect x="2" y="3" width="20" height="14" rx="2"/>
-      <line x1="8" y1="21" x2="16" y2="21"/>
-      <line x1="12" y1="17" x2="12" y2="21"/>
-    </svg>
-    Todos los juegos
+  <div class="sb-nav-btn border-b" id="sb-btn-wine" onclick="nav('wine')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3l-1 9c0 3.87 2.24 7 5 7s5-3.13 5-7L16 3H8z"/><line x1="7" y1="3" x2="17" y2="3"/><line x1="12" y1="19" x2="12" y2="21"/><line x1="9" y1="21" x2="15" y2="21"/></svg>
+    Instalar Wine
   </div>
-
-  <div class="sb-section-title purple">Juegos</div>
-
-  <div class="sb-nav-btn" id="sb-btn-gta" onclick="nav('gta')">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <rect x="1" y="3" width="15" height="13" rx="2"/>
-      <path d="M16 8h4l3 3v5h-7V8z"/>
-      <circle cx="5.5" cy="18.5" r="2.5"/>
-      <circle cx="18.5" cy="18.5" r="2.5"/>
-    </svg>
-    GTA
-    <span style="margin-left:auto;font-size:9px;padding:1px 7px;background:rgba(124,58,237,0.2);color:var(--accent3);border-radius:3px;font-family:'JetBrains Mono',monospace;">3</span>
-  </div>
-
+  <div class="sb-section-title purple" id="sb-sec-juegos">// Juegos</div>
+  <div id="sb-juegos-list"></div>
+  <div class="sb-section-title yellow" id="sb-sec-emu">// Emuladores</div>
+  <div id="sb-emu-list"></div>
   <div class="sb-bottom">
-    <a href="https://unlockedvalle.github.io/abalar/pruebas" class="sb-back-btn">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px;flex-shrink:0;">
-        <polyline points="15 18 9 12 15 6"/>
-      </svg>
-      Volver a Abalar Exploits
+    <a href="https://unlockedvalle.github.io/abalar" class="sb-back-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px;flex-shrink:0;"><polyline points="15 18 9 12 15 6"/></svg>
+      Volver a ABA-EXPLOITS
     </a>
   </div>
 </nav>
-
 <div id="sb-overlay" onclick="closeSidebar()"></div>
 
-<!-- MAIN -->
 <div id="main">
-
   <div id="topbar">
     <div class="tb-bc">
       <span id="tb-root">STRECH</span><span class="tb-sep">/</span><span class="tb-page" id="tb-page">Inicio</span>
     </div>
     <button id="hamburger" onclick="toggleSidebar()">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>
-      </svg>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
   </div>
 
-  <!-- ══════════ PAGE: HOME ══════════ -->
+  <!-- HOME -->
   <div class="page active" id="page-home">
     <div id="content">
-
       <div class="home-hero">
         <div class="home-eyebrow"><span class="dot"></span> Plataforma de descargas — Abalar 11 &amp; 12</div>
         <h1>STRECH<br/><em>HUB</em></h1>
-        <p class="home-subtitle">
-          Los mejores juegos de Windows para <strong style="color:var(--text)">Abalar 11</strong> y <strong style="color:var(--text)">Abalar 12</strong>.<br/>
-          Descarga directa · Verificados · Sin límites.
-        </p>
-        <div class="home-actions">
-          <div class="btn-primary" onclick="nav('gta')">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polygon points="5 3 19 12 5 21 5 3"/>
-            </svg>
-            Ver Juegos
+        <p class="home-subtitle">Los mejores juegos de Windows para <strong style="color:var(--text)">Abalar 11</strong> y <strong style="color:var(--text)">Abalar 12</strong>.<br/>Descarga directa · Verificados · Sin límites.</p>
+      </div>
+      <div class="home-cards">
+        <div class="home-card juegos" onclick="nav('juegos')">
+          <div class="home-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          </div>
+          <h2>Juegos</h2>
+          <p>Juegos de PC verificados para Abalar 11 y 12. Descarga directa sin límites ni registros.</p>
+          <div class="home-card-meta" id="hc-count-juegos">— juegos</div>
+          <div class="home-card-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        </div>
+        <div class="home-card emuladores" onclick="nav('emuladores')">
+          <div class="home-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+          </div>
+          <h2>Emuladores</h2>
+          <p>Emuladores de consolas y arcade para retrojugar. Funcionalidad no verificada en Abalar 11/12.</p>
+          <div class="home-card-meta" id="hc-count-emu">— emuladores</div>
+          <div class="home-card-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        </div>
+      </div>
+      <div style="margin-top:14px;">
+        <div class="home-card" style="cursor:pointer;border-top:2px solid rgba(124,58,237,0.4);padding:20px 28px;" onclick="nav('wine')">
+          <div style="display:flex;align-items:center;gap:16px;">
+            <div class="home-card-icon" style="background:rgba(124,58,237,0.15);color:var(--accent2);margin-bottom:0;flex-shrink:0;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M8 3l-1 9c0 3.87 2.24 7 5 7s5-3.13 5-7L16 3H8z"/><line x1="7" y1="3" x2="17" y2="3"/><line x1="12" y1="19" x2="12" y2="21"/><line x1="9" y1="21" x2="15" y2="21"/></svg>
+            </div>
+            <div>
+              <h2 style="font-size:16px;margin-bottom:4px;">Instalar Wine</h2>
+              <p style="margin:0;font-size:12.5px;">Necesario para ejecutar juegos y emuladores en Abalar 11 y 12. Guía de instalación paso a paso.</p>
+            </div>
+            <div class="home-card-arrow" style="position:relative;bottom:auto;right:auto;margin-left:auto;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
           </div>
         </div>
       </div>
-
-      <!-- SOBRE STRECH integrado -->
       <div class="about-section">
         <div class="about-section-title">Sobre <em>STRECH</em></div>
         <p class="about-section-sub">La plataforma de descargas de juegos verificados para Abalar 11 y 12.</p>
-
         <div class="about-cards">
-          <div class="about-card">
-            <div class="about-card-icon purple">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
-              </svg>
-            </div>
-            <h3>Alta Velocidad</h3>
-            <p>Archivos en Mediafire para descargas rápidas sin límite de velocidad ni registros.</p>
+          <div class="about-card"><div class="about-card-icon purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><h3>Alta Velocidad</h3><p>Archivos en Mediafire para descargas rápidas sin límite de velocidad ni registros.</p></div>
+          <div class="about-card"><div class="about-card-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Archivos Verificados</h3><p>Cada archivo ha sido verificado manualmente. Descargas seguras y 100% funcionales.</p></div>
+          <div class="about-card"><div class="about-card-icon pink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h3>Abalar 11 y 12</h3><p>Todos los juegos testados y compatibles con Abalar 11 y Abalar 12 sin configuración extra.</p></div>
+          <div class="about-card"><div class="about-card-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><h3>Descarga Directa</h3><p>Sin barreras. Enlace directo a Mediafire para cualquier usuario de Abalar.</p></div>
+        </div>
+        <div class="about-note">
+          <div class="about-note-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+          <span><strong style="color:var(--text)">STRECH Hub</strong> nació para facilitar el acceso a juegos de Windows en la plataforma Abalar. Si tienes algún problema con la descarga o instalación, contacta por Discord. Próximamente más títulos añadidos a la colección.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WINE -->
+  <div class="page" id="page-wine">
+    <div id="content">
+      <div class="section-hero">
+        <div class="badge purple">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3l-1 9c0 3.87 2.24 7 5 7s5-3.13 5-7L16 3H8z"/><line x1="7" y1="3" x2="17" y2="3"/><line x1="12" y1="19" x2="12" y2="21"/><line x1="9" y1="21" x2="15" y2="21"/></svg>
+          Wine
+        </div>
+        <h1>Instalar <em>Wine</em></h1>
+        <p>Capa de compatibilidad necesaria para ejecutar juegos y emuladores de Windows en Abalar 11 y 12.</p>
+      </div>
+
+      <div class="wine-intro">
+        <strong>¿Qué es Wine y para qué sirve?</strong><br/>
+        Wine es una capa de compatibilidad que permite ejecutar programas y juegos diseñados para Windows directamente en Linux. En Abalar 11 y 12, Wine es <strong>imprescindible</strong> para poder abrir los juegos y emuladores de esta plataforma. Sin Wine instalado, los archivos <code style="background:rgba(124,58,237,0.15);padding:1px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:12px;">.exe</code> no se ejecutarán.
+      </div>
+
+      <!-- PASO PREVIO: Permisos admin -->
+      <div class="wine-step">
+        <div class="wine-step-num">// Paso previo</div>
+        <h3>Permisos de administrador</h3>
+        <p>Para instalar Wine es necesario tener <strong style="color:var(--text)">permisos de administrador</strong> en el equipo Abalar. Si aún no los tienes, puedes conseguirlos siguiendo los pasos de <a href="https://unlockedvalle.github.io/abalar" target="_blank">Abalar Exploits</a>.</p>
+        <div class="wine-warn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <span>Sin permisos de administrador no podrás ejecutar los comandos necesarios para la instalación.</span>
+        </div>
+      </div>
+
+      <!-- PASO 1: hosts -->
+      <div class="wine-step">
+        <div class="wine-step-num">// Paso 1</div>
+        <h3>Si tienes las actualizaciones automáticas desactivadas</h3>
+        <p>Si en tu equipo se han desactivado las actualizaciones automáticas (bloqueando el archivo <code style="background:rgba(124,58,237,0.15);padding:1px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:12px;">/etc/hosts</code>), antes de continuar ejecuta este comando para que <code style="background:rgba(124,58,237,0.15);padding:1px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:12px;">apt</code> pueda conectarse a internet:</p>
+        <div class="cmd-block">
+          <div class="cmd-block-header">
+            <span class="cmd-block-title">bash — ejecutar como root</span>
+            <button class="cmd-copy-btn" onclick="copyCmd(this,'chattr -i /etc/hosts')">Copiar</button>
           </div>
-          <div class="about-card">
-            <div class="about-card-icon green">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              </svg>
-            </div>
-            <h3>Archivos Verificados</h3>
-            <p>Cada archivo ha sido verificado manualmente. Descargas seguras y 100% funcionales.</p>
+          <div class="cmd-block-body"><span class="cmd-line">chattr -i /etc/hosts</span></div>
+        </div>
+        <div class="wine-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <span>Al acabar la instalación de Wine puedes volver a bloquearlo con: <code style="background:rgba(34,197,94,0.12);padding:1px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:12px;">chattr +i /etc/hosts</code></span>
+        </div>
+      </div>
+
+      <!-- PASO 2: root -->
+      <div class="wine-step">
+        <div class="wine-step-num">// Paso 2</div>
+        <h3>Abre la consola como root</h3>
+        <p>Abre un terminal y accede como superusuario:</p>
+        <div class="cmd-block">
+          <div class="cmd-block-header">
+            <span class="cmd-block-title">bash</span>
+            <button class="cmd-copy-btn" onclick="copyCmd(this,'su -')">Copiar</button>
           </div>
-          <div class="about-card">
-            <div class="about-card-icon pink">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
-              </svg>
-            </div>
-            <h3>Abalar 11 y 12</h3>
-            <p>Todos los juegos testados y compatibles con Abalar 11 y Abalar 12 sin configuración extra.</p>
+          <div class="cmd-block-body"><span class="cmd-line">su -</span></div>
+        </div>
+        <p>Se te pedirá la contraseña de root. Una vez dentro, el prompt cambiará a <code style="background:rgba(124,58,237,0.15);padding:1px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:12px;">#</code>.</p>
+      </div>
+
+      <!-- PASO 3: instalar -->
+      <div class="wine-step">
+        <div class="wine-step-num">// Paso 3</div>
+        <h3>Instalar Wine</h3>
+        <p>Ejecuta los siguientes comandos en la consola de root:</p>
+        <div class="cmd-block">
+          <div class="cmd-block-header">
+            <span class="cmd-block-title">bash — ejecutar en orden</span>
+            <button class="cmd-copy-btn" onclick="copyCmd(this,'dpkg --add-architecture i386\nwget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bookworm/winehq-bookworm.sources\necho &quot;deb http://deb.debian.org/debian bookworm main contrib non-free non-free-firmware&quot; > /etc/apt/sources.list.d/debian-oficial.list\napt update\napt install --install-recommends winehq-stable')">Copiar</button>
           </div>
-          <div class="about-card">
-            <div class="about-card-icon blue">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"/>
-                <line x1="2" y1="12" x2="22" y2="12"/>
-                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-              </svg>
-            </div>
-            <h3>Descarga Directa</h3>
-            <p>Sin barreras. Enlace directo a Mediafire para cualquier usuario de Abalar.</p>
+          <div class="cmd-block-body">
+            <span class="cmd-line">dpkg --add-architecture i386</span>
+            <span class="cmd-line">wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bookworm/winehq-bookworm.sources</span>
+            <span class="cmd-line">echo "deb http://deb.debian.org/debian bookworm main contrib non-free non-free-firmware" > /etc/apt/sources.list.d/debian-oficial.list</span>
+            <span class="cmd-line">apt update</span>
+            <span class="cmd-line">apt install --install-recommends winehq-stable</span>
+          </div>
+        </div>
+        <div class="wine-warn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <span>La descarga puede tardar varios minutos. No cierres la terminal hasta que finalice.</span>
+        </div>
+      </div>
+
+      <!-- PASO 4: restaurar hosts -->
+      <div class="wine-step">
+        <div class="wine-step-num">// Paso 4 (opcional)</div>
+        <h3>Restaurar el bloqueo de actualizaciones</h3>
+        <p>Si ejecutaste el Paso 1, vuelve a bloquear el archivo hosts:</p>
+        <div class="cmd-block">
+          <div class="cmd-block-header">
+            <span class="cmd-block-title">bash — ejecutar como root</span>
+            <button class="cmd-copy-btn" onclick="copyCmd(this,'chattr +i /etc/hosts')">Copiar</button>
+          </div>
+          <div class="cmd-block-body"><span class="cmd-line">chattr +i /etc/hosts</span></div>
+        </div>
+        <div class="wine-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <span>Wine ya está instalado. Ahora puedes ejecutar los juegos y emuladores de STRECH Hub.</span>
+        </div>
+      </div>
+
+      <!-- CÓMO ABRIR JUEGOS -->
+      <div style="margin-top:40px;padding-top:36px;border-top:1px solid var(--border);">
+        <div class="about-section-title" style="margin-bottom:6px;">Cómo <em>abrir los juegos</em></div>
+        <p style="font-size:13.5px;color:var(--text2);margin-bottom:24px;">Con Wine instalado, abrir cualquier juego o emulador es muy sencillo.</p>
+
+        <div class="wine-step">
+          <div class="wine-step-num">// Paso 1</div>
+          <h3>Entra a la carpeta del juego</h3>
+          <p>Abre el gestor de archivos y navega hasta la carpeta donde descomprimiste el juego. Dentro encontrarás un archivo <code style="background:rgba(124,58,237,0.15);padding:1px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:12px;">.exe</code> (normalmente tiene el nombre del juego o se llama <code style="background:rgba(124,58,237,0.15);padding:1px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:12px;">launcher.exe</code>, <code style="background:rgba(124,58,237,0.15);padding:1px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:12px;">game.exe</code> o similar).</p>
+        </div>
+
+        <div class="wine-step">
+          <div class="wine-step-num">// Paso 2</div>
+          <h3>Abre el .exe con Wine</h3>
+          <p>Haz <strong style="color:var(--text)">clic derecho</strong> sobre el archivo <code style="background:rgba(124,58,237,0.15);padding:1px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:12px;">.exe</code> y selecciona <strong style="color:var(--text)">Abrir con → Wine Windows Program Loader</strong>. El juego arrancará como si estuvieras en Windows.</p>
+          <div class="wine-note" style="margin-top:12px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>Si no aparece la opción, también puedes abrir un terminal en esa carpeta y ejecutar: <code style="background:rgba(34,197,94,0.12);padding:1px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:12px;">wine nombre_del_juego.exe</code></span>
           </div>
         </div>
 
-        <div class="about-note">
-          <div class="about-note-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-            </svg>
+        <div class="wine-step">
+          <div class="wine-step-num">// Alternativa por terminal</div>
+          <h3>Abrir desde terminal</h3>
+          <p>Si prefieres usar la terminal, navega hasta la carpeta del juego y ejecuta:</p>
+          <div class="cmd-block">
+            <div class="cmd-block-header">
+              <span class="cmd-block-title">bash — ejemplo</span>
+              <button class="cmd-copy-btn" onclick="copyCmd(this,'wine nombre_del_juego.exe')">Copiar</button>
+            </div>
+            <div class="cmd-block-body"><span class="cmd-line">wine nombre_del_juego.exe</span></div>
           </div>
-          <span>
-            <strong style="color:var(--text)">STRECH Hub</strong> nació para facilitar el acceso a juegos de Windows en la plataforma Abalar.
-            Si tienes algún problema con la descarga o instalación, contacta por Discord.
-            Próximamente más títulos añadidos a la colección.
-          </span>
+          <p>Sustituye <code style="background:rgba(124,58,237,0.15);padding:1px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:12px;">nombre_del_juego.exe</code> por el nombre real del ejecutable.</p>
         </div>
       </div>
 
     </div>
-  </div><!-- /home -->
+  </div>
 
-  <!-- ══════════ PAGE: TODOS LOS JUEGOS ══════════ -->
+  <!-- TODOS LOS JUEGOS (= lista juegos PC) -->
   <div class="page" id="page-todos">
     <div id="content">
-
       <div class="section-hero">
-        <div class="badge purple">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:11px;height:11px;">
-            <rect x="2" y="3" width="20" height="14" rx="2"/>
-            <line x1="8" y1="21" x2="16" y2="21"/>
-            <line x1="12" y1="17" x2="12" y2="21"/>
-          </svg>
-          Colección
-        </div>
+        <div class="badge purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>JUEGOS</div>
         <h1>Todos los <em>juegos</em></h1>
-        <p>Explora toda la biblioteca de juegos disponibles para Abalar 11 y 12.</p>
+        <p>77 juegos verificados para Abalar 11 y 12. Descarga directa sin límites.</p>
       </div>
-
-      <!-- BARRA DE BÚSQUEDA -->
       <div class="search-section">
         <div class="search-wrap">
-          <div class="search-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          </div>
-          <input class="search-input" type="text" placeholder="Buscar juegos..." oninput="filterTodos(this.value)">
+          <div class="search-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+          <input class="search-input" type="text" placeholder="Buscar juegos..." oninput="filterGames(this.value,'page-todos','cntTodos','noTodos')"/>
         </div>
+        <div class="search-results-count" id="cntTodos"></div>
       </div>
-
-      <!-- CATEGORÍAS -->
-      <div class="search-label" style="margin-bottom:16px;">CATEGORÍAS DISPONIBLES</div>
-
-      <div class="todos-grid">
-        <div class="todos-game-card" data-search="gta grand theft auto vice city san andreas rockstar" onclick="nav('gta')">
-          <div class="todos-card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="1" y="3" width="15" height="13" rx="2"/>
-              <path d="M16 8h4l3 3v5h-7V8z"/>
-              <circle cx="5.5" cy="18.5" r="2.5"/>
-              <circle cx="18.5" cy="18.5" r="2.5"/>
-            </svg>
-          </div>
-          <div class="todos-card-content">
-            <div class="todos-card-title">GTA</div>
-            <div class="todos-card-sub">Grand Theft Auto — Rockstar Games</div>
-            <div class="todos-card-tags">
-              <span class="gtag">GTA III</span>
-              <span class="gtag">Vice City</span>
-              <span class="gtag">San Andreas</span>
-              <span class="gtag green">3 juegos</span>
-            </div>
-          </div>
-          <div class="todos-card-arrow">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-          </div>
-        </div>
-      </div>
-
+      <div id="todos-list"></div>
+      <div class="no-results" id="noTodos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>No se encontraron juegos.</div>
     </div>
-  </div><!-- /todos -->
+  </div>
 
-  <!-- ══════════ PAGE: GTA ══════════ -->
-  <div class="page" id="page-gta">
+  <!-- TODOS LOS EMULADORES -->
+  <div class="page" id="page-todos-emu">
     <div id="content">
-
       <div class="section-hero">
-        <div class="badge purple">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="1" y="3" width="15" height="13" rx="2"/>
-            <path d="M16 8h4l3 3v5h-7V8z"/>
-            <circle cx="5.5" cy="18.5" r="2.5"/>
-            <circle cx="18.5" cy="18.5" r="2.5"/>
-          </svg>
-          Rockstar Games · Colección
-        </div>
-        <h1>GTA — <em>Grand Theft Auto</em></h1>
-        <p>Clásicos verificados y disponibles para Abalar 11 y 12.</p>
+        <div class="badge yellow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>Emuladores</div>
+        <h1>Todos los <em class="yellow">emuladores</em></h1>
+        <p>10 emuladores disponibles. Funcionalidad no verificada en Abalar 11/12.</p>
       </div>
-
-      <!-- BARRA DE BÚSQUEDA -->
+      <div class="warn-box" style="margin-bottom:28px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <span><strong style="color:#fbbf24;">Aviso importante:</strong> La funcionalidad de estos emuladores en Abalar 11 y Abalar 12 <strong style="color:#fde68a;">no ha sido verificada</strong>. Pueden funcionar o no dependiendo de tu configuración.</span>
+      </div>
       <div class="search-section">
-        <div class="search-label">Buscar juegos...</div>
         <div class="search-wrap">
-          <div class="search-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="11" cy="11" r="8"/>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-            </svg>
-          </div>
-          <input class="search-input" id="searchInput" type="text"
-                 placeholder="Escribe el nombre del juego..."
-                 oninput="filterGames(this.value)"/>
+          <div class="search-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+          <input class="search-input" type="text" placeholder="Buscar emuladores..." oninput="filterGames(this.value,'page-todos-emu','cntTodosEmu','noTodosEmu')"/>
         </div>
-        <div class="search-results-count" id="searchCount"></div>
+        <div class="search-results-count" id="cntTodosEmu"></div>
       </div>
-
-      <!-- BLOQUE: GTA III -->
-      <div class="game-block" id="block-gta3"
-           data-search="gta 3 iii 2001 rockstar liberty city claude speed">
-        <div class="game-block-header" onclick="toggleBlock(this)">
-          <span class="game-block-num">01</span>
-          <div class="game-block-logo">
-            <img src="https://files.catbox.moe/c7p6q7.png" alt="GTA III" onerror="this.style.display='none'">
-          </div>
-          <div class="game-block-info">
-            <div class="game-block-title">Grand Theft Auto III</div>
-            <div class="game-block-meta">// 2001 · PC Windows · Rockstar Games</div>
-            <div class="game-block-tags">
-              <span class="gtag pink">Mundo Abierto</span>
-              <span class="gtag">Acción</span>
-              <span class="gtag">Retro</span>
-              <span class="gtag">Clásico</span>
-            </div>
-          </div>
-          <div class="game-block-right">
-            <span class="compat-badge">Abalar 11 y 12</span>
-            <div class="game-block-chevron">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="9 18 15 12 9 6"/>
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div class="game-block-body">
-          <div class="game-detail-grid">
-            <div>
-              <div class="game-logo-big">
-                <img src="https://files.catbox.moe/c7p6q7.png" alt="GTA III Logo" onerror="this.style.display='none'">
-              </div>
-              <p class="game-desc">
-                El juego que lo cambió todo. GTA III introdujo por primera vez el mundo abierto en 3D a la saga, ambientado en Liberty City. Tomas el control de Claude, un criminal silencioso que busca venganza mientras escala los bajos fondos de la ciudad. Una obra maestra que definió una generación de videojuegos.
-              </p>
-              <div class="game-features-title">// CARACTERÍSTICAS PRINCIPALES</div>
-              <div class="game-feature-list">
-                <div class="game-feature"><div class="game-feature-dot"></div>Primer GTA en 3D — revolucionó el género de mundo abierto</div>
-                <div class="game-feature"><div class="game-feature-dot"></div>Liberty City con tres islas desbloqueables progresivamente</div>
-                <div class="game-feature"><div class="game-feature-dot"></div>Misiones para múltiples facciones y bandas criminales</div>
-                <div class="game-feature"><div class="game-feature-dot"></div>Sistema de búsqueda policial con niveles de 1 a 5 estrellas</div>
-                <div class="game-feature"><div class="game-feature-dot"></div>Arsenal completo y decenas de vehículos disponibles</div>
-              </div>
-            </div>
-            <div>
-              <div class="dl-box">
-                <div class="dl-size">~600 MB</div>
-                <div class="dl-size-label">Tamaño del archivo</div>
-                <div class="dl-compat-row">
-                  <div class="dl-compat-dot"></div>
-                  Abalar 11 — Compatible
-                </div>
-                <div class="dl-compat-row">
-                  <div class="dl-compat-dot"></div>
-                  Abalar 12 — Compatible
-                </div>
-                <div class="dl-compat-row">
-                  <div class="dl-compat-dot"></div>
-                  Archivo verificado
-                </div>
-                <div class="dl-compat-row">
-                  <div class="dl-compat-dot"></div>
-                  Optimizado por OptiJuegos
-                </div>
-                <a class="btn-dl"
-                   href="https://www.mediafire.com/file/l1j15jhed10gp9s"
-                   target="_blank"
-                   onclick="showToast('Abriendo descarga de GTA III...')">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                    <polyline points="7 10 12 15 17 10"/>
-                    <line x1="12" y1="15" x2="12" y2="3"/>
-                  </svg>
-                  DESCARGAR AHORA
-                </a>
-              </div>
-              <div class="info-box">
-                <div class="info-row"><span class="info-key">Año</span><span class="info-val">2001</span></div>
-                <div class="info-row"><span class="info-key">Desarrollador</span><span class="info-val">Rockstar Games</span></div>
-                <div class="info-row"><span class="info-key">Plataforma</span><span class="info-val">PC Windows</span></div>
-                <div class="info-row"><span class="info-key">Género</span><span class="info-val purple">Mundo Abierto</span></div>
-                <div class="info-row"><span class="info-key">Compatibilidad</span><span class="info-val green">Abalar 11 y 12</span></div>
-                <div class="info-row"><span class="info-key">Host</span><span class="info-val">Mediafire</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div><!-- /gta3 -->
-
-      <!-- BLOQUE: Vice City -->
-      <div class="game-block" id="block-vc"
-           data-search="gta vice city 1986 2002 rockstar miami tommy vercetti">
-        <div class="game-block-header" onclick="toggleBlock(this)">
-          <span class="game-block-num">02</span>
-          <div class="game-block-logo">
-            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pngplay.com%2Fwp-content%2Fuploads%2F11%2FGrand-Theft-Auto-Vice-City-Logo-PNG-HD-Images.png&f=1&nofb=1&ipt=9ca1876e8bcffe8ace845cda9bea0faa0058a158fee03aa9bd5115025adedd86"
-                 alt="GTA Vice City" onerror="this.style.display='none'">
-          </div>
-          <div class="game-block-info">
-            <div class="game-block-title">Grand Theft Auto: Vice City</div>
-            <div class="game-block-meta">// 2002 · PC Windows · Rockstar Games</div>
-            <div class="game-block-tags">
-              <span class="gtag pink">Mundo Abierto</span>
-              <span class="gtag">Historia</span>
-              <span class="gtag">Retro</span>
-              <span class="gtag">Clásico</span>
-            </div>
-          </div>
-          <div class="game-block-right">
-            <span class="compat-badge">Abalar 11 y 12</span>
-            <div class="game-block-chevron">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="9 18 15 12 9 6"/>
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div class="game-block-body">
-          <div class="game-detail-grid">
-            <div>
-              <div class="game-logo-big">
-                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pngplay.com%2Fwp-content%2Fuploads%2F11%2FGrand-Theft-Auto-Vice-City-Logo-PNG-HD-Images.png&f=1&nofb=1&ipt=9ca1876e8bcffe8ace845cda9bea0faa0058a158fee03aa9bd5115025adedd86"
-                     alt="GTA Vice City Logo" onerror="this.style.display='none'">
-              </div>
-              <p class="game-desc">
-                Ambientado en la ficticia Vice City —basada en el Miami de los años 80—, el jugador asume el papel de Tommy Vercetti, un criminal que intenta construir su propio imperio en una ciudad brillante y peligrosa. Con una banda sonora icónica, misiones variadas y un mundo abierto enorme, Vice City redefinió los juegos de mundo abierto en su lanzamiento.
-              </p>
-              <div class="game-features-title">// CARACTERÍSTICAS PRINCIPALES</div>
-              <div class="game-feature-list">
-                <div class="game-feature"><div class="game-feature-dot"></div>Historia cinematográfica inspirada en Scarface y Miami Vice</div>
-                <div class="game-feature"><div class="game-feature-dot"></div>Banda sonora con emisoras de radio de los 80 (pop, rock, synthwave)</div>
-                <div class="game-feature"><div class="game-feature-dot"></div>Mundo abierto con dos islas desbloqueables</div>
-                <div class="game-feature"><div class="game-feature-dot"></div>Compra de propiedades y negocios para expandir el imperio</div>
-                <div class="game-feature"><div class="game-feature-dot"></div>Arsenal completo: motos, helicópteros, lanchas y decenas de vehículos</div>
-              </div>
-            </div>
-            <div>
-              <div class="dl-box">
-                <div class="dl-size">~0.8 GB</div>
-                <div class="dl-size-label">Tamaño del archivo</div>
-                <div class="dl-compat-row">
-                  <div class="dl-compat-dot"></div>
-                  Abalar 11 — Compatible
-                </div>
-                <div class="dl-compat-row">
-                  <div class="dl-compat-dot"></div>
-                  Abalar 12 — Compatible
-                </div>
-                <div class="dl-compat-row">
-                  <div class="dl-compat-dot"></div>
-                  Archivo verificado
-                </div>
-                <div class="dl-compat-row">
-                  <div class="dl-compat-dot"></div>
-                  Optimizado por OptiJuegos
-                </div>
-                <a class="btn-dl"
-                   href="https://www.mediafire.com/file/hqk4smpu51umcf7"
-                   target="_blank"
-                   onclick="showToast('Abriendo descarga de Vice City...')">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                    <polyline points="7 10 12 15 17 10"/>
-                    <line x1="12" y1="15" x2="12" y2="3"/>
-                  </svg>
-                  DESCARGAR AHORA
-                </a>
-              </div>
-              <div class="info-box">
-                <div class="info-row"><span class="info-key">Año</span><span class="info-val">2002</span></div>
-                <div class="info-row"><span class="info-key">Desarrollador</span><span class="info-val">Rockstar Games</span></div>
-                <div class="info-row"><span class="info-key">Plataforma</span><span class="info-val">PC Windows</span></div>
-                <div class="info-row"><span class="info-key">Género</span><span class="info-val purple">Mundo Abierto</span></div>
-                <div class="info-row"><span class="info-key">Compatibilidad</span><span class="info-val green">Abalar 11 y 12</span></div>
-                <div class="info-row"><span class="info-key">Host</span><span class="info-val">Mediafire</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div><!-- /vc -->
-
-      <!-- BLOQUE: San Andreas -->
-      <div class="game-block" id="block-sa"
-           data-search="gta san andreas 2004 rockstar cj los santos san fierro las venturas">
-        <div class="game-block-header" onclick="toggleBlock(this)">
-          <span class="game-block-num">03</span>
-          <div class="game-block-logo">
-            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pngmart.com%2Ffiles%2F22%2FGrand-Theft-Auto-San-Andreas-Logo-PNG-Photo.png&f=1&nofb=1&ipt=a74dc647171e9cf032cb2baa33c578fe9c16aeed61402a8ba5c207deb23a385f"
-                 alt="GTA San Andreas" onerror="this.style.display='none'">
-          </div>
-          <div class="game-block-info">
-            <div class="game-block-title">Grand Theft Auto: San Andreas</div>
-            <div class="game-block-meta">// 2004 · PC Windows · Rockstar Games</div>
-            <div class="game-block-tags">
-              <span class="gtag pink">Mundo Abierto</span>
-              <span class="gtag">RPG</span>
-              <span class="gtag">Historia</span>
-              <span class="gtag">Icónico</span>
-            </div>
-          </div>
-          <div class="game-block-right">
-            <span class="compat-badge">Abalar 11 y 12</span>
-            <div class="game-block-chevron">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="9 18 15 12 9 6"/>
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div class="game-block-body">
-          <div class="game-detail-grid">
-            <div>
-              <div class="game-logo-big">
-                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pngmart.com%2Ffiles%2F22%2FGrand-Theft-Auto-San-Andreas-Logo-PNG-Photo.png&f=1&nofb=1&ipt=a74dc647171e9cf032cb2baa33c578fe9c16aeed61402a8ba5c207deb23a385f"
-                     alt="GTA San Andreas Logo" onerror="this.style.display='none'">
-              </div>
-              <p class="game-desc">
-                Ambientado en el estado ficticio de San Andreas, el jugador controla a Carl "CJ" Johnson, que regresa a su barrio y se ve envuelto en traiciones y redención. San Andreas introdujo mecánicas RPG únicas —estadísticas de habilidad, peso, conducción y vuelo— y fue el mundo abierto más grande de su época, con tres ciudades, desierto, bosques y campo.
-              </p>
-              <div class="game-features-title">// CARACTERÍSTICAS PRINCIPALES</div>
-              <div class="game-feature-list">
-                <div class="game-feature"><div class="game-feature-dot"></div>Estado enorme con 3 ciudades: Los Santos, San Fierro y Las Venturas</div>
-                <div class="game-feature"><div class="game-feature-dot"></div>Mecánicas RPG: estadísticas de habilidad, peso, apariencia y hambre</div>
-                <div class="game-feature"><div class="game-feature-dot"></div>Historia épica de 100+ misiones con giros narrativos memorables</div>
-                <div class="game-feature"><div class="game-feature-dot"></div>Banda sonora con rap 90s, rock y funk en emisoras de radio</div>
-                <div class="game-feature"><div class="game-feature-dot"></div>Personalización total del personaje, vehículos y propiedades</div>
-              </div>
-            </div>
-            <div>
-              <div class="dl-box">
-                <div class="dl-size">~2.9 GB</div>
-                <div class="dl-size-label">Tamaño del archivo</div>
-                <div class="dl-compat-row">
-                  <div class="dl-compat-dot"></div>
-                  Abalar 11 — Compatible
-                </div>
-                <div class="dl-compat-row">
-                  <div class="dl-compat-dot"></div>
-                  Abalar 12 — Compatible
-                </div>
-                <div class="dl-compat-row">
-                  <div class="dl-compat-dot"></div>
-                  Archivo verificado
-                </div>
-                <div class="dl-compat-row">
-                  <div class="dl-compat-dot"></div>
-                  Optimizado por OptiJuegos
-                </div>
-                <a class="btn-dl"
-                   href="https://www.mediafire.com/file/0iddf1zy4jyyww4"
-                   target="_blank"
-                   onclick="showToast('Abriendo descarga de San Andreas...')">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                    <polyline points="7 10 12 15 17 10"/>
-                    <line x1="12" y1="15" x2="12" y2="3"/>
-                  </svg>
-                  DESCARGAR AHORA
-                </a>
-              </div>
-              <div class="info-box">
-                <div class="info-row"><span class="info-key">Año</span><span class="info-val">2004</span></div>
-                <div class="info-row"><span class="info-key">Desarrollador</span><span class="info-val">Rockstar Games</span></div>
-                <div class="info-row"><span class="info-key">Plataforma</span><span class="info-val">PC Windows</span></div>
-                <div class="info-row"><span class="info-key">Género</span><span class="info-val purple">RPG / Mundo Abierto</span></div>
-                <div class="info-row"><span class="info-key">Compatibilidad</span><span class="info-val green">Abalar 11 y 12</span></div>
-                <div class="info-row"><span class="info-key">Host</span><span class="info-val">Mediafire</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div><!-- /sa -->
-
-      <div class="no-results" id="noResults">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-        </svg>
-        No se encontraron juegos con esa búsqueda.
-      </div>
-
+      <div id="todos-emu-list"></div>
+      <div class="no-results" id="noTodosEmu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>No se encontraron resultados.</div>
     </div>
-  </div><!-- /gta -->
+  </div>
 
-</div><!-- /main -->
+  <!-- JUEGOS PC -->
+  <div class="page" id="page-juegos">
+    <div id="content">
+      <div class="tab-nav">
+        <button class="tab-btn act-juegos" onclick="nav('juegos')">Juegos</button>
+        <button class="tab-btn" onclick="nav('emuladores')">Emuladores</button>
+      </div>
+      <div class="section-hero">
+        <div class="badge purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>JUEGOS</div>
+        <h1>Juegos</h1>
+        <p>77 juegos verificados para Abalar 11 y 12. Descarga directa sin límites.</p>
+      </div>
+      <div class="search-section">
+        <div class="search-wrap">
+          <div class="search-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+          <input class="search-input" type="text" placeholder="Buscar juegos..." oninput="filterGames(this.value,'page-juegos','cntJuegos','noJuegos')"/>
+        </div>
+        <div class="search-results-count" id="cntJuegos"></div>
+      </div>
+      <div id="juegos-list"></div>
+      <div class="no-results" id="noJuegos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>No se encontraron juegos.</div>
+    </div>
+  </div>
+
+  <!-- EMULADORES -->
+  <div class="page" id="page-emuladores">
+    <div id="content">
+      <div class="tab-nav">
+        <button class="tab-btn" onclick="nav('juegos')">Juegos</button>
+        <button class="tab-btn act-emuladores" onclick="nav('emuladores')">Emuladores</button>
+      </div>
+      <div class="section-hero">
+        <div class="badge yellow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>Emuladores</div>
+        <h1>Emuladores</h1>
+        <p>Emuladores de consolas y arcade para Abalar. Funcionalidad no verificada en Abalar 11/12.</p>
+      </div>
+      <div class="warn-box" style="margin-bottom:28px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <span><strong style="color:#fbbf24;">Aviso importante:</strong> La funcionalidad de estos emuladores en Abalar 11 y Abalar 12 <strong style="color:#fde68a;">no ha sido verificada</strong>. Pueden funcionar o no dependiendo de tu configuración. Descarga bajo tu propia responsabilidad.</span>
+      </div>
+      <div class="search-section">
+        <div class="search-wrap">
+          <div class="search-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+          <input class="search-input" type="text" placeholder="Buscar emuladores..." oninput="filterGames(this.value,'page-emuladores','cntEmu','noEmu')"/>
+        </div>
+        <div class="search-results-count" id="cntEmu"></div>
+      </div>
+      <div id="emu-list"></div>
+      <div class="no-results" id="noEmu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>No se encontraron resultados.</div>
+    </div>
+  </div>
+</div>
 <div id="toast-wrap"></div>
 
 <script>
-const PAGES = {
-  home:  { el:'page-home',  sb:'sb-btn-home',  title:'Inicio',           root:'STRECH' },
-  todos: { el:'page-todos', sb:'sb-btn-todos',  title:'Todos los juegos', root:'STRECH' },
-  gta:   { el:'page-gta',   sb:'sb-btn-gta',   title:'GTA',              root:'STRECH' },
-};
+const DL_SVG=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`;
+const CHV=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>`;
+const PC_SVG=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px;color:var(--text3)"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>`;
+const EMU_SVG=`<svg viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2" style="width:22px;height:22px;"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>`;
+const WARN_SVG=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`;
 
-function nav(id) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.sb-nav-btn').forEach(b => b.classList.remove('active'));
-  const cfg = PAGES[id];
-  if (!cfg) return;
-  document.getElementById(cfg.el).classList.add('active');
-  if (cfg.sb) document.getElementById(cfg.sb).classList.add('active');
-  document.getElementById('tb-root').textContent = cfg.root;
-  document.getElementById('tb-page').textContent = cfg.title;
-  window.scrollTo({top:0});
-  closeSidebar();
+// ══════════════════════════════════════════
+// DATOS — JUEGOS PC
+// ══════════════════════════════════════════
+const JUEGOS=[
+{name:'Counter Strike: Source',year:'2004',dev:'Valve Corporation',size:'~100 MB',genre:'FPS / Multijugador',tags:['FPS','Multijugador','Competitivo'],note:'Versión reducida 100 MB',url:'https://www.mediafire.com/file/hjdfplnkl0fqwg4',desc:'Versión reducida de Counter-Strike: Source, el shooter táctico multijugador que redefinió los FPS en PC. Terroristas contra contraterroristas en mapas icónicos como Dust2, Inferno o Nuke. Esta versión compacta de solo 100 MB permite jugar sin ocupar apenas espacio, perfecta para los equipos Abalar.',features:['Shooter táctico por equipos: terroristas vs contraterroristas','Mapas icónicos como Dust2, Inferno y Office','Sistema de compra de armas entre rondas','Motor Source con físicas mejoradas respecto a CS 1.6','Versión reducida de 100 MB — optimizada para bajo espacio']},
+{name:'Craftsman PC Port',year:'2020',dev:'Indie / Port',size:'~150 MB',genre:'Sandbox / Construcción',tags:['Sandbox','Construcción','Indie'],url:'https://www.mediafire.com/file/i3a03693rlfcemr',desc:'Port para PC del popular juego móvil Craftsman, un sandbox de construcción con bloques al estilo Minecraft. Construye estructuras, explora el mundo y da rienda suelta a tu creatividad. Una opción ligera y entretenida perfecta para los ordenadores de Abalar sin sacrificar diversión.',features:['Construcción libre con bloques en un mundo abierto','Puerto para PC del juego móvil original','Peso muy reducido — ideal para equipos con poco espacio','Modo creativo sin límites para construir lo que imagines','Gráficos simples y fluidos, sin exigencias de hardware']},
+{name:'Craftsman Zero',year:'2021',dev:'Indie',size:'~100 MB',genre:'Sandbox',tags:['Sandbox','Construcción','Indie'],note:'Versión V1.1',url:'https://www.mediafire.com/file/qobctvf62i3zv5w',desc:'Craftsman Zero en su edición V1.1 con mejoras de estabilidad y rendimiento. Un sandbox de construcción ultraligero con mecánicas simples y directas que funciona sin problemas en los equipos Abalar. La versión más pulida y estable del juego.',features:['Versión V1.1 con correcciones y mejoras de rendimiento','Sandbox de construcción extremadamente ligero','Compatible con equipos de bajas prestaciones','Mecánicas simples y accesibles para cualquier jugador','Ideal como alternativa ligera a Minecraft']},
+{name:'Crash Bandicoot Trilogy',year:'2017',dev:'Vicarious Visions / Activision',size:'~7 GB',genre:'Plataformas / Acción',tags:['Plataformas','Clásico','Remasterizado'],url:'https://www.mediafire.com/file/8gkla0fy4zcisa5',desc:'La remasterización de los tres juegos clásicos de Crash Bandicoot: el original, Cortex Strikes Back y Warped. Gráficos completamente renovados manteniendo la jugabilidad clásica de plataformas que enamoró a toda una generación. Uno de los tríos más icónicos de la historia de los videojuegos.',features:['Tres juegos completos: Crash 1, Cortex Strikes Back y Warped','Gráficos remasterizados con iluminación y modelos modernos','Jugabilidad original preservada con controles mejorados','Más de 100 niveles con gemas, reliquias y secretos ocultos','Modo comparación para ver el juego original vs remasterizado']},
+{name:'Crash Of The Titans',year:'2007',dev:'Radical Entertainment / Activision',size:'~3 GB',genre:'Acción / Plataformas',tags:['Acción','Plataformas','Beat\'em up'],url:'https://www.mediafire.com/file/9csjlnzlhhatznh',desc:'Crash Bandicoot regresa en un juego de acción donde puedes "mutar" a los enemigos y usarlos como monturas. Una aventura frenética con humor absurdo, combate dinámico y espectaculares jefes finales. El Doctor Neo Cortex ha vuelto con un nuevo plan y Crash deberá salvar a su hermana Coco.',features:['Mecánica de "hijacking": controla y monta a los monstruos enemigos','Más de 30 tipos de titanes con habilidades únicas para explotar','Jugabilidad de acción y beat\'em up con elementos de plataformas','Historia cómica con cutscenes animadas estilo cartoon de calidad','Cooperativo local para dos jugadores']},
+{name:'Crazy Taxi',year:'2000',dev:'Hitmaker / Sega',size:'~200 MB',genre:'Arcade / Conducción',tags:['Arcade','Conducción','Clásico'],url:'https://www.mediafire.com/file/q7y6ykrjkxhf7wp',desc:'El clásico arcade de Sega llega al PC. Eres un taxista salvaje que debe llevar pasajeros a sus destinos lo más rápido posible mientras ejecutas maniobras locas para ganar propinas extra. Frenético, divertido y adictivo, con una banda sonora punk-rock que jamás olvidarás.',features:['Gameplay arcade frenético: lleva pasajeros en tiempo limitado','Sistema de trucos: Crazy Dash, Crazy Stop y saltos espectaculares','Varios taxistas con diferentes atributos de velocidad y manejo','Dos modos de ciudad con decenas de destinos de clientes','Banda sonora icónica con The Offspring y Bad Religion']},
+{name:'Crysis 1',year:'2007',dev:'Crytek',size:'~8 GB',genre:'FPS / Acción',tags:['FPS','Acción','Gráficos'],url:'https://www.mediafire.com/file/2d7rcj3mxlpr0p9',desc:'El juego que durante años fue el referente absoluto de gráficos en PC. Crysis pone a prueba cualquier máquina con su motor CryEngine y su jungla fotorrealista. Juegas como Nomad, un soldado de élite con un nanotraje que otorga poderes de sigilo, velocidad, armadura y fuerza sobrehumana.',features:['Nanotraje con cuatro modos: Velocidad, Fuerza, Sigilo y Armadura','Entorno sandbox — múltiples formas de afrontar cada misión','Gráficos legendarios — referente técnico de su época en PC','Física destructible: derriba árboles, vehículos y estructuras','Segunda parte de la historia con los alienígenas criogénicos']},
+{name:'Cry of Fear',year:'2012',dev:'Team Psykisk / Valve',size:'~4 GB',genre:'Terror / Survival Horror',tags:['Terror','FPS','Survival Horror'],url:'https://www.mediafire.com/file/yuc36v88lx8qpu7',desc:'Mod gratuito de Half-Life convertido en juego independiente completo. Cry of Fear es un survival horror psicológico ambientado en Estocolmo. Juegas como Simon, un joven atropellado que despierta en una ciudad de pesadilla llena de monstruos. Historia oscura, atmósfera terrorífica y múltiples finales.',features:['Survival horror en primera persona con historia psicológica profunda','Ambientación perturbadora — la ciudad refleja la mente del protagonista','Múltiples finales según las decisiones tomadas a lo largo del juego','Monstruos únicos y creativos diseñados para generar terror genuino','Cooperativo hasta 4 jugadores con campaña propia exclusiva']},
+{name:'Cult Of The Lamb',year:'2022',dev:'Massive Monster / Devolver Digital',size:'~1.5 GB',genre:'Roguelite / Gestión',tags:['Roguelite','Indie','Gestión'],url:'https://www.mediafire.com/file/yih794cqkdsrjwl',desc:'Un cordero rescatado por un dios oscuro debe fundar y gestionar su propio culto mientras realiza cruzadas en mazmorras generadas aleatoriamente. Combina gestión de base, roguelite de acción y una estética adorable pero perturbadora. Uno de los grandes indie de 2022, con arte único e inconfundible.',features:['Gestión de culto: construye tu base, recluta seguidores y crea rituales','Cruzadas roguelite con combate de acción y cartas de poderes','Docenas de hechizos, maldiciones y builds para el combate','Sistema de fe, comida y doctrina para mantener contento al culto','Arte oscuro y adorable a la vez — estética completamente única']},
+{name:'Dead Cells',year:'2018',dev:'Motion Twin',size:'~1 GB',genre:'Roguelite / Metroidvania',tags:['Roguelite','Acción','Metroidvania'],url:'https://www.mediafire.com/file/yclb4giqp40jyea',desc:'Un roguelite de acción en 2D con mecánicas de Metroidvania. Juegas como una masa de células que habita cuerpos muertos en una isla fortaleza en constante mutación. Combate fluido, niveles procedurales y la promesa de "una partida más". Ganador de múltiples premios al mejor indie de 2018.',features:['Combate fluido con cientos de armas, escudos y poderes para combinar','Niveles generados proceduralmente — cada partida completamente única','Permadeath con progresión permanente entre muertes','Más de 150 armas y habilidades desbloqueables con el tiempo','Arte pixel art de altísima calidad con animaciones extraordinariamente fluidas']},
+{name:'Dead Island',year:'2011',dev:'Techland / Deep Silver',size:'~7 GB',genre:'Acción / RPG / Zombies',tags:['Acción','Zombies','RPG'],url:'https://www.mediafire.com/file/k3vvcd0ppop9bu0',desc:'Atrapado en la isla tropical de Banoi tras un apocalipsis zombie, deberás sobrevivir usando armas cuerpo a cuerpo modificadas, completar misiones y ayudar a otros supervivientes. Dead Island mezcla acción en primera persona con elementos RPG y un elaborado sistema de crafteo de armas brutales.',features:['RPG en primera persona con árbol de habilidades y niveles de personaje','Sistema de crafteo: fabrica armas eléctricas, incendiarias y explosivas','Mundo abierto en isla tropical con múltiples zonas y biomas','Cooperativo online hasta 4 jugadores en campaña completa','Más de 100 tipos de armas cuerpo a cuerpo y de fuego modificables']},
+{name:'Dead Space',year:'2008',dev:'Visceral Games / EA',size:'~6 GB',genre:'Terror / Acción',tags:['Terror','Acción','Ciencia Ficción'],url:'https://www.mediafire.com/file/48gnbfgawpyurit',desc:'Ingeniero Isaac Clarke responde a una llamada de auxilio en la nave minera USG Ishimura, solo para encontrar una pesadilla de criaturas llamadas Necromorphs. Un survival horror de ciencia ficción que redefinió el terror en tercera persona. Todo el HUD está integrado en el traje del personaje.',features:['Terror en tercera persona — sin HUD en pantalla, todo en el traje de Isaac','Necromorphs: solo mueren si les amputas las extremidades','Sistema de desmembramiento estratégico como mecánica central del combate','Entornos espaciales con gravedad cero y vacío del espacio','Historia de conspiración religiosa espacial con giro final impactante']},
+{name:'Deltarune',year:'2018',dev:'Toby Fox',size:'~200 MB',genre:'RPG / Indie',tags:['RPG','Indie','Pixel Art'],url:'https://www.mediafire.com/file/zllk6ig8m0ogldq',desc:'La secuela espiritual de Undertale, creada íntegramente por Toby Fox. Juegas como Kris, un estudiante que junto a su compañera Susie cae en un mundo oscuro llamado el "Dark World". Sistema de combate único donde puedes evitar matar a los enemigos. Historia llena de misterio y personajes entrañables.',features:['Sistema de combate RPG con opciones pacíficas y violentas','Historia profunda con misterios que se desarrollan por capítulos','Personajes inolvidables con arcos narrativos únicos y emotivos','Música compuesta íntegramente por el propio Toby Fox','Capítulos 1 y 2 disponibles gratuitamente — historia aún en desarrollo']},
+{name:'Devil May Cry 3: Special Edition',year:'2005',dev:'Capcom',size:'~3 GB',genre:'Acción / Hack & Slash',tags:['Acción','Hack & Slash','Clásico'],url:'https://www.mediafire.com/file/kj8mgvf1hef1m9m',desc:'La precuela de la saga Devil May Cry protagonizada por un joven Dante que se enfrenta a su hermano gemelo Vergil. Considerado el mejor juego de la saga por muchos fans. Combate espectacular con estilos intercambiables, sistema de rangos hasta SSS y una de las mejores historias de la franquicia.',features:['5 estilos de combate intercambiables: Trickster, Swordmaster, Gunslinger, Royal Guard y Dark Slayer','Sistema de rangos de combate hasta SSS — cuanto más estilo, mejor puntuación','Modo "Dante Must Die" para los jugadores más expertos — extremadamente difícil','Historia épica de rivalidad y hermandad entre Dante y Vergil','Special Edition incluye a Vergil como personaje completamente jugable']},
+{name:'DiRT 1',year:'2007',dev:'Codemasters',size:'~5 GB',genre:'Rally / Conducción',tags:['Rally','Conducción','Coches'],url:'https://www.mediafire.com/file/azhrbu7rkp7mqdg',desc:'El reinicio de la legendaria saga Colin McRae Rally bajo el nombre DiRT. Ofrece una amplia variedad de disciplinas de rally y todoterreno: rally clásico, hill climb, crossover, buggy y más. Uno de los mejores juegos de conducción de su generación con físicas realistas y gráficos excepcionales para la época.',features:['Múltiples disciplinas de rally: stage, hill climb, buggy y crossover','Más de 40 coches reales con licencia oficial','Modo carrera mundial con eventos y patrocinadores reales','Sistema de daños visible y funcional que afecta al rendimiento','Entornos variados: nieve, barro, asfalto y tierra en todo el mundo']},
+{name:'DiRT 2 DEMO',year:'2009',dev:'Codemasters',size:'~1.5 GB',genre:'Rally / Conducción',tags:['Rally','Conducción','Demo'],url:'https://www.mediafire.com/file/lktdpxnc7uf85j1',desc:'La demo oficial de DiRT 2, el sucesor del aclamado DiRT. Permite probar la nueva dirección más dinámica y espectacular de la saga, con eventos de rallycross, buggy y todoterreno. Aunque es solo la demo, ofrece varias pruebas completas y es una experiencia completa por sí sola.',features:['Demo oficial con varios eventos completos y desbloqueados','Rallycross y buggy racing con competidores en pista simultáneamente','Físicas mejoradas y más arcade respecto a DiRT 1','Gráficos espectaculares con efectos de polvo, barro y agua','Muestra el nuevo enfoque más dinámico y visual de la saga']},
+{name:"Don't Starve",year:'2013',dev:'Klei Entertainment',size:'~500 MB',genre:'Supervivencia / Indie',tags:['Supervivencia','Indie','Roguelite'],url:'https://www.mediafire.com/file/cbqib7wxm3vk5s9',desc:'Wilson, un científico atrapado en un mundo oscuro y misterioso, debe sobrevivir recolectando recursos, construyendo herramientas y manteniéndose cuerdo ante las criaturas de la noche. Survival con arte al estilo Tim Burton, mundo procedural y una curva de dificultad brutal pero profundamente satisfactoria.',features:['Supervivencia con mecánicas de hambre, salud y cordura simultáneas','Mundo procedural — cada partida en un mapa completamente diferente','Arte oscuro estilo Tim Burton con animaciones elegantes y únicas','Más de 40 personajes desbloqueables con habilidades completamente distintas','Ciclos día/noche con amenazas nocturnas que aumentan en intensidad']},
+{name:'DOOM 1 y 2',year:'1993 / 1994',dev:'id Software',size:'~50 MB',genre:'FPS / Acción',tags:['FPS','Clásico','Retro'],url:'https://www.mediafire.com/file/g3c0j88i26hidw6',desc:'Los dos juegos que inventaron el FPS moderno. En 1993, DOOM puso al mundo patas arriba con su acción brutal en primera persona, niveles laberínticos y una violencia sin precedentes. Incluye DOOM y DOOM 2: Hell on Earth, dos obras maestras que siguen siendo jugadas y moddeadas décadas después.',features:['Los FPS fundacionales — prácticamente inventaron el género','Decenas de niveles llenos de secretos, llaves y botones ocultos','Armas icónicas: pistola, escopeta doble, rocket launcher y BFG 9000','Monstruos clásicos: Cacodemon, Cyberdemon, Spider Mastermind...','Soporte masivo de mods — miles de mapas y conversiones disponibles']},
+{name:'DOOM 3',year:'2004',dev:'id Software',size:'~2.2 GB',genre:'FPS / Terror',tags:['FPS','Terror','Ciencia Ficción'],url:'https://www.mediafire.com/file/cb2srwi84d37df3',desc:'La reinvención oscura y terrorífica de DOOM. En la base marciana de la UAC, un experimento dimensional abre un portal al infierno. DOOM 3 apostó por la atmósfera de terror y los pasillos oscuros en lugar de la velocidad frenética de los originales. Historia elaborada y gráficos revolucionarios para 2004.',features:['Motor id Tech 4 con iluminación dinámica revolucionaria para 2004','Enfoque survival horror: oscuridad, sustos y recursos limitados','La linterna y las armas no se pueden usar a la vez — dilema constante','Historia elaborada con documentos PDA y logs de audio por los pasillos','Expansión Resurrection of Evil incluida con nueva campaña']},
+{name:'DOOM 64',year:'1997',dev:'Midway Games / id Software',size:'~40 MB',genre:'FPS / Acción',tags:['FPS','Clásico','Retro'],url:'https://www.mediafire.com/file/7bn3tw0w98klyf9',desc:'La entrega de DOOM exclusiva de Nintendo 64, ahora disponible en PC. Considerada por muchos como la mejor entrega clásica de DOOM con niveles completamente nuevos, una atmósfera más oscura y un motor mejorado. Continuación directa de DOOM 2 donde el Doom Slayer elimina el último demonio superviviente.',features:['32 niveles completamente nuevos — nunca en PC hasta su relanzamiento','Gráficos y resolución mejorados respecto a los DOOM de PC originales','Atmósfera más oscura y siniestra que cualquier entrega anterior','The Absolution: modo secreto con 6 niveles extra del juego original','Efectos de color dinámicos que dan al juego una personalidad propia']},
+{name:'Grand Theft Auto III',year:'2001',dev:'Rockstar Games',size:'~600 MB',genre:'Mundo Abierto / Acción',tags:['Mundo Abierto','Acción','Retro','Clásico'],img:'https://files.catbox.moe/c7p6q7.png',url:'https://www.mediafire.com/file/l1j15jhed10gp9s',desc:'El juego que lo cambió todo. GTA III introdujo por primera vez el mundo abierto en 3D a la saga, ambientado en Liberty City. Tomas el control de Claude, un criminal silencioso que busca venganza mientras escala los bajos fondos de la ciudad. Una obra maestra que definió una generación de videojuegos.',features:['Primer GTA en 3D — revolucionó el género de mundo abierto','Liberty City con tres islas desbloqueables progresivamente','Misiones para múltiples facciones y bandas criminales','Sistema de búsqueda policial con 5 niveles de estrellas','Arsenal completo y decenas de vehículos disponibles']},
+{name:'Grand Theft Auto: Vice City',year:'2002',dev:'Rockstar Games',size:'~0.8 GB',genre:'Mundo Abierto / Acción',tags:['Mundo Abierto','Historia','Retro','Clásico'],img:'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pngplay.com%2Fwp-content%2Fuploads%2F11%2FGrand-Theft-Auto-Vice-City-Logo-PNG-HD-Images.png&f=1&nofb=1&ipt=9ca1876e8bcffe8ace845cda9bea0faa0058a158fee03aa9bd5115025adedd86',url:'https://www.mediafire.com/file/hqk4smpu51umcf7',desc:'Ambientado en la ficticia Vice City —basada en el Miami de los años 80—, el jugador asume el papel de Tommy Vercetti, un criminal que intenta construir su propio imperio. Con una banda sonora icónica de los 80 y un mundo abierto enorme, Vice City redefinió los juegos de mundo abierto en su lanzamiento.',features:['Historia cinematográfica inspirada en Scarface y Miami Vice','Banda sonora con emisoras de radio de los 80 (pop, rock, synthwave)','Mundo abierto con dos islas desbloqueables','Compra de propiedades y negocios para expandir el imperio','Motos, helicópteros, lanchas y decenas de vehículos']},
+{name:'Grand Theft Auto: San Andreas',year:'2004',dev:'Rockstar Games',size:'~2.9 GB',genre:'RPG / Mundo Abierto',tags:['Mundo Abierto','RPG','Historia','Icónico'],img:'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pngmart.com%2Ffiles%2F22%2FGrand-Theft-Auto-San-Andreas-Logo-PNG-Photo.png&f=1&nofb=1&ipt=a74dc647171e9cf032cb2baa33c578fe9c16aeed61402a8ba5c207deb23a385f',url:'https://www.mediafire.com/file/0iddf1zy4jyyww4',desc:'Ambientado en el estado ficticio de San Andreas, el jugador controla a Carl "CJ" Johnson, que regresa a su barrio y se ve envuelto en traiciones y redención. San Andreas introdujo mecánicas RPG únicas y fue el mundo abierto más grande de su época, con tres ciudades, desierto, bosques y campo.',features:['Estado enorme con 3 ciudades: Los Santos, San Fierro y Las Venturas','Mecánicas RPG: estadísticas de habilidad, peso, apariencia y hambre','Historia épica de 100+ misiones con giros narrativos memorables','Banda sonora con rap 90s, rock y funk en emisoras de radio','Personalización total del personaje, vehículos y propiedades']},
+{name:'Grand Theft Auto IV',year:'2008',dev:'Rockstar Games',size:'~3.8 GB',genre:'Mundo Abierto / Acción',tags:['Mundo Abierto','Acción','Historia','Clásico'],img:'https://upload.wikimedia.org/wikipedia/commons/5/5d/GTA_IV_logo.png',url:'https://www.mediafire.com/file/l1j15jhed10gp9s',desc:'La evolución de la saga. GTA IV redefinió el género con una Liberty City hiperrealista, viva y detallada. Tomas el control de Niko Bellic, un inmigrante de Europa del Este que llega a América persiguiendo el "sueño americano" y huyendo de su oscuro pasado. Una obra maestra madura y cinematográfica con físicas revolucionarias.',features:['Motor de físicas Euphoria — realismo sin precedentes en choques y movimientos','Liberty City reimaginada — una urbe masiva y detallada basada en Nueva York','Narrativa madura y cruda — una de las mejores historias y personajes de la saga','Sistema de coberturas y combate — tiroteos mejorados y mecánicas de conducción realistas','Teléfono celular integrado — gestiona misiones, citas con amigos y actividades secundarias']},
+{name:'Lego Island',year:'1997',dev:'Mindscape',size:'~300 MB',genre:'Aventura / Casual',tags:['Aventura','Clásico','Nostálgico'],url:'https://www.mediafire.com/file/got4m3oe9uw1bzf',desc:'Un clásico de la infancia de los 90. Lego Island fue uno de los primeros juegos de Lego en 3D, ambientado en una isla colorida y llena de vida donde puedes interactuar libremente con los habitantes, conducir coches de policía, repartir pizzas y más. La nostalgia hecha videojuego.',features:['Mundo abierto 3D en la icónica Lego Island — exploración libre total','Varios minijuegos: entrega de pizzas, construcción, persecuciones policiales','Personajes icónicos como Brickster, el villano que escapa de prisión','Exploración libre en todo momento con misiones opcionales','Joya nostálgica absoluta de los años 90 para PC']},
+{name:'Lego Star Wars: The Skywalker Saga',year:'2022',dev:'TT Games / Warner Bros',size:'~40 GB',genre:'Aventura / Acción',tags:['Aventura','Lego','Star Wars'],url:'https://www.mediafire.com/file/9s3q0xh2a34fqrb',desc:'La recreación definitiva de las nueve películas de Star Wars en formato Lego. Con más de 300 personajes jugables, planetas abiertos para explorar y el humor clásico de los juegos Lego, The Skywalker Saga es la mayor aventura Lego jamás creada, desde La Amenaza Fantasma hasta El Ascenso de Skywalker.',features:['9 películas completas de Star Wars recreadas al completo en Lego','Más de 300 personajes jugables con habilidades únicas entre sí','Planetas abiertos para explorar con secrets y coleccionables','Sistema de combate mejorado respecto a los juegos Lego anteriores','Cooperativo local para dos jugadores en pantalla dividida']},
+{name:'Lethal Company',year:'2023',dev:'Zeekerss',size:'~1 GB',genre:'Terror / Cooperativo',tags:['Terror','Cooperativo','Indie'],url:'https://www.mediafire.com/file/1qshm7ufackzoby',desc:'El fenómeno indie de 2023. Eres un trabajador contratado por la Compañía para recolectar chatarra en lunas abandonadas y cumplir cuotas de ventas. Con tus compañeros deberás infiltrarte en instalaciones oscuras llenas de criaturas letales. Aterrador, divertido y especialmente caótico en grupo.',features:['Terror cooperativo hasta 4 jugadores en línea','Lunas procedurales con instalaciones y criaturas completamente aleatorias','Sistema de cuotas: si no vendes suficiente, todos pierden todo','Decenas de criaturas únicas con comportamientos radicalmente diferentes','Chat de voz espacial posicional — solo escuchas a quien está cerca de ti']},
+{name:'Life is Strange 1',year:'2015',dev:'Dontnod Entertainment / Square Enix',size:'~7 GB',genre:'Aventura / Drama',tags:['Aventura','Historia','Narrativo'],url:'https://www.mediafire.com/file/4bpmumcc4vesg1l',desc:'Max Caulfield descubre que puede rebobinar el tiempo y usa ese poder para investigar la desaparición de una compañera en el Instituto Blackwell. Una aventura narrativa con decisiones que importan, personajes profundos y una historia emotiva sobre amistad, identidad y consecuencias. Los 5 episodios completos.',features:['Historia en 5 episodios completos con decisiones que afectan el final','Mecánica de rebobinar el tiempo para explorar todas las consecuencias','Personajes profundos y bien escritos con desarrollo real y creíble','Banda sonora indie folk perfectamente integrada en la narrativa','Múltiples finales según las decisiones tomadas a lo largo de la historia']},
+{name:'Limbo',year:'2010',dev:'Playdead',size:'~170 MB',genre:'Plataformas / Puzzle',tags:['Plataformas','Indie','Puzzle'],url:'https://www.mediafire.com/file/s3fp7njwviv7449',desc:'Un niño despierta en el borde del infierno en busca de su hermana. Limbo es una obra de arte en blanco y negro donde plataformas y puzles se combinan con una atmósfera perturbadora y silenciosa. Sin texto, sin tutoriales — la experiencia habla completamente por sí sola.',features:['Arte en blanco y negro con una atmósfera absolutamente única','Puzles físicos ingeniosos que aumentan en dificultad gradualmente','Sin texto, sin narrativa explícita — todo contado a través de imágenes','Trampas letales y brutales que te sorprenden constantemente','Duración de unas 3-4 horas — experiencia intensa y muy concentrada']},
+{name:'Little Nightmares',year:'2017',dev:'Tarsier Studios / Bandai Namco',size:'~3 GB',genre:'Terror / Plataformas',tags:['Terror','Plataformas','Puzzle'],url:'https://www.mediafire.com/file/p6z2k02tmgkdqaf',desc:'Six, una niña con chubasquero amarillo, intenta escapar de Las Fauces, un barco-restaurante habitado por criaturas gigantescas y grotescas. Un juego de plataformas con puzles y sigilo envuelto en una atmósfera de pesadilla infantil. Visualmente impresionante y genuinamente aterrador.',features:['Plataformas y sigilo en 3D con perspectiva lateral cinematográfica','Criaturas gigantes únicas en cada capítulo — cada una más aterradora','Mundo de Las Fauces con una estética de pesadilla hambrienta e inquietante','Historia contada enteramente sin palabras, solo a través de imágenes','Cinco capítulos completos más contenido DLC adicional incluido']},
+{name:'Mafia 1',year:'2002',dev:'Illusion Softworks',size:'~1.5 GB',genre:'Mundo Abierto / Historia',tags:['Mundo Abierto','Historia','Crimen'],url:'https://www.mediafire.com/file/09cr937qgygwems',desc:'Tommy Angelo, un taxista de los años 30, se ve arrastrado al mundo de la mafia italiana en la ciudad ficticia de Lost Heaven. Mafia I es una obra maestra narrativa inspirada en El Padrino y GoodFellas, con una historia épica y un mundo abierto ambientado en la era del Prohibition americano.',features:['Historia épica ambientada en los años 30 durante la Prohibición','Mundo abierto Lost Heaven con barrios, zonas industriales y puerto histórico','Conducción realista con límite de velocidad y respeto al código de tráfico','Misiones cinematográficas con cortes de escena de alta calidad narrativa','Una de las mejores historias jamás contadas en un videojuego']},
+{name:'Mafia 2',year:'2010',dev:'2K Czech / 2K Games',size:'~10 GB',genre:'Mundo Abierto / Acción',tags:['Mundo Abierto','Acción','Crimen'],url:'https://www.mediafire.com/file/m4euqtwx15l2ulq',desc:'Vito Scaletta regresa de la Segunda Guerra Mundial y se une a la mafia para pagar las deudas de su familia. Ambientado en los años 40-50 en Empire Bay, Mafia 2 ofrece una historia cinematográfica de ascenso y caída en el crimen organizado con un mundo abierto lleno de detalles de época.',features:['Historia cinematográfica ambientada en los años 40 y 50 americanos','Mundo abierto Empire Bay con radio de época, coches clásicos y tiendas','Combate a cubiertos moderno con puntería y recarga realistas','Vestimenta y coches de época que comprar y personalizar','Historia de hermandad y traición con giros inesperados y emotivos']},
+{name:'Manhunt 1',year:'2003',dev:'Rockstar North',size:'~3 GB',genre:'Acción / Sigilo',tags:['Acción','Sigilo','Adulto'],url:'https://www.mediafire.com/file/wm5s6fxrbaxtxzl',desc:'James Earl Cash, un preso en el corredor de la muerte, sobrevive a su ejecución y es obligado por un director snuff a actuar en películas de asesinatos para un público voyeur. Manhunt es un juego de sigilo y ejecuciones con una atmósfera perturbadora y una crítica a la violencia mediática.',features:['Sigilo en tercera persona con sistema de sombras y detección de ruido','Ejecuciones graduadas por brutalidad: tranquilo, violento o brutal','20 escenarios urbanos abandonados con dirección de arte oscura','Historia de survival con crítica a la violencia en los medios de comunicación','Uno de los juegos más polémicos de Rockstar Games']},
+{name:'Manhunt 2',year:'2007',dev:'Rockstar London',size:'~4 GB',genre:'Acción / Sigilo',tags:['Acción','Sigilo','Adulto'],url:'https://www.mediafire.com/file/2txxd7mq3e95ewe',desc:'Daniel Lamb escapa de un asilo psiquiátrico sin recordar quién es ni por qué está encerrado. Junto a un compañero peligroso, deberá descubrir la conspiración detrás de su pasado. Manhunt 2 continúa la fórmula con una historia más elaborada y perturbadora que su predecesor.',features:['Historia de amnesia — descubrimiento gradual de una conspiración','Sistema de ejecuciones mejorado con nuevas armas y entornos','Doble protagonista: Daniel y Leo con personalidades contrastadas','Escenarios variados: asilo, calles urbanas, laboratorios secretos','Más oscuro y narrativamente elaborado que el primer Manhunt']},
+{name:'Max Payne 1',year:'2001',dev:'Remedy Entertainment / 3D Realms',size:'~1.5 GB',genre:'Acción / Noir',tags:['Acción','Noir','Thriller'],url:'https://www.mediafire.com/file/1qotexdme641vq6',desc:'Max Payne, detective de la DEA que lo perdió todo en una noche de lluvia, recorre los bajos fondos de Nueva York en busca de los asesinos de su familia. El juego que popularizó el bullet time en los videojuegos, con viñetas de cómic para narrar la historia y una atmósfera noir absolutamente cinematográfica.',features:['Bullet Time: ralentización del tiempo para esquivar balas y disparar con precisión','Narración a través de viñetas de cómic al estilo de la novela negra','Historia de venganza noir ambientada en el Nueva York invernal','Tiroteos dinámicos y espectaculares en entornos urbanos variados','Banda sonora melancólica y cinematográfica perfectamente integrada']},
+{name:'Max Payne 2',year:'2003',dev:'Remedy Entertainment / Rockstar',size:'~2 GB',genre:'Acción / Noir',tags:['Acción','Noir','Thriller'],url:'https://www.mediafire.com/file/silk6pqq7gglm5v',desc:'Max Payne regresa como detective del NYPD y se ve envuelto en una historia de amor imposible con Mona Sax mientras investiga una conspiración de asesinos a sueldo. Subtitulado "A Film Noir Love Story", es más oscuro, más cinematográfico y con un Bullet Time aún más refinado que el original.',features:['Bullet Time mejorado con física ragdoll más realista y espectacular','Historia de amor noir con Mona Sax como segunda protagonista jugable','Diseño de niveles más variado y elaborado que la primera entrega','Sistema de combate refinado con mecánicas más pulidas','Atmósfera más poética y oscura que su predecesor directo']},
+{name:'Medal of Honor 2010',year:'2010',dev:'Danger Close / DICE',size:'~8 GB',genre:'FPS / Militar',tags:['FPS','Militar','Realista'],url:'https://www.mediafire.com/file/afqux2fcsdfl6tw',desc:'Reinicio de la saga Medal of Honor ambientado en la guerra de Afganistán, basado en operaciones reales de las Fuerzas de Operaciones Especiales de EE.UU. Campaña cinematográfica desarrollada por Danger Close con multijugador diseñado por DICE, los creadores de la saga Battlefield.',features:['Campaña cinematográfica basada en operaciones reales en Afganistán','Protagoniza a los Tier 1: los soldados de élite más secretos del ejército','Multijugador desarrollado por DICE con mecánicas de Battlefield','Historia humana de soldados y sus familias en tiempos de guerra real','Gráficos Unreal Engine 3 con iluminación dinámica de alta calidad']},
+{name:'MegaBonk',year:'2022',dev:'Indie',size:'~50 MB',genre:'Plataformas / Indie',tags:['Indie','Plataformas'],url:'https://www.mediafire.com/file/c623e9ixue3trua',desc:'Un juego indie de plataformas ligero y directo. MegaBonk ofrece acción de plataformas simple y entretenida, perfecta para sesiones cortas en los ordenadores Abalar. Con su tamaño mínimo y sus mecánicas directas, es una opción ideal cuando se quiere jugar a algo sin complicaciones.',features:['Plataformas de acción ligera y directa sin complicaciones','Tamaño mínimo — menos de 100 MB en disco','Perfecto para sesiones cortas de juego casual','Mecánicas simples y completamente accesibles para cualquier jugador','Totalmente compatible con Abalar 11 y 12 sin configuración adicional']},
+{name:'Metal Gear Solid',year:'1998',dev:'Konami / Silicon Knights',size:'~1.2 GB',genre:'Sigilo / Acción / Aventura',tags:['Sigilo','Acción','Clásico'],url:'https://www.mediafire.com/file/bjmzrlb3iwj7uq8',desc:'Solid Snake se infiltra en Shadow Moses, una instalación nuclear en Alaska ocupada por FOXHOUND. Metal Gear Solid definió el género del sigilo en tercera persona y la narrativa cinematográfica en videojuegos. Una obra maestra absoluta de Hideo Kojima que rompió los límites del medio.',features:['Sigilo en tercera persona — evitar ser detectado es la clave','Historia épica de conspiración militar, clonación y filosofía profunda','Jefes memorables: Psycho Mantis, Sniper Wolf, Vulcan Raven y Revolver Ocelot','Psycho Mantis lee tu memoria y tu mando de forma que rompe la cuarta pared','Codec: conversaciones extensas que construyen el lore y los personajes']},
+{name:'Metro: 2033 Redux',year:'2014',dev:'4A Games / Deep Silver',size:'~10 GB',genre:'FPS / Post-Apocalíptico',tags:['FPS','Post-apocalíptico','Terror'],url:'https://www.mediafire.com/file/eiupwbgb8gdvag1',desc:'Versión remasterizada de Metro 2033, basada en la novela de Dmitry Glukhovsky. Artyom debe cruzar el Metro de Moscú, destruido por la guerra nuclear, para advertir a los supervivientes de una nueva amenaza: los Oscuros. Atmósfera excepcional, recursos escasos y un terror psicológico único.',features:['FPS postapocalíptico basado en la novela de Dmitry Glukhovsky','Recursos escasos — las balas militares son también moneda de cambio','Dos modos: Supervivencia (difícil y tenso) y Espartano (más acción)','Finales múltiples según las decisiones morales tomadas en el juego','Metro Redux incluye Metro 2033 y Metro Last Light remasterizados']},
+{name:'MileiCraft',year:'2024',dev:'Indie Argentino',size:'~100 MB',genre:'Sandbox / Indie',tags:['Sandbox','Indie','Humor'],url:'https://www.mediafire.com/file/y3wwdi928c7i78u',desc:'Un juego sandbox indie argentino con temática política y humor local latinoamericano. MileiCraft es un juego de construcción y exploración con una estética y humor únicos que solo pueden entenderse en contexto. Ligero, gracioso y completamente diferente a todo lo demás de la colección.',features:['Sandbox indie con temática política argentina y humor local','Referencias culturales específicas del contexto latinoamericano','Tamaño mínimo — ideal para cualquier equipo Abalar','Mecánicas de construcción y exploración básicas y directas','Experiencia única y diferente dentro de la colección de STRECH Hub']},
+{name:'Minecraft: Dungeons',year:'2020',dev:'Mojang Studios / Xbox Game Studios',size:'~3 GB',genre:'Dungeon Crawler / Acción',tags:['Dungeon Crawler','Cooperativo','Minecraft'],url:'https://www.mediafire.com/file/7dh9yiuc0eh729q',desc:'Un dungeon crawler de acción ambientado en el universo de Minecraft. Sin construcción ni crafting — solo acción directa contra hordas de mobs en niveles generados proceduralmente. Con el aspecto visual de Minecraft pero la jugabilidad de Diablo, es perfecto para jugar solo o en cooperativo.',features:['Dungeon crawler de acción directa en el universo visual de Minecraft','Cooperativo hasta 4 jugadores local u online simultáneamente','Loot procedural: armas y armaduras con propiedades aleatorias','Encantamientos únicos que combinan objetos y crean builds variadas','Jefes finales épicos con mecánicas y patrones únicos para cada uno']},
+{name:'Minecraft: Error 422',year:'2023',dev:'Fan / Indie',size:'~150 MB',genre:'Sandbox / Horror',tags:['Terror','Indie','Fan Game'],url:'https://www.mediafire.com/file/dpto1teqdgbffvx',desc:'Un fan game de Minecraft con mecánicas de horror y misterio. Error 422 es una experiencia perturbadora ambientada en los mundos rotos de Minecraft, donde la realidad del juego se corrompe y los glitches se convierten en la amenaza. Para fans del creepypasta y el horror en videojuegos.',features:['Fan game de Minecraft con atmósfera de horror psicológico perturbador','Mundo corrupto donde los glitches y anomalías son mecánicas del juego','Historia de misterio contada a través del entorno sin diálogos','Experiencia corta e intensa — perfecta para una sola sesión','Referencia al lore creepypasta de Minecraft (Herobrine, glitch worlds)']},
+{name:'Minecraft: Story Mode',year:'2015',dev:'Telltale Games / Mojang',size:'~5 GB',genre:'Aventura / Narrativo',tags:['Aventura','Narrativo','Minecraft'],url:'https://www.mediafire.com/file/q4xppx51iu7pzpu',desc:'La aventura narrativa de Telltale Games ambientada en el universo de Minecraft. Juegas como Jesse y sus amigos en una historia épica para salvar el mundo de Minecraft. Con el estilo de decisiones de Telltale, personajes queribles y el humor y estética propios del universo de Mojang.',features:['Aventura narrativa de Telltale Games — estilo The Walking Dead de Telltale','5 episodios principales más segunda temporada adicional opcional','Decisiones que moldean la historia y las relaciones con los personajes','Personajes originales entrañables: Olivia, Axel, Petra y Reuben el cerdo','El universo Minecraft explorado con profundidad narrativa inédita']},
+{name:"Mirror's Edge",year:'2008',dev:'DICE / EA',size:'~4 GB',genre:'Parkour / Acción',tags:['Parkour','Acción','Plataformas 3D'],url:'https://www.mediafire.com/file/2b6jf2cy4t9jm87',desc:'Faith es una Runner, mensajera que utiliza el parkour para entregar información en una ciudad distópica de vigilancia total. Mirror\'s Edge fue revolucionario: un juego de parkour en primera persona con una paleta visual limpia y minimal. La fluidez del movimiento y la sensación de libertad son insuperables.',features:['Parkour en primera persona — la sensación de movimiento es absolutamente única','Ciudad distópica blanca y limpia con elementos en rojo como guía visual','Historia de resistencia en un estado totalitario de vigilancia total','Combate enfocado en esquivar y desarmado rápido para no perder velocidad','Modo Time Trial para completar cada nivel en el menor tiempo posible']},
+{name:'MiSide',year:'2024',dev:'AIHASTO',size:'~3 GB',genre:'Terror / Indie',tags:['Terror','Indie','Novela Visual'],url:'https://www.mediafire.com/file/hy8ylo6gp9lacz3',desc:'Un juego indie que comienza como una app de compañía virtual tipo waifu simulator y se transforma gradualmente en una experiencia de horror psicológico perturbadora. MiSide fue uno de los juegos indie de terror más comentados de 2024, con giros narrativos completamente inesperados.',features:['Comienza como un simulador de compañía virtual completamente inofensivo','Se transforma gradualmente en un horror psicológico perturbador','Historia con múltiples capas y giros narrativos que no verás venir','Arte anime de alta calidad con momentos de horror visual muy efectivos','Uno de los mejores y más comentados juegos indie de terror de 2024']},
+{name:'Mortal Kombat: Trilogy',year:'1996',dev:'Midway Games',size:'~200 MB',genre:'Lucha / Acción',tags:['Lucha','Clásico','Retro'],url:'https://www.mediafire.com/file/zny3faa9hoi95sh',desc:'La compilación definitiva del Mortal Kombat clásico, incluyendo todos los personajes y arenas de MK1, MK2 y MK3 en un solo juego. Brutales Fatalities, Friendship, Animalities y Babalities completos. El máximo exponente del Mortal Kombat de la era arcade con todos sus personajes míticos reunidos.',features:['Todos los personajes de MK1, MK2 y MK3 reunidos en un solo juego','Fatalities, Friendships, Animalities y Babalities completos de la trilogía','Todos los escenarios clásicos de los tres juegos incluidos','Modo torneo, versus y arcade con ending para cada personaje','Personajes ocultos: Jade, Noob Saibot y Smoke desbloqueables']},
+{name:'Mr President',year:'2016',dev:'ORUBE Game Studio',size:'~1 GB',genre:'Simulación / Humor',tags:['Indie','Simulación','Humor'],url:'https://www.mediafire.com/file/lqjo1o2qfgayt4i',desc:'Eres el guardaespaldas del presidente de Estados Unidos y debes protegerle de atentados lanzándote sobre él. Una parodia política hilarante con física de ragdoll completamente absurda. El humor y el caos garantizados hacen de Mr President una experiencia única e irrepetible, perfecta en grupo.',features:['Protege al presidente lanzándote sobre él para bloquear los disparos','Física de ragdoll completamente absurda y brutalmente divertida','Parodia política con humor exagerado al máximo','Diferentes escenarios y múltiples tipos de atentado que esquivar','Perfecto para partidas cortas y especialmente divertido en grupo']},
+{name:'My Summer Car',year:'2016',dev:'Johannes Rojola',size:'~1 GB',genre:'Simulación / Sandbox',tags:['Simulación','Conducción','Sandbox'],url:'https://www.mediafire.com/file/78dyav7e3nnh03d',desc:'Verano de 1995 en Finlandia rural. Debes construir desde cero un Satsuma AMP, tu coche clásico finlandés, pieza a pieza, mientras sobrevives: comer, beber, dormir y trabajar para ganar dinero. El simulador de mecánica más auténtico y caótico jamás creado, con humor finlandés único.',features:['Monta el coche pieza a pieza — literalmente cada tornillo importa','Simulación de vida: comer, beber, dormir y gestionar el dinero','Finlandia rural de los 90 con vecinos, trabajos temporales y la tienda del pueblo','Física de conducción sin asistencias — conducir borracho tiene consecuencias reales','El juego indie más auténtico y caótico jamás creado sobre mecánica de coches']},
+{name:'NARUTO: Shippuden Ultimate Ninja STORM',year:'2016',dev:'CyberConnect2 / Bandai Namco',size:'~15 GB',genre:'Lucha / Anime',tags:['Lucha','Anime','Naruto'],url:'https://www.mediafire.com/file/ljzfw5k420k7u9v',desc:'La saga de lucha de Naruto Shippuden en su edición Storm, con combates espectaculares en arenas 3D. Jutsus cinematográficos, más de 100 personajes de toda la serie y una recreación fiel de los arcos de Shippuden. El favorito de los fans del anime para revivir sus batallas favoritas.',features:['Combates 3D espectaculares con jutsus visualmente cinematográficos','Más de 100 personajes del universo Naruto Shippuden','Historia que cubre los arcos más importantes de Shippuden completos','Sistema de apoyo con personajes secundarios que intervienen en combate','Modo online y cooperativo local para partidas versus']},
+{name:'NARUTO: Ultimate Ninja STORM',year:'2008',dev:'CyberConnect2 / Bandai Namco',size:'~10 GB',genre:'Lucha / Anime',tags:['Lucha','Anime','Naruto'],url:'https://www.mediafire.com/file/9m0fuj7225qt3k2',desc:'El inicio de la saga Storm de Naruto, con la historia original del anime desde la Academia Ninja. Gráficos con aspecto de cel-shading animado, combates 3D fluidos y una recreación fiel de Konoha y sus alrededores para explorar libremente. La base perfecta de la saga más querida de los fans del anime.',features:['Primer Storm — la historia original de Naruto completa','Konoha explorable en 3D con misiones secundarias y personajes del anime','Combates 3D con jutsus y transformaciones totalmente animadas','Más de 25 personajes del arco original de Naruto clásico','La base perfecta para entender la evolución de toda la saga Storm']},
+{name:'Need for Speed: Carbon',year:'2006',dev:'EA Black Box / EA',size:'~4 GB',genre:'Conducción / Carreras',tags:['Conducción','NFS','Callejero'],url:'https://www.mediafire.com/file/3x0a2ee6k6k36l2',desc:'Regresas a Palmont City para descubrir qué pasó la noche que huiste tras perder una carrera. Carbon introduce la conquista de territorios por barrios y el modo Canyon Duel. Con el sistema de wingman que te ayuda en las carreras, fue una evolución notable de la saga Need for Speed.',features:['Conquista de territorios: vence a los jefes de banda de cada barrio de la ciudad','Canyon Duel: carreras de cañón con eliminación progresiva por tiempo','Wingman: elige un compañero que bloquea, borra rival o te da turbo extra','Tres categorías de coches con estilos distintos: Muscle, Tuner y Exotic','Historia que continúa directamente desde los eventos de Most Wanted']},
+{name:'Need for Speed: Hot Pursuit',year:'2010',dev:'Criterion Games / EA',size:'~6 GB',genre:'Conducción / Carreras',tags:['Conducción','NFS','Policías'],url:'https://www.mediafire.com/file/q489gezhdz9nh1q',desc:'Criterion Games (Burnout) reimagina Hot Pursuit con superdeportivos reales, persecuciones policiales espectaculares y el sistema Autolog para comparar marcas con amigos. Juegas como corredor ilegal o como policía con todo el armamento disponible. Pura adrenalina de conducción arcade.',features:['Dos roles jugables: corredor callejero o policía con herramientas únicas','Coches reales de lujo: Lamborghini, Ferrari, Porsche y McLaren','Sistema Autolog: compara tiempos y logros con amigos online en tiempo real','Persecuciones espectaculares con PINGs, spikes, EMP y helicópteros','Desarrollado por Criterion, los creadores de la legendaria saga Burnout']},
+{name:'Need for Speed: Most Wanted',year:'2005',dev:'EA Black Box / EA',size:'~3.5 GB',genre:'Conducción / Carreras',tags:['Conducción','NFS','Clásico'],url:'https://www.mediafire.com/file/m6frhu8rauckr7j',desc:'Considerado por muchos el mejor Need for Speed de todos los tiempos. Llegas a Rockport y tu coche es robado por Razor. Deberás escalar la lista de los 15 Most Wanted venciendo a cada piloto callejero mientras evitas a la policía en persecuciones cada vez más épicas.',features:['Lista de los 15 Most Wanted — vence a cada boss para ascender','Sistema policial épico: Corvettes, helicópteros y bloqueos de carretera','Customización visual del coche con vinilos, llantas y kits de carrocería','Historia con actores reales grabados en video integrado en el juego','Mapa de Rockport lleno de atajos y rutas alternativas por descubrir']},
+{name:'Need for Speed: Underground',year:'2003',dev:'EA Black Box / EA',size:'~2.5 GB',genre:'Conducción / Tuning',tags:['Conducción','NFS','Tuning'],url:'https://www.mediafire.com/file/fbqz0tqosgljqg1',desc:'El juego que reinventó la saga Need for Speed con coches tuning, noche perpetua y cultura underground de las carreras ilegales. Olympic City de noche, llena de neones y lluvia, con una banda sonora de rap y electrónica que marcó una generación entera. El inicio de la era dorada del NFS.',features:['Carreras nocturnas en Olympic City — noche perpetua y lluvia constante','Tuning visual extremo: vinilos, spoilers, neons, capó personalizado y más','Historia de ascenso en el mundo de las carreras callejeras ilegales','Más de 100 piezas de personalización visual por coche','Banda sonora icónica: Rob Zombie, Lil Jon, Chingy y mucho más']},
+{name:'Super Meat Boy',year:'2010',dev:'Team Meat',size:'~300 MB',genre:'Plataformas / Difícil',tags:['Plataformas','Indie','Difícil'],url:'https://www.mediafire.com/file/zsaptvd4ckvbzt7',desc:'Meat Boy, un cubo de carne sin piel, debe rescatar a su novia Bandage Girl del malvado Dr. Fetus a través de niveles brutalmente difíciles llenos de sierras, sal, trampas y abismos. El referente del género hardcore platformer — morirás miles de veces pero jamás querrás dejar de jugar.',features:['300+ niveles con dificultad brutal y progresiva','Controles precisos al píxel — la habilidad del jugador lo es todo','La muerte es instantánea pero el respawn es completamente inmediato','Mundos oscuros: versiones aún más difíciles de cada nivel ya completado','Protagonistas desbloqueables de otros juegos indie (Spelunky, VVVVVV y más)']},
+{name:'Surgeon Simulator',year:'2013',dev:'Bossa Studios',size:'~500 MB',genre:'Simulación / Humor',tags:['Simulación','Humor','Indie'],url:'https://www.mediafire.com/file/dwwrqfdcgif1v9q',desc:'Eres un cirujano con las manos más torpes del mundo. Con controles deliberadamente difíciles para cada dedo, debes realizar operaciones quirúrgicas sin matar al paciente... aunque inevitablemente lo harás. Icónico en su torpeza intencionada, perfecto para streams y vídeos de reacción.',features:['Controles deliberadamente complicados — cada dedo es una tecla distinta','Operaciones variadas: corazón, cerebro, trasplante de ojo y muchas más','Física completamente absurda que hace que todo salga terriblemente mal','Modo VR disponible para una experiencia aún más caótica e incompetente','Humor absurdo garantizado — momentos memorables en cada partida']},
+{name:'SWAT 4',year:'2005',dev:'Irrational Games / Vivendi',size:'~2 GB',genre:'Táctica / FPS',tags:['Táctica','FPS','Policial'],url:'https://www.mediafire.com/file/wmcnh5xccjr9dt4',desc:'Lideras un equipo SWAT en misiones policiales tácticas en Los Ángeles. Uno de los mejores juegos tácticos de la historia, donde los rehenes, los sospechosos y el uso de fuerza innecesaria tienen consecuencias reales en tu puntuación. Realismo, comunicación de equipo y decisiones bajo presión.',features:['18 misiones tácticas con rehenes reales y múltiples escenarios posibles','Equipamiento real de SWAT: taser, gas, flashbangs, escudo balístico y mirillas','Sistema de puntuación que penaliza duramente el uso excesivo de fuerza letal','Cooperativo hasta 5 jugadores en campaña completa y modo versus','IA de sospechosos y rehenes compleja y muy reactiva al entorno']},
+{name:'Syobon Action',year:'2007',dev:'Chronicler',size:'~5 MB',genre:'Plataformas / Trampa',tags:['Plataformas','Indie','Difícil'],url:'https://www.mediafire.com/file/rw6ndut7shriys3',desc:'El "Juego del Gato" original. Una parodia maliciosa de Super Mario Bros donde cada elemento visual es en realidad una trampa mortal. Hongos que te matan, tuberías que aplasta, precipicios invisibles y suelos que desaparecen. El primer juego-trampa que popularizó el género en internet.',features:['Parodia de Mario donde cada elemento del escenario es una trampa','Tamaño microscópico — menos de 10 MB en disco','El juego original que popularizó los juegos-trampa en internet','Imposible en el primer intento — requiere memorización total del nivel','Perfecto para streams y vídeos de reacciones graciosas']},
+{name:'Syobon Action 3',year:'2010',dev:'Fan / Indie',size:'~10 MB',genre:'Plataformas / Trampa',tags:['Plataformas','Indie','Difícil'],url:'https://www.mediafire.com/file/s0oh0gr9b49s3j1',desc:'La tercera entrega del Juego del Gato, aún más cruel e inventiva en sus trampas que el original. Más creatividad en los engaños, nuevos tipos de mentiras visuales y más momentos de incredulidad total. Si el primero ya era injusto, el tercero lleva la crueldad del diseñador a un nivel superior.',features:['Más trampas que el original — más crueles, elaboradas e inesperadas','Nuevos tipos de engaños visuales y mecánicos nunca vistos en el original','Misma filosofía: todo lo que parece seguro te va a matar','Tamaño mínimo — menos de 15 MB de tamaño total','Para veteranos del Syobon original que quieran aún más sufrimiento']},
+{name:'Teardown',year:'2022',dev:'Tuxedo Labs / Coffee Stain',size:'~2 GB',genre:'Sandbox / Destrucción',tags:['Sandbox','Destrucción','Puzzle'],url:'https://www.mediafire.com/file/x5efxit9v60vyel',desc:'Un simulador de demolición con física voxel completamente destructible. En Teardown debes planificar robos en entornos que puedes destruir completamente para crear el camino perfecto, y luego ejecutar el robo en tiempo real contra el cronómetro. Todo — absolutamente todo — se puede romper.',features:['Física voxel completamente destructible — todo el escenario se puede romper','Planificación táctica: prepara libremente el camino antes de activar el cronómetro','Mapa sandbox enorme con decenas de vehículos distintos conducibles','Editor de niveles incluido con comunidad activa que crea nuevos mapas','Campaña completa con misiones de robo progresivamente más complejas']},
+{name:'Terraria',year:'2011',dev:'Re-Logic',size:'~200 MB',genre:'Sandbox / Aventura 2D',tags:['Sandbox','Aventura','Pixel Art'],url:'https://www.mediafire.com/file/umcmdzestj6bthp',desc:'El sandbox de exploración y construcción en 2D más completo jamás creado. Terraria tiene más contenido que juegos tres veces su tamaño: más de 20 jefes, cientos de armas, biomas únicos, mazmorras, construcción libre y cooperativo. Uno de los juegos más jugados de Steam de todos los tiempos.',features:['Más de 20 jefes únicos con mecánicas propias — mundo progresivo','Cientos de armas, herramientas, armaduras y objetos distintos','Múltiples biomas: corrupción, selva, desierto, tundra e inframundo','Cooperativo hasta 8 jugadores en el mismo mundo simultáneamente','Más de 10 años de actualizaciones gratuitas con contenido masivo añadido']},
+{name:'The Binding Of Isaac',year:'2011',dev:'Edmund McMillen / Florian Himsl',size:'~100 MB',genre:'Roguelite / Indie',tags:['Roguelite','Indie','Difícil'],url:'https://www.mediafire.com/file/jcumj2ocyd251yo',desc:'Isaac huye de su madre religiosa fanática a través de mazmorras procedurales llenas de monstruos y objetos grotescos. Un roguelite de acción con centenares de objetos que se combinan de formas impredecibles, profundidad inmensa y una simbología religiosa oscura que marcó el género.',features:['Mazmorras procedurales — cada partida completamente diferente a la anterior','Más de 200 objetos con sinergias locas e impredecibles entre ellos','Historia de abuso y religión fanática contada a través del gameplay','Múltiples finales y personajes desbloqueables con muchas horas de juego','El original que inspiró toda una generación de roguelites modernos']},
+{name:'The Elder Scrolls IV: Oblivion',year:'2006',dev:'Bethesda Game Studios',size:'~6 GB',genre:'RPG / Mundo Abierto',tags:['RPG','Mundo Abierto','Fantasía'],url:'https://www.mediafire.com/file/y3r25kvyd4wupku',desc:'Cuando el Emperador de Tamriel es asesinado y las puertas al reino del demonio Mehrunes Dagon comienzan a abrirse por toda Cyrodiil, el jugador debe encontrar al único heredero legítimo del trono. Un RPG de mundo abierto monumental con cientos de horas de contenido.',features:['Mundo abierto masivo de Cyrodiil con cientos de localizaciones únicas','Puertas de Oblivion: dungeons demoníacos repartidos por todo el mundo','Sistema completamente libre de magia, sigilo, combate y habilidades','Gremios completos: Ladrones, Asesinos, Magos y Guerreros con sus historias','Comunidad de mods activa que ha añadido contenido durante décadas']},
+{name:'The Elder Scrolls V: Skyrim',year:'2011',dev:'Bethesda Game Studios',size:'~12 GB',genre:'RPG / Mundo Abierto',tags:['RPG','Mundo Abierto','Fantasía'],url:'https://www.mediafire.com/file/j7in6edqwm6iit0',desc:'El Dovahkiin, nacido con la sangre y el alma de un dragón, debe enfrentarse a Alduin, el Devorador del Mundo. Skyrim es uno de los juegos más influyentes de la historia, un RPG de mundo abierto en el norte helado de Tamriel con dragones, mazmorras y libertad total.',features:['Mundo abierto en las montañas de Skyrim con 9 grandes ciudades distintas','Sistema Dovahkiin: aprende Shouts absorbiendo las almas de los dragones','Total libertad de clase — sé exactamente lo que quieras ser sin restricciones','Más de 100 mazmorras generadas a mano con secretos únicos en cada una','Una de las comunidades de mods más activas y grandes de toda la historia del PC']},
+{name:'The Impossible Game',year:'2012',dev:'FlukeDude',size:'~30 MB',genre:'Plataformas / Ritmo',tags:['Plataformas','Ritmo','Difícil'],url:'https://www.mediafire.com/file/c6hjwm0jkqbmm2o',desc:'Un cuadrado naranja que salta al ritmo de la música. Un solo botón, sin errores permitidos. The Impossible Game es el precursor de los juegos de un botón basados en ritmo que luego popularizó Geometry Dash. Sencillo en concepto, brutal en ejecución, con una música electrónica adictiva.',features:['Un solo botón — saltar sincronizadamente al ritmo de la música','Morirás cientos de veces antes de completar un solo nivel completo','Sistema de checkpoints opcionales disponibles en el modo práctica','Banda sonora electrónica que se funde completamente con el gameplay','El precursor espiritual directo del fenómeno Geometry Dash']},
+{name:'Midnight Club 2',year:'2003',dev:'Rockstar San Diego',size:'~1.5 GB',genre:'Conducción / Carreras',tags:['Conducción','Mundo Abierto','Carreras'],url:'https://www.mediafire.com/file/1lu9km7ya54rnwa',desc:'Carreras ilegales callejeras en ciudades reales: Los Ángeles, París y Tokyo. Midnight Club 2 es el juego de carreras en mundo abierto de Rockstar, con el mismo espíritu libre de los GTA pero enfocado completamente en la velocidad. Reta a los mejores pilotos de cada ciudad para progresar.',features:['Tres ciudades reales explorables: Los Ángeles, París y Tokyo de noche','Mundo abierto sin límites de velocidad ni reglas de tráfico que respetar','Más de 30 coches y motos con personalización visual propia','Habilidades especiales para cada vehículo activables en carrera','Reta progresivamente a los mejores pilotos de cada ciudad para avanzar']},
+{name:'The Long Drive',year:'2019',dev:'Genesz',size:'~500 MB',genre:'Simulación / Survival',tags:['Simulación','Conducción','Survival'],url:'https://www.mediafire.com/file/um66a5b7o7tvj1c',desc:'Conduce por un desierto infinito generado proceduralmente. The Long Drive es un simulador post-apocalíptico donde el viaje en sí mismo es el objetivo. Gestiona el combustible, repara el coche, encuentra suministros en las ruinas del camino y mantente en marcha. Melancólico, solitario y adictivo.',features:['Desierto procedural infinito — no hay ningún fin del camino','Gestión del coche: gasolina, aceite, ruedas pinchadas y reparaciones','Radio procedural con emisoras generadas para acompañar el viaje solitario','Encuentros aleatorios en edificios y ruinas abandonados del desierto','Atmósfera melancólica y solitaria completamente única en su género']},
+{name:'The Saboteur',year:'2009',dev:'Pandemic Studios / EA',size:'~7 GB',genre:'Mundo Abierto / Acción',tags:['Mundo Abierto','Acción','WWII'],url:'https://www.mediafire.com/file/gv9i4so4053r6qf',desc:'París ocupada por los nazis durante la Segunda Guerra Mundial en blanco y negro, que recupera el color cuando liberas zonas de la ocupación. Juegas como Sean Devlin, un mecánico de carreras irlandés que se une a la Resistencia Francesa para sabotear las instalaciones enemigas.',features:['París en blanco y negro que recupera el color al liberar cada zona ocupada','Parkour por toda la ciudad para infiltrarte y escalar edificios nazis','Sabotaje de instalaciones enemigas: torres, depósitos, vehículos y más','Historia de venganza personal mezclada con la resistencia francesa','El único juego de mundo abierto ambientado en el París ocupado de la WWII']},
+{name:'The Simpsons: Hit & Run',year:'2003',dev:'Radical Entertainment / Vivendi',size:'~1.2 GB',genre:'Mundo Abierto / Acción',tags:['Mundo Abierto','Clásico','Simpsons'],url:'https://www.mediafire.com/file/uez1zhsrzwu4e8t',desc:'El mejor juego de Los Simpson jamás hecho. Springfield como mundo abierto donde juegas con Homer, Marge, Bart, Lisa y Apu en siete niveles que parodian GTA. Con humor genuino escrito por los guionistas originales de la serie y coches icónicos de Springfield. Un tesoro absoluto de la infancia.',features:['Springfield completamente explorable en mundo abierto con total libertad','7 niveles con 5 personajes jugables: Homer, Marge, Bart, Lisa y Apu','Humor escrito directamente por los guionistas originales de la serie','Docenas de coches icónicos de la serie desbloqueables a lo largo del juego','Guiños, referencias y chistes para fans de todas las edades posibles']},
+{name:'The Sims 1',year:'2000',dev:'Maxis / EA',size:'~2 GB',genre:'Simulación / Vida',tags:['Simulación','Vida','Clásico'],url:'https://www.mediafire.com/file/18shn93fmg2iwnf',desc:'El simulador de vida que lo cambió todo. Crea personas virtuales, construye sus casas, guía sus relaciones, carreras y necesidades básicas. Los Sims originales, con su encanto retro y su libertad creativa, sentaron las bases de un género que sigue siendo enormemente popular más de dos décadas después.',features:['Crea y gestiona Sims con personalidad, necesidades y relaciones propias','Construye y decora casas con total libertad creativa desde cero','Sistema de carreras y habilidades para escalar en la sociedad Sim','Relaciones románticas, amistad y enemistades complejas entre los Sims','El juego original que fundó una de las sagas más vendidas de la historia']},
+{name:'The Walking Dead: First Season',year:'2012',dev:'Telltale Games',size:'~3 GB',genre:'Aventura / Narrativo',tags:['Aventura','Narrativo','Terror'],url:'https://www.mediafire.com/file/eiu6t8a8esejsd2',desc:'Lee Everett, un convicto que escapa durante el apocalipsis zombie, encuentra a Clementine, una niña de ocho años completamente sola. Los cinco episodios son considerados uno de los mayores logros narrativos de los videojuegos, con decisiones que duelen y un final devastador e inolvidable.',features:['5 episodios completos con la historia de Lee y Clementine','Decisiones morales imposibles — no existen las elecciones correctas aquí','Historia emotiva considerada una obra maestra narrativa absoluta del medio','Ambientado en el universo del cómic original de Robert Kirkman','El final de la temporada 1 es considerado el más impactante del videojuego moderno']},
+{name:'Toilet Success',year:'2022',dev:'Indie',size:'~50 MB',genre:'Simulación / Humor',tags:['Indie','Humor','Casual'],url:'https://www.mediafire.com/file/5aktnjsgyyxtznc',desc:'Un juego indie casual y humorístico de simulación. Toilet Success es exactamente lo que parece: un juego absurdo con mecánicas simples, humor directo y situacional. Ideal para conseguir una risa rápida, es uno de los más ligeros de la colección y perfecto para cualquier equipo Abalar.',features:['Juego casual con mecánicas simples y directas sin complicaciones','Humor absurdo y situacional garantizado','Tamaño mínimo — menos de 100 MB de espacio en disco','Perfecto para sesiones muy cortas y sin compromisos','Sin requisitos de hardware — funciona en absolutamente cualquier equipo']},
+{name:'Tomb Raider: 2013',year:'2013',dev:'Crystal Dynamics / Square Enix',size:'~10 GB',genre:'Acción / Aventura',tags:['Acción','Aventura','Supervivencia'],url:'https://www.mediafire.com/file/mpfmgh80c6jxrdn',desc:'El reinicio de Lara Croft. Una joven e inexperta Lara naufraga en una isla misteriosa del Triángulo del Dragón y debe sobrevivir y rescatar a su tripulación. Un origin story brutal, cinematográfico y emotivo que convirtió a Lara en un personaje tridimensional por primera vez.',features:['Origin story de Lara Croft — su primera y más dura aventura real','Isla semiabierta con campamentos, coleccionables y tumbas opcionales','Sistema de crafteo con materiales del entorno para mejorar el equipo','Supervivencia real: caza, recolecta recursos y mejora tu armamento','Historia cinematográfica con motion capture y actuaciones de alto nivel']},
+{name:"Tony Hawk's Pro Skater HD",year:'2012',dev:'Robomodo / Activision',size:'~3 GB',genre:'Deportes / Skate',tags:['Deportes','Skate','Arcade'],url:'https://www.mediafire.com/file/d169nt8xy0bq82b',desc:'Remasterización en HD de los primeros Tony Hawk\'s Pro Skater con los mejores niveles de THPS1 y THPS2. El juego de skate arcade más influyente de todos los tiempos, con sus combos, tricks y la banda sonora punk y hip hop que definió una era entera de jugadores.',features:['Los mejores niveles de THPS1 y THPS2 completamente en alta definición','Sistema de combos y tricks igual de adictivo que el original clásico','Skaters originales más nuevos personajes desbloqueables incluidos','Modo multijugador SKATE y Horse para hasta 8 jugadores online','Banda sonora original icónica con punk, hip hop y rock de los 90']},
+{name:'Touhou 6: Embodiment of Scarlet Devil',year:'2002',dev:'Team Shanghai Alice (ZUN)',size:'~50 MB',genre:"Bullet Hell / Shoot'em Up",tags:['Bullet Hell','Shooter','Indie'],url:'https://www.mediafire.com/file/9vvtts0j6bsli6w',desc:'El inicio de la era moderna de Touhou. Reimu Hakurei y Marisa Kirisame investigan una niebla escarlata sobre Gensokyo y acaban enfrentándose a la mansión Scarlet. El bullet hell más influyente de la historia con patrones de balas icónicos y música electrónica legendaria compuesta por ZUN.',features:['Bullet hell con patrones de balas elaborados, coloridos y únicos','Dos personajes con estilos de disparo completamente diferentes','6 stages con 7 jefes únicos y sus propios danmaku patterns','Música electrónica compuesta por ZUN — icónica en toda la comunidad Touhou','Comunidad de fangames, arte y música activa más de 20 años después']},
+{name:'Tráfico de Fauna',year:'2022',dev:'VG Mundos / Indie',size:'~500 MB',genre:'Indie / Simulación',tags:['Indie','Simulación'],url:'https://www.mediafire.com/file/4el7ffaowypw1y0',desc:'Un juego indie con temática de tráfico de animales desde una perspectiva diferente y original. Tráfico de Fauna ofrece una experiencia indie única con mecánicas de simulación y gestión que no encontrarás en ningún otro juego de la colección. Un título curioso y completamente diferente.',features:['Simulación con temática de animales y gestión de recursos','Juego indie con perspectiva y mecánicas completamente originales','Experiencia totalmente diferente al resto de títulos de la colección','Compatible con Abalar 11 y 12 sin ningún problema','Contenido único para explorar en sesiones cortas y relajadas']},
+];
+
+// ══════════════════════════════════════════
+// DATOS — EMULADORES
+// ══════════════════════════════════════════
+const EMULADORES=[
+{name:'Citra',plat:'Emulador Nintendo 3DS',year:'2020',dev:'Equipo Citra',size:'~80 MB',tags:['3DS','Nintendo'],url:'https://www.mediafire.com/file/u03w1u1rxgya2jt',desc:'Citra es el emulador de Nintendo 3DS más completo y avanzado disponible. Permite jugar títulos de 3DS en PC con resolución mejorada hasta 1080p o más, gracias a sus shaders y filtros gráficos. Juegos como Pokémon X/Y, Fire Emblem, Monster Hunter 4 y Animal Crossing funcionan en él. No verificado en Abalar 11/12.',features:['Resolución mejorable hasta 1080p — mejor que en la 3DS real','Compatibilidad con la gran mayoría de juegos del catálogo de 3DS','Soporte de mandos USB y gamepad completamente configurable','Modo pantalla 3D simulada en pantalla plana convencional','Online multijugador emulado disponible en algunas versiones del emulador']},
+{name:'Dolphin',plat:'Emulador Nintendo Wii / GameCube',year:'2003',dev:'Equipo Dolphin',size:'~30 MB',tags:['Wii','GameCube','Nintendo'],url:'https://www.mediafire.com/file/dqo51rojn29z10r',desc:'Dolphin es el emulador de Wii y GameCube de referencia absoluta mundial. Permite jugar Super Smash Bros. Melee, Mario Kart Wii, Zelda: Twilight Princess o Super Mario Galaxy en PC con gráficos mejorados. Con años de desarrollo activo, su compatibilidad con el catálogo es casi perfecta.',features:['Emula Wii y GameCube — catálogo casi completo compatible','Gráficos mejorados con anti-aliasing y resolución en HD','Soporte de Wiimote real por Bluetooth o mandos estándar de PC','Guardado de estados en cualquier momento del juego','Online multijugador mediante Wiimmfi para algunos títulos del catálogo']},
+{name:'DeSmuME',plat:'Emulador Nintendo DS',year:'2006',dev:'Equipo DeSmuME',size:'~5 MB',tags:['NDS','Nintendo'],url:'https://www.mediafire.com/file/ops98l93qtpu9js',desc:'DeSmuME es el emulador de Nintendo DS más conocido y usado en PC. Tiene soporte para casi todo el catálogo de NDS, con emulación de pantalla táctil mediante el ratón. Perfecto para Pokémon HeartGold, Castlevania: Dawn of Sorrow, New Super Mario Bros. o The World Ends With You.',features:['Emulación completa de pantalla táctil mediante el ratón del PC','Compatible con prácticamente todo el catálogo de Nintendo DS','Tamaño mínimo — menos de 10 MB de descarga','Guardado de estados y aceleración de velocidad configurable','Soporte para micrófono y cámara en algunos juegos del catálogo']},
+{name:'MAME32',plat:'Emulador Arcade / Recreativas',year:'2002',dev:'Equipo MAME',size:'~20 MB',tags:['Arcade','Recreativas','Clásico'],url:'https://www.mediafire.com/file/t5r6n8jyjf0fyuj',desc:'MAME (Multiple Arcade Machine Emulator) en su versión con interfaz gráfica para Windows. Emula miles de máquinas recreativas arcade de los años 70, 80 y 90: Street Fighter, Mortal Kombat, Metal Slug, Pac-Man y Galaga, entre muchos más. Requiere ROMs para funcionar.',features:['Emula miles de máquinas recreativas arcade de múltiples décadas','Interfaz gráfica MAME32 para gestión de ROMs de forma cómoda','Compatible con mandos arcade USB y joysticks analógicos','Catálogo inmenso: fighting games, shooters, plataformas y más','Requiere ROMs propias — no incluidas en el ejecutable del emulador']},
+{name:'OptiDroid',plat:'Emulador Android 7 – 4 (v1.1)',year:'2023',dev:'OptiJuegos / Abalar',size:'~400 MB',tags:['Android','Emulador','Ligero'],note:'Versión v1.1 — la más ligera',url:'https://www.mediafire.com/file/ebus0codydv7a01',desc:'OptiDroid v1.1 es el emulador de Android optimizado para los equipos Abalar. Esta versión ligera permite ejecutar apps y juegos de Android 4 hasta Android 7 directamente en Windows sin virtualización pesada. La versión 1.1 es la más estable y menos exigente con los recursos del sistema.',features:['Versión v1.1 — la más ligera y optimizada específicamente para Abalar','Compatible con apps y juegos de Android 4 hasta Android 7','Sin necesidad de virtualización pesada tipo VMware o VirtualBox','Interfaz simplificada pensada para los equipos de la plataforma Abalar','Menor consumo de RAM respecto a alternativas populares como BlueStacks']},
+{name:'OptiNox',plat:'Emulador Android 4',year:'2023',dev:'OptiJuegos / Abalar',size:'~500 MB',tags:['Android','Emulador'],url:'https://www.mediafire.com/file/jeajc4wmbpmfi8d',desc:'OptiNox es una versión optimizada del emulador NoxPlayer para correr aplicaciones de Android 4 en Abalar. Permite ejecutar apps y juegos de esta versión del sistema operativo en PC. Pensado específicamente para los equipos de la plataforma Abalar. Funcionalidad no verificada en Abalar 11/12.',features:['Basado en Android 4 — compatible con aplicaciones de esa era específica','Optimizado para los equipos y sistema de la plataforma Abalar','Interfaz de NoxPlayer simplificada y más ligera que el original','Soporte completo de teclado y ratón como entrada táctil','Alternativa a OptiDroid para apps específicas que requieren Android 4']},
+{name:'OptiMemu',plat:'Emulador Android 5',year:'2023',dev:'OptiJuegos / Abalar',size:'~600 MB',tags:['Android','Emulador'],url:'https://www.mediafire.com/file/xdvw05918vx9d4w',desc:'OptiMemu es la versión optimizada del emulador MEmu para Android 5, adaptada para los equipos Abalar. MEmu destaca por su compatibilidad con juegos que requieren acceso directo a la GPU. Esta versión para Android 5 cubre el rango intermedio entre OptiNox y OptiDroid.',features:['Basado en Android 5 — rango intermedio entre OptiNox y OptiDroid','Mejor compatibilidad con juegos que usan GPU acelerada que OptiNox','Basado en la arquitectura de MEmu Player optimizada para bajo consumo','Soporte de múltiples instancias para ejecutar varias apps simultáneamente','Instalación directa de APKs desde el explorador de Windows']},
+{name:'PCSX2',plat:'Emulador PlayStation 2',year:'2002',dev:'Equipo PCSX2',size:'~30 MB',tags:['PS2','Sony','PlayStation'],url:'https://www.mediafire.com/file/xz6iz1k4twpkptt',desc:'PCSX2 es el emulador de PlayStation 2 más maduro y con mejor compatibilidad disponible. Permite jugar a GTA San Andreas PS2, Shadow of the Colossus, God of War, Kingdom Hearts y miles de títulos del mayor catálogo de una consola en toda la historia, con resolución mejorada hasta 1080p.',features:['Emula la PS2 — la consola con el mayor catálogo de la historia del gaming','Mejora la resolución original hasta 1080p y resoluciones superiores','Soporte de mandos DualShock 2 USB y gamepads estándar de PC','Guardado de estados y aceleración de velocidad totalmente configurable','Más de 20 años de desarrollo activo — compatibilidad prácticamente total']},
+{name:'pSXFIN',plat:'Emulador PlayStation 1',year:'2007',dev:'psxfin.fr',size:'~5 MB',tags:['PS1','Sony','PlayStation'],url:'https://www.mediafire.com/file/6lp6uyf4ipp2kjl',desc:'pSXFIN es un emulador ligero y estable de PlayStation 1 con interfaz simple y muy buena compatibilidad. Perfecto para los clásicos de PSX: Crash Bandicoot original, Spyro the Dragon, Final Fantasy VII, Resident Evil 1 y 2, Metal Gear Solid o Tekken 3. Tamaño mínimo.',features:['Emulador ligero de PS1 — menos de 10 MB de tamaño total','Compatible con la gran mayoría del catálogo de PlayStation 1','Soporte de mandos DualShock USB y gamepads convencionales','Capacidad de guardar estado en cualquier momento del juego','Ideal para los clásicos: Crash, Spyro, Final Fantasy VII, MGS']},
+{name:'Project64',plat:'Emulador Nintendo 64',year:'2001',dev:'Zilmar & Jabo',size:'~10 MB',tags:['N64','Nintendo'],url:'https://www.mediafire.com/file/8kk9gmx2u351101',desc:'Project64 es el emulador de Nintendo 64 de referencia en PC. Con más de dos décadas de desarrollo, ofrece compatibilidad excelente para jugar a Super Mario 64, Zelda: Ocarina of Time, GoldenEye 007, Mario Kart 64 o Banjo-Kazooie en PC con mejoras visuales opcionales.',features:['El emulador de N64 más usado y con mayor compatibilidad del mercado','Plugins gráficos para mejorar la resolución y las texturas originales','Soporte de mandos USB con mapeo completamente configurable','Guardar y cargar estados en cualquier punto del juego','Dos décadas de desarrollo activo — casi todo el catálogo de N64 compatible']},
+];
+
+// ══════════════════════════════════════════
+// RENDER FUNCTIONS
+// ══════════════════════════════════════════
+function buildBlock(item, idx, isEmu) {
+  const n = item.name.replace(/'/g,"\\'");
+  const logoHtml = item.img
+    ? `<img src="${item.img}" alt="${item.name}" onerror="this.style.display='none'">`
+    : (isEmu ? EMU_SVG : PC_SVG);
+  const logoStyle = isEmu ? `style="background:rgba(234,179,8,0.06);border-color:rgba(234,179,8,0.2);"` : '';
+  const tagsHtml = (item.tags||[]).map(t=>`<span class="gtag${isEmu?' yellow':''}">${t}</span>`).join('') + (item.note?`<span class="gtag pink">${item.note}</span>`:'');
+  const badge = isEmu
+    ? `<span class="compat-badge warn">Sin verificar</span>`
+    : `<span class="compat-badge">Abalar 11 y 12</span>`;
+  const searchData = `${item.name.toLowerCase()} ${(item.tags||[]).join(' ').toLowerCase()} ${item.year||''} ${(item.dev||'').toLowerCase()} ${(item.plat||'').toLowerCase()}`;
+
+  const bigLogoHtml = item.img
+    ? `<img src="${item.img}" alt="${item.name}" onerror="this.style.display='none'">`
+    : (isEmu
+        ? `<svg viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="1.5" style="width:64px;height:64px;opacity:0.5;"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>`
+        : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:64px;height:64px;color:var(--text3);opacity:0.4;"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>`);
+
+  const bigLogoStyle = isEmu ? `style="background:rgba(234,179,8,0.04);border-color:rgba(234,179,8,0.15);"` : '';
+
+  const warnHtml = isEmu ? `<div class="warn-box">${WARN_SVG}<span>Funcionalidad en Abalar 11/12 <strong style="color:#fbbf24;">no verificada</strong>. Puede funcionar o no según tu configuración.</span></div>` : '';
+
+  const dlBoxClass = isEmu ? 'dl-box yellow-box' : 'dl-box';
+  const dlSizeClass = isEmu ? 'dl-size yellow-size' : 'dl-size';
+  const dotClass = isEmu ? 'dl-compat-dot yellow-dot' : 'dl-compat-dot';
+  const rowClass = isEmu ? 'dl-compat-row warn-row' : 'dl-compat-row';
+  const btnClass = isEmu ? 'btn-dl yellow-btn' : 'btn-dl';
+  const dotPurple = isEmu ? 'game-feature-dot yellow' : 'game-feature-dot';
+
+  const compat1 = isEmu
+    ? `<div class="${rowClass}"><div class="${dotClass}"></div>Abalar 11 — Sin verificar</div><div class="${rowClass}"><div class="${dotClass}"></div>Abalar 12 — Sin verificar</div><div class="dl-compat-row"><div class="dl-compat-dot"></div>Descarga directa Mediafire</div>`
+    : `<div class="dl-compat-row"><div class="dl-compat-dot"></div>Abalar 11 — Compatible</div><div class="dl-compat-row"><div class="dl-compat-dot"></div>Abalar 12 — Compatible</div><div class="dl-compat-row"><div class="dl-compat-dot"></div>Archivo verificado</div><div class="dl-compat-row"><div class="dl-compat-dot"></div>Optimizado por OptiJuegos</div>`;
+
+  const infoRows = isEmu
+    ? `<div class="info-row"><span class="info-key">Tipo</span><span class="info-val purple">Emulador</span></div>
+       <div class="info-row"><span class="info-key">Desarrollador</span><span class="info-val">${item.dev||'—'}</span></div>
+       <div class="info-row"><span class="info-key">Plataforma emulada</span><span class="info-val">${(item.tags||[])[0]||'—'}</span></div>
+       <div class="info-row"><span class="info-key">Tamaño</span><span class="info-val">${item.size||'—'}</span></div>
+       <div class="info-row"><span class="info-key">Compatibilidad</span><span class="info-val yellow">Sin verificar</span></div>
+       <div class="info-row"><span class="info-key">Host</span><span class="info-val">Mediafire</span></div>`
+    : `<div class="info-row"><span class="info-key">Año</span><span class="info-val">${item.year||'—'}</span></div>
+       <div class="info-row"><span class="info-key">Desarrollador</span><span class="info-val">${item.dev||'—'}</span></div>
+       <div class="info-row"><span class="info-key">Plataforma</span><span class="info-val">PC Windows</span></div>
+       <div class="info-row"><span class="info-key">Género</span><span class="info-val purple">${item.genre||'—'}</span></div>
+       <div class="info-row"><span class="info-key">Compatibilidad</span><span class="info-val green">Abalar 11 y 12</span></div>
+       <div class="info-row"><span class="info-key">Host</span><span class="info-val">Mediafire</span></div>`;
+
+  const metaLine = isEmu ? `// ${item.plat}` : `// ${item.year||'—'} · PC Windows · ${item.dev||'—'}`;
+
+  return `<div class="game-block" data-search="${searchData}">
+    <div class="game-block-header" onclick="toggleBlock(this)">
+      <span class="game-block-num">${String(idx+1).padStart(2,'0')}</span>
+      <div class="game-block-logo" ${logoStyle}>${logoHtml}</div>
+      <div class="game-block-info">
+        <div class="game-block-title">${item.name}</div>
+        <div class="game-block-meta">${metaLine}</div>
+        <div class="game-block-tags">${tagsHtml}</div>
+      </div>
+      <div class="game-block-right">${badge}<div class="game-block-chevron">${CHV}</div></div>
+    </div>
+    <div class="game-block-body">
+      <div class="game-detail-grid">
+        <div>
+          <div class="game-logo-big" ${bigLogoStyle}>${bigLogoHtml}</div>
+          ${warnHtml}
+          <p class="game-desc">${item.desc}</p>
+          <div class="game-features-title">// CARACTERÍSTICAS PRINCIPALES</div>
+          <div class="game-feature-list">${(item.features||[]).map(f=>`<div class="game-feature"><div class="${dotPurple}"></div>${f}</div>`).join('')}</div>
+          <div class="how-open-box" style="margin-top:22px;">
+            <div class="how-open-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 8 12 12 14 14"/></svg>// CÓMO ABRIR ${isEmu ? 'EL EMULADOR' : 'EL JUEGO'}</div>
+            <div class="how-open-wine"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span><strong style="color:#fff;">Requisito previo:</strong> Necesitas tener <strong style="color:var(--accent3);">Wine instalado</strong>. Si aún no lo tienes, ve a la sección <strong style="color:var(--accent3);">Instalar Wine</strong> del menú lateral.</span></div>
+            <div style="margin-top:10px;">
+              <div class="how-open-step"><span class="how-open-num">01</span><span>Descarga el archivo y <strong style="color:var(--text);">descomprímelo</strong> en la carpeta que quieras.</span></div>
+              <div class="how-open-step"><span class="how-open-num">02</span><span>Abre el gestor de archivos y entra en la carpeta donde está el <code style="background:rgba(124,58,237,0.15);padding:1px 5px;border-radius:3px;font-family:'JetBrains Mono',monospace;font-size:11px;">.exe</code> del ${isEmu ? 'emulador' : 'juego'}.</span></div>
+              <div class="how-open-step"><span class="how-open-num">03</span><span>Haz <strong style="color:var(--text);">clic derecho</strong> sobre el <code style="background:rgba(124,58,237,0.15);padding:1px 5px;border-radius:3px;font-family:'JetBrains Mono',monospace;font-size:11px;">.exe</code> y elige <strong style="color:var(--text);">Abrir con → Wine Windows Program Loader</strong>. ¡Listo!</span></div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="${dlBoxClass}">
+            <div class="${dlSizeClass}">${item.size||'—'}</div>
+            <div class="dl-size-label">Tamaño del archivo</div>
+            ${compat1}
+            <a class="${btnClass}" href="${item.url}" target="_blank" onclick="showToast('Descargando ${n}...')">${DL_SVG} DESCARGAR AHORA</a>
+          </div>
+          <div class="info-box">${infoRows}</div>
+        </div>
+      </div>
+    </div>
+  </div>`;
 }
 
-function filterTodos(q) {
-  const query = q.toLowerCase().trim();
-  document.querySelectorAll('.todos-game-card').forEach(card => {
-    const text = (card.dataset.search || '') + ' ' + (card.querySelector('.todos-card-title')?.textContent || '');
-    card.classList.toggle('hidden-search', query && !text.toLowerCase().includes(query));
+function renderJuegos(){
+  document.getElementById('juegos-list').innerHTML = JUEGOS.map((g,i)=>buildBlock(g,i,false)).join('');
+}
+function renderEmuladores(){
+  document.getElementById('emu-list').innerHTML = EMULADORES.map((e,i)=>buildBlock(e,i,true)).join('');
+}
+
+// ══════════════════════════════════════════
+// NAVEGACIÓN
+// ══════════════════════════════════════════
+const PAGES={
+  home:         {el:'page-home',         sb:'sb-btn-home',      title:'Inicio',                root:'STRECH'},
+  wine:         {el:'page-wine',         sb:'sb-btn-wine',      title:'Instalar Wine',         root:'STRECH'},
+  todos:        {el:'page-todos',        sb:'sb-btn-todos',     title:'Todos los Juegos',      root:'STRECH'},
+  'todos-emu':  {el:'page-todos-emu',   sb:'sb-btn-todos-emu', title:'Todos los Emuladores',  root:'STRECH'},
+  juegos:       {el:'page-juegos',       sb:null,               title:'Juegos',             root:'STRECH'},
+  emuladores:   {el:'page-emuladores',   sb:null,               title:'Emuladores',            root:'STRECH'},
+};
+function nav(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.sb-nav-btn').forEach(b=>b.classList.remove('active'));
+  const cfg=PAGES[id]; if(!cfg) return;
+  document.getElementById(cfg.el).classList.add('active');
+  if(cfg.sb) document.getElementById(cfg.sb).classList.add('active');
+  document.getElementById('tb-root').textContent=cfg.root;
+  document.getElementById('tb-page').textContent=cfg.title;
+  window.scrollTo({top:0}); closeSidebar();
+}
+function filterTodos(q){
+  const query=q.toLowerCase().trim();
+  document.querySelectorAll('.todos-game-card').forEach(c=>{
+    const t=(c.dataset.search||'')+' '+(c.querySelector('.todos-card-title')?.textContent||'');
+    c.classList.toggle('hidden-search',query&&!t.toLowerCase().includes(query));
   });
 }
-
-function searchSidebar(q) {
-  const query = q.toLowerCase().trim();
-  const gtaBtn = document.getElementById('sb-btn-gta');
-  const secTitle = document.querySelector('.sb-section-title.purple');
-  if (!query) {
-    if (gtaBtn) gtaBtn.style.display = '';
-    if (secTitle) secTitle.style.display = '';
+function filterGames(q,pid,cid,nid){
+  const query=q.toLowerCase().trim();
+  const page=document.getElementById(pid); if(!page) return;
+  const blocks=page.querySelectorAll('.game-block');
+  let visible=0;
+  blocks.forEach(b=>{
+    const t=(b.dataset.search||'')+' '+(b.querySelector('.game-block-title')?.textContent||'');
+    const match=!query||t.toLowerCase().includes(query);
+    b.classList.toggle('hidden-search',!match);
+    if(match) visible++;
+  });
+  const ce=document.getElementById(cid);
+  if(ce) ce.innerHTML=query?`<span>${visible}</span> resultado${visible!==1?'s':''} para "<span>${q}</span>"`:'' ;
+  const ne=document.getElementById(nid);
+  if(ne) ne.classList.toggle('show',visible===0&&!!query);
+}
+function searchSidebar(q){
+  const query=q.toLowerCase().trim();
+  // 'sb-btn-home' y 'sb-btn-wine' son fijos — nunca se ocultan
+  const fixed=new Set(['sb-btn-home','sb-btn-wine']);
+  const map={'sb-btn-home':'inicio','sb-btn-wine':'instalar wine','sb-btn-todos':'todos los juegos','sb-btn-todos-emu':'todos los emuladores','sb-sec-juegos':'juegos','sb-sec-emu':'emuladores'};
+  if(!query){
+    Object.keys(map).forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='';});
+    document.querySelectorAll('#sb-juegos-list .sb-link,#sb-emu-list .sb-link').forEach(el=>el.style.display='');
     return;
   }
-  const gtaMatch = 'gta grand theft auto'.includes(query);
-  if (gtaBtn) gtaBtn.style.display = gtaMatch ? '' : 'none';
-  if (secTitle) secTitle.style.display = gtaMatch ? '' : 'none';
-}
-
-function toggleBlock(header) {
-  const block  = header.parentElement;
-  const page   = block.closest('.page');
-  const isOpen = block.classList.contains('open');
-  page.querySelectorAll('.game-block.open').forEach(b => b.classList.remove('open'));
-  if (!isOpen) block.classList.add('open');
-}
-
-function openBlock(id) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  el.closest('.page').querySelectorAll('.game-block.open').forEach(b => b.classList.remove('open'));
-  el.classList.add('open');
-  setTimeout(() => {
-    window.scrollTo({top: el.getBoundingClientRect().top + window.scrollY - 70, behavior:'smooth'});
-  }, 30);
-}
-
-function filterGames(q) {
-  const query   = q.toLowerCase().trim();
-  const blocks  = document.querySelectorAll('#page-gta .game-block');
-  let visible   = 0;
-  blocks.forEach(b => {
-    const text  = (b.dataset.search||'') + ' ' + (b.querySelector('.game-block-title')?.textContent||'');
-    const match = !query || text.toLowerCase().includes(query);
-    b.classList.toggle('hidden-search', !match);
-    if (match) visible++;
+  Object.entries(map).forEach(([id,text])=>{const el=document.getElementById(id);if(el)el.style.display=(fixed.has(id)||text.includes(query))?'':'none';});
+  let jVisible=0;
+  document.querySelectorAll('#sb-juegos-list .sb-link').forEach(el=>{
+    const t=(el.title||el.textContent||'').toLowerCase();
+    const show=t.includes(query);
+    el.style.display=show?'':'none';
+    if(show) jVisible++;
   });
-  const countEl = document.getElementById('searchCount');
-  countEl.innerHTML = query
-    ? `<span>${visible}</span> resultado${visible!==1?'s':''} para "<span>${q}</span>"`
-    : '';
-  document.getElementById('noResults').classList.toggle('show', visible === 0 && !!query);
+  const secJ=document.getElementById('sb-sec-juegos');
+  if(secJ) secJ.style.display=jVisible>0?'':'none';
+  let eVisible=0;
+  document.querySelectorAll('#sb-emu-list .sb-link').forEach(el=>{
+    const t=(el.title||el.textContent||'').toLowerCase();
+    const show=t.includes(query);
+    el.style.display=show?'':'none';
+    if(show) eVisible++;
+  });
+  const secE=document.getElementById('sb-sec-emu');
+  if(secE) secE.style.display=eVisible>0?'':'none';
 }
-
-function showToast(msg) {
-  const wrap = document.getElementById('toast-wrap');
-  const t    = document.createElement('div');
-  t.className = 'toast purple';
-  t.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>${msg}`;
+function toggleBlock(header){
+  const block=header.parentElement;
+  const page=block.closest('.page');
+  const isOpen=block.classList.contains('open');
+  page.querySelectorAll('.game-block.open').forEach(b=>b.classList.remove('open'));
+  if(!isOpen) block.classList.add('open');
+}
+function showToast(msg){
+  const wrap=document.getElementById('toast-wrap');
+  const t=document.createElement('div');
+  t.className='toast purple';
+  t.innerHTML=`${DL_SVG}${msg}`;
   wrap.appendChild(t);
-  setTimeout(() => {
-    t.style.animation = 'toastOut 0.3s ease forwards';
-    t.addEventListener('animationend', () => t.remove());
-  }, 3500);
+  setTimeout(()=>{t.style.animation='toastOut 0.3s ease forwards';t.addEventListener('animationend',()=>t.remove());},3500);
+}
+function toggleSidebar(){document.getElementById('sidebar').classList.toggle('open');document.getElementById('sb-overlay').classList.toggle('open');}
+function closeSidebar(){document.getElementById('sidebar').classList.remove('open');document.getElementById('sb-overlay').classList.remove('open');}
+
+// ══════════════════════════════════════════
+// SIDEBAR INDIVIDUAL LINKS
+// ══════════════════════════════════════════
+function renderSidebar() {
+  // Juegos links
+  const jList = document.getElementById('sb-juegos-list');
+  if (jList) {
+    jList.innerHTML = JUEGOS.map((g, i) => {
+      const slug = 'j-' + i;
+      return `<div class="sb-link" id="sb-${slug}" onclick="navToGame('juegos',${i})" title="${g.name}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;flex-shrink:0;opacity:0.4"><polyline points="9 18 15 12 9 6"/></svg>
+        <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${g.name}</span>
+      </div>`;
+    }).join('');
+  }
+  // Emuladores links
+  const eList = document.getElementById('sb-emu-list');
+  if (eList) {
+    eList.innerHTML = EMULADORES.map((e, i) => {
+      const slug = 'e-' + i;
+      return `<div class="sb-link" id="sb-${slug}" onclick="navToGame('emuladores',${i})" title="${e.name}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;flex-shrink:0;opacity:0.4"><polyline points="9 18 15 12 9 6"/></svg>
+        <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${e.name}</span>
+      </div>`;
+    }).join('');
+  }
 }
 
-function toggleSidebar() {
-  document.getElementById('sidebar').classList.toggle('open');
-  document.getElementById('sb-overlay').classList.toggle('open');
+function navToGame(section, idx) {
+  nav(section);
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      const page = document.getElementById('page-' + section);
+      if (!page) return;
+      const blocks = page.querySelectorAll('.game-block');
+      if (!blocks[idx]) return;
+      page.querySelectorAll('.game-block.open').forEach(b => b.classList.remove('open'));
+      blocks[idx].classList.add('open');
+      // Small delay to let the block expand before scrolling
+      setTimeout(() => {
+        const rect = blocks[idx].getBoundingClientRect();
+        const scrollTop = window.pageYOffset + rect.top - 70;
+        window.scrollTo({ top: scrollTop, behavior: 'smooth' });
+      }, 60);
+    });
+  });
 }
-function closeSidebar() {
-  document.getElementById('sidebar').classList.remove('open');
-  document.getElementById('sb-overlay').classList.remove('open');
+
+function renderTodos() {
+  const el = document.getElementById('todos-list');
+  if (el) el.innerHTML = JUEGOS.map((g,i)=>buildBlock(g,i,false)).join('');
 }
+function renderTodosEmu() {
+  const el = document.getElementById('todos-emu-list');
+  if (el) el.innerHTML = EMULADORES.map((e,i)=>buildBlock(e,i,true)).join('');
+}
+
+// INIT
+renderJuegos();
+renderEmuladores();
+renderTodos();
+renderTodosEmu();
+renderSidebar();
+
+// Contador "Todos los juegos"
+(function(){
+  // Contadores home-cards
+  const hcJ=document.getElementById('hc-count-juegos');
+  if(hcJ) hcJ.textContent=JUEGOS.length+' juego'+(JUEGOS.length!==1?'s':'');
+  const hcE=document.getElementById('hc-count-emu');
+  if(hcE) hcE.textContent=EMULADORES.length+' emulador'+(EMULADORES.length!==1?'es':'');
+  const el=document.getElementById('sb-todos-count');
+  if(el) el.textContent=JUEGOS.length;
+})();
 
 // LOADER
-(function() {
-  const bar  = document.getElementById('ldBar');
-  const msg  = document.getElementById('ldMsg');
-  const msgs = ['INICIALIZANDO...','CARGANDO ACTIVOS...','VERIFICANDO ARCHIVOS...','SISTEMA LISTO'];
-  let p = 0, mi = 0;
-  const iv = setInterval(() => {
-    p = Math.min(p + Math.random() * 16 + 5, 100);
-    bar.style.width = p + '%';
-    const ni = Math.floor(p / 100 * (msgs.length - 1));
-    if (ni !== mi) { mi = ni; msg.textContent = msgs[mi]; }
-    if (p >= 100) {
-      clearInterval(iv);
-      setTimeout(() => document.getElementById('loader').classList.add('gone'), 400);
-    }
-  }, 65);
+(function(){
+  const bar=document.getElementById('ldBar'),msg=document.getElementById('ldMsg');
+  const msgs=['INICIALIZANDO...','CARGANDO ACTIVOS...','VERIFICANDO ARCHIVOS...','SISTEMA LISTO'];
+  let p=0,mi=0;
+  const iv=setInterval(()=>{
+    p=Math.min(p+Math.random()*16+5,100);
+    bar.style.width=p+'%';
+    const ni=Math.floor(p/100*(msgs.length-1));
+    if(ni!==mi){mi=ni;msg.textContent=msgs[mi];}
+    if(p>=100){clearInterval(iv);setTimeout(()=>document.getElementById('loader').classList.add('gone'),400);}
+  },65);
 })();
 </script>
 </body>
